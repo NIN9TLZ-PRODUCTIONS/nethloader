@@ -1,36 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-namespace nethloader
-{
-    public class Startup
-    {
+﻿
+ASP.NET MVC core dependencies have been added to the project.
+However you may still need to do make changes to your project.
+1. Add Scaffolding CLI tool to the project:
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
+    </ItemGroup>
+
+2. Suggested changes to Startup class:
+    2.1 Add a constructor:
+        public IConfigurationRoot Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
-
-        public IConfigurationRoot Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+    2.2 Add MVC services:
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
-        }
+       }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    2.3 Configure web app to use use Configuration and use MVC routing:
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -39,10 +36,6 @@ namespace nethloader
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Browser Link is not compatible with Kestrel 1.1.0
-                // For details on enabling Browser Link, see https://go.microsoft.com/fwlink/?linkid=840936
-                // app.UseBrowserLink();
             }
             else
             {
@@ -58,5 +51,3 @@ namespace nethloader
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-    }
-}
