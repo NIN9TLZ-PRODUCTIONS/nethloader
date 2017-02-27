@@ -11,11 +11,13 @@ indent_size = 2
 
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
 indent_size = 2
+end_of_line = crlf
 
 [*.cs,*.csx,*.vb,*.vbx]
 indent_size = 4
 
 [*.{cs,vb}]
+end_of_line = crlf
 # Sort using and Import directives with System.* appearing first
 dotnet_sort_system_directives_first = true
 # Avoid "this." and "Me." if not necessary
