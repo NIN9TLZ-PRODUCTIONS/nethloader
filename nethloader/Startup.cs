@@ -4,9 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using nethloader.Data;
+using nethloader.Models;
+using nethloader.Services;
+
 namespace nethloader
 {
     public class Startup
@@ -26,8 +32,19 @@ namespace nethloader
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add DBContext Services
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //Add Identy Services
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             // Add framework services.
             services.AddMvc();
+            // Add Config services
+            services.Configure<MainSettings>(options => Configuration.GetSection("Main").Bind(options));
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,10 +56,6 @@ namespace nethloader
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Browser Link is not compatible with Kestrel 1.1.0
-                // For details on enabling Browser Link, see https://go.microsoft.com/fwlink/?linkid=840936
-                // app.UseBrowserLink();
             }
             else
             {
@@ -50,6 +63,8 @@ namespace nethloader
             }
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
