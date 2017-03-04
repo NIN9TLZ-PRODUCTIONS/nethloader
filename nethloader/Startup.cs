@@ -12,12 +12,13 @@ using Microsoft.Extensions.Logging;
 using nethloader.Data;
 using nethloader.Models;
 using nethloader.Services;
+using nethloader.Services.Options;
 
 namespace nethloader
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -36,13 +37,35 @@ namespace nethloader
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Add Identy Services
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                // Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/Logout";
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = Configuration["Main:RequireEmailComfirm"] == "True";
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             // Add framework services.
             services.AddMvc();
             // Add Config services
-            services.Configure<MainSettings>(options => Configuration.GetSection("Main").Bind(options));
+            services.Configure<MainOptions>(options => Configuration.GetSection("Main").Bind(options));
+            services.Configure<MailOptions>(options => Configuration.GetSection("Mail").Bind(options));
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
         }

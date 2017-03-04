@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using nethloader.Models;
 using nethloader.Models.AccountViewModels;
 using nethloader.Services;
+using nethloader.Services.Options;
 
 namespace nethloader.Controllers
 {
@@ -21,22 +22,27 @@ namespace nethloader.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
-        private readonly bool _allowRegister;
+        private readonly MainOptions _MainConfig;
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
-            IOptions<MainSettings> mainSettings,
+            IOptions<MainOptions> mainOptions,
             IEmailSender emailSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-            _allowRegister = mainSettings.Value.allowRegister;
+            _MainConfig = mainOptions.Value;
             _emailSender = emailSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+        }
+
+        public IActionResult Index()
+        {
+            return RedirectToAction("Login");
         }
 
         //
@@ -84,10 +90,9 @@ namespace nethloader.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            if (!_allowRegister)
+            if (!_MainConfig.AllowRegister)
             {
                 return RedirectToAction("Login");
             }
@@ -101,7 +106,7 @@ namespace nethloader.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            if(!_allowRegister)
+            if(!_MainConfig.AllowRegister)
             {
                 return RedirectToAction("Login");
             }
@@ -119,7 +124,17 @@ namespace nethloader.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    if (_MainConfig.RequireEmailComfirm)
+                    {
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                        await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                            $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    }
+                    else
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                    }
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
