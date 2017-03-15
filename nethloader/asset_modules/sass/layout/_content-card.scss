@@ -1,0 +1,11 @@
+.content-card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: $border-radius--big;
+    padding: 16px;
+    @include box_shadow(5);
+}
+
+.content-card--w500 {
+    max-width: 500px;
+}

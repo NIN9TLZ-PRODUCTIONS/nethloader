@@ -1,0 +1,76 @@
+/* ------------
+General utils
+------------ */
+
+/* Cursor pointer */
+.pointer {
+    cursor: pointer!important;
+}
+
+/* ------------
+Flexbox utils 
+------------ */
+
+.flex {
+    display: flex;
+}
+
+/* Flex direction */
+.flex-dc {
+    flex-direction: column;
+}
+
+.flex-full-center {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center within the main axis */
+.flex-main-center {
+    justify-content: center;
+}
+/* Center within the cross-axis */
+.flex-cross-center {
+    align-items: center;
+}
+
+
+/* Responsive image element */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Text align */
+.ta-c {
+    text-align: center;
+}
+
+.ta-r {
+    text-align: right;
+}
+
+/**
+ * A mixin which helps you to add depth to elements according to the Google Material Design spec:
+ * http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+ *
+ * Please note that the values given in the specification cannot be used as is. To create the same visual experience
+ * the blur parameter has to be doubled.
+ *
+ * Adapted from a LESS version at https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
+ *
+ * Original Author: Florian Kutschera (@gefangenimnetz), Conceptboard GmbH (@conceptboardapp)
+ **/
+@mixin box_shadow ($level) {
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.1);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
+    } @else if $level == 3 {
+        box-shadow: 0 8px 10px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.13);
+    } @else if $level == 4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2);
+    } @else if $level == 5 {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07), 0 12px 42px rgba(0, 0, 0, 0.13);
+    }
+}
