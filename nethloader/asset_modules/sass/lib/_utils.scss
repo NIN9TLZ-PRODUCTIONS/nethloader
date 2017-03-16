@@ -34,6 +34,13 @@ Flexbox utils
     align-items: center;
 }
 
+.flex-sb {
+    justify-content: space-between;
+}
+
+.flex-sa {
+    justify-content: space-around;
+}
 
 /* Responsive image element */
 .img-responsive {

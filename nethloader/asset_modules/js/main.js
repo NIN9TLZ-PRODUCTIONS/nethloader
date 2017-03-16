@@ -2,9 +2,7 @@
 
 import InputEvents from './partials/InputEvents'
 
-function init() {
+(function init() {
     InputEvents.findInputs();
     InputEvents.addListeners();
-};
-
-init();
+})();
