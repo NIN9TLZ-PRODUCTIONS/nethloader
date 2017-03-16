@@ -1,15 +1,20 @@
+/*
+    Inputs
+*/
+
 .input {
-    outline: none;
-    border: none;
     -webkit-appearance: none;
 }
 
+// Text/Password Inputs
 .input--text, .input--password {
     border: 1px solid lighten($primary-dark, 60%);
     border-radius: $border-radius--normal;
     padding: 16px 16px 8px 16px;
 }
 
+
+// Checkbox Inputs
 .input--checkbox {
     background-color: transparent;
     border: 2px solid $secondary-dark-colour;
@@ -20,6 +25,10 @@
     position: relative;
     cursor: pointer;
     transition: $easeOutQuad;
+
+    &:hover {
+        border-color: $primary-dark;
+    }
 }
 
 .input--checkbox:checked {
@@ -46,6 +55,9 @@
     transition: $easeOutQuad;
 }
 
+/*
+    Labels
+*/
 .label--itext {
     cursor: text;
     position: absolute;
@@ -58,6 +70,11 @@
 .input--text:focus ~ .label--itext,
 .input--password:focus ~ .label--itext,
 .label--itext.has-content {
-    transform: translateY(-100%);
+    svg {
+        transform: scale(.75);
+    }
+
+    color: lighten($secondary-light-colour, 20%);
+    transform: translateY(-70%);
     font-size: 70%;
 }

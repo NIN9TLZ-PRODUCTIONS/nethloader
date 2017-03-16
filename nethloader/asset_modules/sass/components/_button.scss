@@ -1,18 +1,28 @@
 ﻿.button {
+    -webkit-appearance: none;
     border: none;
     padding: 8px 16px;
     border-radius: $border-radius--normal;
+    transition: $easeOutQuad;
 }
 
 .button--dark {
     background-color: $primary-dark;
     color: $primary-light-colour;
+
+    &:hover {
+        background-color: lighten($primary-dark, 15%);
+    }
 }
 
-.button--fancy {
+.button--big {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     min-width: 150px;
-    @include box_shadow(3);
+    @include box_shadow(2);
+
+    &:hover {
+        @include box_shadow(3);
+    }
 }

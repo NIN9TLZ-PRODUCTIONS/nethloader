@@ -8,14 +8,22 @@
         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                <label for="email" class="label--itext">Email</label>
+                <label for="email" class="label--itext flex flex-full-center">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6A2,2 0 0,0 20,4M20,18H4V8L12,13L20,8V18M20,6L12,11L4,6V6H20V6Z" />
+                    </svg>&nbsp;Email
+                </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext">Password</label>
+                <label for="password" class="label--itext">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7,14A2,2 0 0,1 5,12A2,2 0 0,1 7,10A2,2 0 0,1 9,12A2,2 0 0,1 7,14M12.65,10C11.83,7.67 9.61,6 7,6A6,6 0 0,0 1,12A6,6 0 0,0 7,18C9.61,18 11.83,16.33 12.65,14H17V18H21V14H23V10H12.65Z" />
+                    </svg>&nbsp;Password
+                </label>
             </div>
             <div class="form-row flex flex-cross-center flex-sa">
-                <button class="button button--dark button--fancy pointer ta-c" type="submit">Log In</button>
+                <button class="button button--dark button--big pointer ta-c" type="submit">Log In</button>
                 <span class="flex flex-full-center">
                     <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
                     <label for="remember_me" class="label--checkbox"><small>Keep me logged in</small></label>
