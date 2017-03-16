@@ -1,3 +1,4 @@
+@model nethloader.Models.AccountViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -5,29 +6,29 @@
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <h1 class="title title--primary">Create an account</h1>
     <div class="content-card content-card--w500">
-        <form action="">
+        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="fullname" type="text" class="input input--text" data-type="text" required>
+                <input asp-for="FullName" id="fullname" type="text" class="input input--text" data-type="text" required>
                 <label for="fullname" class="label--itext">Full Name</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="username" type="text" class="input input--text" data-type="text" required>
+                <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
                 <label for="username" class="label--itext">Userame</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="email" type="email" class="input input--text" data-type="text" required>
+                <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
                 <label for="email" class="label--itext">Email</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="password" type="password" class="input input--password" data-type="password" required>
+                <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
                 <label for="password" class="label--itext">Password</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="cpassword" type="password" class="input input--password" data-type="password" required>
+                <input asp-for="ConfirmPassword" id="cpassword" type="password" class="input input--password" data-type="password" required>
                 <label for="cpassword" class="label--itext">Confirm Password</label>
             </div>
             <div class="form-row flex flex-full-center">
-                <button class="button button--dark button--fancy pointer ta-c">Register Now</button>
+                <button class="button button--dark button--fancy pointer ta-c" type="submit">Register Now</button>
             </div>
         </form>
         <h4 class="title title--secondary-margin ta-c"><a asp-action="Login"><small>Already have an account? Log in here.</small></a></h4>

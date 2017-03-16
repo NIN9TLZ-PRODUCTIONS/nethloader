@@ -1,26 +1,27 @@
+@model nethloader.Models.AccountViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Login";
 }
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <h1 class="title title--primary">Nethloader Login</h1>
     <div class="content-card content-card--w500">
-        <form action="">
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="email" type="email" class="input input--text" data-type="text" required>
+                <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
                 <label for="email" class="label--itext">Email</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="password" type="password" class="input input--password" data-type="password" required>
+                <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
                 <label for="password" class="label--itext">Password</label>
             </div>
             <div class="form-row flex flex-cross-center flex-sa">
-                <button class="button button--dark button--fancy pointer ta-c">Log In</button>
+                <button class="button button--dark button--fancy pointer ta-c" type="submit">Log In</button>
                 <span class="flex flex-full-center">
-                    <input id="remember_me" class="input input--checkbox" type="checkbox">
+                    <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
                     <label for="remember_me" class="label--checkbox"><small>Keep me logged in</small></label>
                 </span>
             </div>
         </form>
-        <h4 class="title title--secondary-margin ta-c"><a asp-action="Register"><small>Don't have an account? Click here!</small></a></h4>
+        <h4 class="title title--secondary-margin ta-c"><a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Don't have an account? Click here!</small></a></h4>
     </div>
 </div>
