@@ -6,8 +6,8 @@
     <div class="content-card content-card--w500">
         <form action="">
             <div class="form-row flex flex-dc flex-main-center">
-                <input id="username" type="text" class="input input--text" data-type="text" required>
-                <label for="username" class="label--itext">Username</label>
+                <input id="email" type="email" class="input input--text" data-type="text" required>
+                <label for="email" class="label--itext">Email</label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input id="password" type="password" class="input input--password" data-type="password" required>
@@ -18,9 +18,9 @@
                 <span class="flex flex-full-center">
                     <input id="remember_me" class="input input--checkbox" type="checkbox">
                     <label for="remember_me" class="label--checkbox"><small>Keep me logged in</small></label>
-                </span>     
+                </span>
             </div>
         </form>
-        <h4 class="title title--secondary-margin ta-c"><a href="#"><small>Don't have an account? Click here!</small></a></h4>
+        <h4 class="title title--secondary-margin ta-c"><a asp-action="Register"><small>Don't have an account? Click here!</small></a></h4>
     </div>
 </div>
