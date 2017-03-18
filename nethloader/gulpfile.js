@@ -1,4 +1,3 @@
-/// <binding ProjectOpened='sass:watch, js:watch' />
 'use strict';
 
 const gulp = require('gulp'),
@@ -38,3 +37,4 @@ gulp.task('sass:watch', () => {
 gulp.task('js:watch', () => {
     gulp.watch('./asset_modules/js/**/*.js', ['buildjs']);
 });
+gulp.task('default', ['sass:watct', 'js:watch']);
