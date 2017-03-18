@@ -1,0 +1,24 @@
+body {
+    background-color: $primary-light;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.app-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.inner-wrapper {
+   width: 100%;
+   height: 100%;
+   position: relative;
+}
+
+a {
+    transition: $easeOutQuad;
+    &:active, &:hover {
+        color: darken($accent-light, 15%);
+    }
+}

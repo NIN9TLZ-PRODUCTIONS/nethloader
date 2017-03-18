@@ -1,0 +1,33 @@
+﻿.button {
+    -webkit-appearance: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: $border-radius--normal;
+    transition: $easeOutQuad;
+}
+
+.button--dark {
+    background-color: $accent-dark;
+    color: $primary-light-colour;
+    border: 2px solid transparent;
+
+    &:hover {
+        background-color: $accent-light;
+    }
+
+    &:focus {
+        border-color: $accent-dark;
+    }
+}
+
+.button--big {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 150px;
+    @include box_shadow(2);
+
+    &:hover {
+        @include box_shadow(3);
+    }
+}

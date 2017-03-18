@@ -259,3 +259,10 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# VS Code workspace settings
+.vscode/*
+
+#Compiled web assets
+/nethloader/wwwroot/css/*
+/nethloader/wwwroot/js/*

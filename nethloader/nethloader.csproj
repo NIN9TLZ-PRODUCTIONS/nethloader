@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
@@ -9,11 +9,12 @@
     <Description>A custom image uploader service like plx.lt</Description>
     <Copyright>Nethruster</Copyright>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Content Include="wwwroot\.gitkeep" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MailKit" Version="1.10.2" />
@@ -28,5 +29,4 @@
     <PackageReference Include="SapientGuardian.EntityFrameworkCore.MySql" Version="7.1.19" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
   </ItemGroup>
-
 </Project>
