@@ -1,4 +1,10 @@
-var inputs;
+var inputs; // Contains the input elements to manage
+
+
+const init = () => {
+  findInputs();
+  addListeners();
+}
 
 /*
 * Find all the inputs with the 'data-type' attribute
@@ -8,7 +14,7 @@ const findInputs = () => {
 };
 
 /*
-* Add eventListeners for input to every input found with 'findInputs()'
+* Add eventListeners of 'input' to every element found by 'findInputs()'
 */
 const addListeners = () => {
   document.addEventListener('load', manageLabelActiveState);
@@ -19,7 +25,7 @@ const addListeners = () => {
 }
 
 /*
-* Changes the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively.
+* Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively.
 */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
@@ -32,7 +38,5 @@ const manageLabelActiveState = (event) => {
 };
 
 export default {
-  findInputs,
-  addListeners,
-  manageLabelActiveState
+  init
 };

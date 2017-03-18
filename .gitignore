@@ -262,3 +262,7 @@ __pycache__/
 
 # VS Code workspace settings
 .vscode/*
+
+#Compiled web assets
+/nethloader/wwwroot/css/*
+/nethloader/wwwroot/js/*

@@ -10,6 +10,9 @@
     <Copyright>Nethruster</Copyright>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="wwwroot\.gitkeep" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>

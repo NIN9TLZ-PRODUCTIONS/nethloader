@@ -3,6 +3,5 @@
 import InputEvents from './partials/InputEvents'
 
 (function init() {
-    InputEvents.findInputs();
-    InputEvents.addListeners();
+    InputEvents.init();
 })();

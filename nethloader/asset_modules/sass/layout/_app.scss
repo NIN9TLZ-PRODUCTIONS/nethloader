@@ -15,3 +15,10 @@ body {
    height: 100%;
    position: relative;
 }
+
+a {
+    transition: $easeOutQuad;
+    &:active, &:hover {
+        color: darken($accent-light, 15%);
+    }
+}

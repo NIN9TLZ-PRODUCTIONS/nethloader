@@ -7,11 +7,16 @@
 }
 
 .button--dark {
-    background-color: $primary-dark;
+    background-color: $accent-dark;
     color: $primary-light-colour;
+    border: 2px solid transparent;
 
     &:hover {
-        background-color: lighten($primary-dark, 15%);
+        background-color: $accent-light;
+    }
+
+    &:focus {
+        border-color: $accent-dark;
     }
 }
 
