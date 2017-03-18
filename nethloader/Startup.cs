@@ -65,7 +65,7 @@ namespace nethloader
             services.AddMvc();
             // Add Config services
             services.Configure<MainOptions>(options => Configuration.GetSection("Main").Bind(options));
-            services.Configure<MailOptions>(options => Configuration.GetSection("Mail").Bind(options));
+            // services.Configure<MailOptions>(options => Configuration.GetSection("Mail").Bind(options));
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
         }

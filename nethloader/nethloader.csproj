@@ -6,12 +6,12 @@
     <Company />
     <Authors>Nethruster</Authors>
     <RepositoryType>GIT</RepositoryType>
-    <Description>A custom image uploader service like plx.lt</Description>
+    <Description>A custom image uploader service similar to plx.lt</Description>
     <Copyright>Nethruster</Copyright>
   </PropertyGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Include="wwwroot\.gitkeep" />
-  </ItemGroup>
+  </ItemGroup>-->
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\Home\" />

@@ -63,8 +63,12 @@
     position: absolute;
     color: $secondary-light-colour;
     transition: $easeOutQuad;
+    will-change: transform, color;
     margin-left: 8px;
     border-radius: $border-radius--normal;
+    pointer-events: none;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .input--text:focus ~ .label--itext,
@@ -75,6 +79,5 @@
     }
 
     color: lighten($secondary-light-colour, 20%);
-    transform: translateY(-70%);
-    font-size: 70%;
+    transform: translateX(-15.5%) scale(.7) translateY(-72%);
 }
