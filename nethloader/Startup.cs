@@ -35,7 +35,7 @@ namespace nethloader
         {
             //Add DBContext Services
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             //Add Identy Services
             services.AddIdentity<User, IdentityRole>(options =>
             {
