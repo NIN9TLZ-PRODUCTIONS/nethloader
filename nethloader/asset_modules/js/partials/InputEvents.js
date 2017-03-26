@@ -17,7 +17,6 @@ const findInputs = () => {
 * Add eventListeners of 'input' to every element found by 'findInputs()'
 */
 const addListeners = () => {
-  document.addEventListener('load', manageLabelActiveState);
   for (let i = inputs.length - 1; i >= 0; i--) {
     inputs[i].addEventListener('input', manageLabelActiveState);
     inputs[i].addEventListener('mousedown', manageLabelActiveState);
