@@ -1,5 +1,5 @@
-var inputs; // Contains the input elements to manage
-
+// Contains the input elements to manage
+var inputs; 
 
 const init = () => {
   findInputs();
@@ -11,10 +11,10 @@ const init = () => {
 */
 const findInputs = () => {
   inputs = document.querySelectorAll("[data-type]");
-};
+}
 
 /*
-* Add eventListeners of 'input' to every element found by 'findInputs()'
+* Add eventListeners of 'input' and 'mousedown' to every element found by 'findInputs()'
 */
 const addListeners = () => {
   for (let i = inputs.length - 1; i >= 0; i--) {
@@ -24,7 +24,7 @@ const addListeners = () => {
 }
 
 /*
-* Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively.
+* Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively
 */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
@@ -34,8 +34,8 @@ const manageLabelActiveState = (event) => {
   } else if (!eventInput.value || eventInput.value == "") {
       labelEl.classList.remove('has-content');
   }
-};
+}
 
 export default {
   init
-};
+}

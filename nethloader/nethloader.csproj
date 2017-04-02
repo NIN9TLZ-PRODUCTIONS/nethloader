@@ -12,10 +12,11 @@
   <!--<ItemGroup>
     <Content Include="wwwroot\.gitkeep" />
   </ItemGroup>-->
-  <ItemGroup>
+  <!--<ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Views\Home\" />
-  </ItemGroup>
+    <Folder Include="wwwroot\icons\" />
+  </ItemGroup>-->
   <ItemGroup>
     <PackageReference Include="MailKit" Version="1.10.2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />

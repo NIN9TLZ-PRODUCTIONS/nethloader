@@ -18,7 +18,8 @@ body {
 
 a {
     transition: $easeOutQuad;
+    color: darken($accent-light, 24%);
     &:active, &:hover {
-        color: darken($accent-light, 15%);
+        color: darken($accent-light, 8%);
     }
 }

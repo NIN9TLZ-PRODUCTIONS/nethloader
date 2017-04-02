@@ -6,6 +6,10 @@
     @include box_shadow(5);
 }
 
+.content-card--w400 {
+    max-width: 400px;
+}
+
 .content-card--w500 {
     max-width: 500px;
 }

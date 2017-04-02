@@ -217,9 +217,9 @@ namespace nethloader.Controllers
         }
         // GET: /Account/ResetPassword
         [HttpGet]
-        public IActionResult ResetPassword(string code = null)
+        public IActionResult ResetPassword()
         {
-            return code == null ? View("Error") : View();
+            return View();
         }
         // POST: /Account/ResetPassword
         [HttpPost]

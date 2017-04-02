@@ -1,0 +1,34 @@
+.title {
+    color: $primary-dark;
+    font-weight: 300;
+}
+
+.title--primary {
+    font-size: 1.5em;
+    margin: 16px 0;
+}
+
+/* Text blocks */
+
+.text--primary {
+    color: currentColor;
+}
+
+.text--secondary-light-bg {
+    color: lighten($secondary-light-colour, 8%);
+}
+
+.text--primary-light-bg {
+    color: $primary-light-colour;
+}
+.text--margin {
+    margin: 16px 5px;
+}
+
+.text--300 {
+    font-weight: 300;
+}
+
+.text--success {
+    color: #00C853;
+}
