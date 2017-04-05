@@ -12,12 +12,14 @@
         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                <label for="email" class="label--itext flex flex-full-center">@ViewData["svgIcon-email"]&nbsp;Email
+                <label for="email" class="label--itext flex flex-full-center">
+                    @ViewData["svgIcon-email"]&nbsp;Email
                 </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext">@ViewData["svgIcon-key"]&nbsp;Password
+                <label for="password" class="label--itext">
+                    @ViewData["svgIcon-key"]&nbsp;Password
                 </label>
             </div>
             <div class="form-row flex flex-cross-center flex-sb">
@@ -28,7 +30,7 @@
                 <p class="text--secondary-light-bg ta-c"><a asp-action="forgotpassword"><small>Forgot your password?</small></a></p>
             </div>
             <div class="form-row flex flex-full-center">
-                <button class="button button--dark button--big button--fw pointer ta-c flex flex-full-center" type="submit">Log In&nbsp;@ViewData["svgIcon-arrowLeft"]</button>
+                <button class="button button--dark button--big button--fw pointer ta-c flex flex-full-center button-icon-from-left" type="submit">Log In&nbsp;@ViewData["svgIcon-arrowLeft"]</button>
             </div>
           </form>
         <h4 class="text--secondary-light-bg text--margin ta-c"><a asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Don't have an account? Click here!</small></a></h4>

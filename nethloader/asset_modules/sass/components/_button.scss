@@ -34,7 +34,6 @@
 .button--big {
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
     min-width: 150px;
     @include box_shadow(2);
     padding: 8px 16px;
@@ -58,4 +57,20 @@
 
 .button--margin-tb {
     margin: 8px 0;
+}
+
+.button-icon-from-left {
+    &:hover {
+        svg {
+            transform: translateX(5px);
+        }
+    }
+}
+
+.button-icon-from-right {
+    &:hover {
+        svg {
+            transform: translateX(-5px);
+        }
+    }
 }
