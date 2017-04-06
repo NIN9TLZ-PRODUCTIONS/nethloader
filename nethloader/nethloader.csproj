@@ -9,6 +9,10 @@
     <Description>A custom image uploader service similar to plx.lt</Description>
     <Copyright>Nethruster</Copyright>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\img\icons.svg" />
+    <Content Include="wwwroot\img\svgicons\icons.svg" />
+  </ItemGroup>
   <!--<ItemGroup>
     <Content Include="wwwroot\.gitkeep" />
   </ItemGroup>-->
