@@ -1,0 +1,10 @@
+@model nethloader.Models.Image
+@{
+    ViewData["Title"] = "ViewImg";
+}
+
+<h2>ViewImg</h2>
+<img src="@ViewData["ImgUrl"]"/>
+<p>
+    @Model.Description 
+</p>

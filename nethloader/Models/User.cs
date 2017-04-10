@@ -10,6 +10,8 @@ namespace nethloader.Models
     {
         public string FullName { get; set; }
         public DateTime RegisterDate { get; set; }
-        public Guid APIKey { get; set; }
+        public string ApiKey { get; set; }
+        public bool CustomDomainStatus { get; set; }
+        public string CustomDomain { get; set; }
     }
 }

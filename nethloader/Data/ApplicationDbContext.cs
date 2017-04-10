@@ -12,5 +12,7 @@ namespace nethloader.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
+
+        public DbSet<Image> Images { get; set; }
     }
 }

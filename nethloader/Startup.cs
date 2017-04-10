@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using nethloader.Data;
 using nethloader.Models;
 using nethloader.Services;
+using nethloader.Services.Managers;
 using nethloader.Services.Options;
 
 namespace nethloader
@@ -35,7 +36,7 @@ namespace nethloader
         {
             //Add DBContext Services
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Add Identy Services
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -66,6 +67,8 @@ namespace nethloader
             // Add Config services
             services.Configure<MainOptions>(options => Configuration.GetSection("Main").Bind(options));
             // services.Configure<MailOptions>(options => Configuration.GetSection("Mail").Bind(options));
+            //Add Managers
+            services.AddScoped<IImageManager, ImageManager>();
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
         }

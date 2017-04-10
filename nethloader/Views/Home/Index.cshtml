@@ -4,4 +4,8 @@
 }
 
 <h2>Index</h2>
+<h3>Hi @User.Identity.Name!</h3>
+<form asp-controller="Account" asp-action="Logout"  method="post">
+    <input type="submit" value="Logout" />
+</form>
 
