@@ -254,6 +254,16 @@ namespace nethloader.Controllers
         {
             return View();
         }
+        //
+        // POST: /Account/RegenApiKey
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<string> RegenApiKey()
+        {
+           var user = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+           user.ApiKey = GenerateApiKey();
+           return user.ApiKey;
+        }
         #region Helpers
 
         private void AddErrors(IdentityResult result)
