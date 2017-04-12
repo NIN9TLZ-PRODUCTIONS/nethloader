@@ -8,7 +8,7 @@
 .button--primary {
     background-color: $primary-dark;
     color: $primary-dark-colour;
-    padding: 8px;
+    padding: $base-padding;
     font-weight: 300;
 
     &:hover {
@@ -36,7 +36,7 @@
     text-transform: uppercase;
     min-width: 150px;
     @include box_shadow(2);
-    padding: 8px 16px;
+    padding: $base-padding $base-padding*2;
 
     &:hover {
         @include box_shadow(3);
@@ -49,6 +49,10 @@
 
 .button--margin {
     margin: 8px;
+}
+
+.button--padding-long {
+    padding: 0px $base-padding*2;
 }
 
 .button--margin-lr {

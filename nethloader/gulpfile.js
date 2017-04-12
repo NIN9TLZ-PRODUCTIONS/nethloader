@@ -13,8 +13,8 @@ const gulp         = require('gulp'),
 
 gulp.task('sass', () => {
   return gulp.src('./asset_modules/sass/**/*.scss')
-        .pipe(autoprefixer())
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./wwwroot/css/'));
 });
 

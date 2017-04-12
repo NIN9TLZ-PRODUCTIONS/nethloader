@@ -2,10 +2,28 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="inner-wrapper flex flex-dc">
+    <header class="user-header flex flex-full-center">
+        <div class="inner-wrapper--container flex flex-sb">
+            <button class="button button--primary button--margin button--padding-long pointer flex flex-full-center"><p>Upload</p>
+             &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg>
+            </button>
 
-<h2>Index</h2>
-<h3>Hi @User.Identity.Name!</h3>
-<form asp-controller="Account" asp-action="Logout"  method="post">
-    <input type="submit" value="Logout" />
-</form>
-
+            <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu">
+                <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
+                <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
+                    <ul class="flex flex-dc">
+                        <li class="user-header__user-menu__dropdown-item pointer">
+                            <p class="ta-c">Settings</p>
+                        </li>
+                        <li class="logout-form">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

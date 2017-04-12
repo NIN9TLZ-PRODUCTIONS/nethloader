@@ -2,7 +2,7 @@
     width: 100%;
     background-color: #fff;
     border-radius: $border-radius--big;
-    padding: 16px;
+    padding: $base-padding*2;
     @include box_shadow(5);
 }
 
