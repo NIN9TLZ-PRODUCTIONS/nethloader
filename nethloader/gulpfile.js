@@ -1,17 +1,19 @@
 'use strict';
 
-const gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    babel = require('gulp-babel'),
-    uglify = require('gulp-uglify'),
-    babelify = require('babelify'),
-    browserify = require("browserify"),
-    connect = require("gulp-connect"),
-    source = require("vinyl-source-stream"),
-    buffer = require("vinyl-buffer");
+const gulp         = require('gulp'),
+      sass         = require('gulp-sass'),
+      babel        = require('gulp-babel'),
+      uglify       = require('gulp-uglify'),
+      source       = require("vinyl-source-stream"),
+      buffer       = require("vinyl-buffer"),
+      connect      = require("gulp-connect"),
+      babelify     = require('babelify'),
+      browserify   = require("browserify"),
+      autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', () => {
-    return gulp.src('./asset_modules/sass/**/*.scss')
+  return gulp.src('./asset_modules/sass/**/*.scss')
+        .pipe(autoprefixer())
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(gulp.dest('./wwwroot/css/'));
 });
