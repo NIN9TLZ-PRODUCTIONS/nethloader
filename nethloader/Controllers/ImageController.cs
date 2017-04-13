@@ -31,7 +31,7 @@ namespace nethloader.Controllers
         }
         [AllowAnonymous]
         [ActionName("View")]
-        public async Task<IActionResult> ViewImg(int id)
+        public async Task<IActionResult> ViewImg(string id)
         {
             var img = await _imageManager.GetImageWithOwnerAsync(id);
             ViewData["ImgUrl"] = _imageManager.GetImagePath(img);
@@ -48,8 +48,7 @@ namespace nethloader.Controllers
         public async Task<IActionResult> Upload(IFormFile file)
         {
 
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
+            var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             var img = await _imageManager.SaveImageAsync(currentUser, file);
             if(img == null)
             {

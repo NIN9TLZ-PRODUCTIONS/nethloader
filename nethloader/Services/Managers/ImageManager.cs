@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using nethloader.Data;
 using nethloader.Models;
+using nethloader.Utils;
 
 namespace nethloader.Services.Managers
 {
@@ -21,9 +22,9 @@ namespace nethloader.Services.Managers
             _env = env;
         }
 
-        public async Task<Image> GetImageAsync(int id) => await _db.Images.FindAsync(id);
+        public async Task<Image> GetImageAsync(string id) => await _db.Images.FindAsync(id);
 
-        public async Task<Image> GetImageWithOwnerAsync(int id)
+        public async Task<Image> GetImageWithOwnerAsync(string id)
         {
             var img = await _db.Images.FindAsync(id);
             _db.Entry(img).Reference(b => b.Owner).Load();
@@ -80,5 +81,16 @@ namespace nethloader.Services.Managers
         }
                 
         public async Task<Image> SaveImageAsync(User owner, IFormFile file) => await SaveImageAsync(owner, "", file);
+
+        public IQueryable<Image> GetAllUserImages(string id)
+        {
+            return _db.Images.Where(x => x.Owner.Id == id);
+        }
+
+        public Task<PaginatedList<Image>> GetPaginatedUserImagesAsync(string id, int page, int pageSize)
+        {
+
+            return PaginatedList<Image>.CreateAsync(GetAllUserImages(id), page, pageSize);
+        }
     }
 }
