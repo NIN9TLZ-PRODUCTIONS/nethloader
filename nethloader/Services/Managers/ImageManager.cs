@@ -31,7 +31,7 @@ namespace nethloader.Services.Managers
             return img;
         }
 
-        public string GetImagePath(Image image)
+        public static string GetImagePath(Image image)
         {
             if (image.Owner.CustomDomainStatus == true)
             {

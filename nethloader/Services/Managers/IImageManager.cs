@@ -16,6 +16,5 @@ namespace nethloader.Services.Managers
         Task<Image> GetImageWithOwnerAsync(string id);
         IQueryable<Image> GetAllUserImages(string id);
         Task<PaginatedList<Image>> GetPaginatedUserImagesAsync(string id, int page, int pageSize);
-        string GetImagePath(Image image);
     }
 }

@@ -34,7 +34,7 @@ namespace nethloader.Controllers
         public async Task<IActionResult> ViewImg(string id)
         {
             var img = await _imageManager.GetImageWithOwnerAsync(id);
-            ViewData["ImgUrl"] = _imageManager.GetImagePath(img);
+            ViewData["ImgUrl"] = ImageManager.GetImagePath(img);
             return View(img);
         }
         [HttpGet]
