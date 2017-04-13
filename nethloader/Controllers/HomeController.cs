@@ -17,9 +17,9 @@ namespace nethloader.Controllers
             _imageManager = imageManager;
         }
         [Authorize]
-        public IActionResult Index(int? page)
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(_imageManager.GetPaginatedUserImagesAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value,page ?? 1, 10));
+            return View(await _imageManager.GetPaginatedUserImagesAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value,page ?? 1, 10));
         }
         public IActionResult Error()
         {
