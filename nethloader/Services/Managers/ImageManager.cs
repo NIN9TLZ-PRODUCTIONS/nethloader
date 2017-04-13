@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleSequentialGuid;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,11 +34,11 @@ namespace nethloader.Services.Managers
         {
             if (image.Owner.CustomDomainStatus == true)
             {
-                return $"{image.Owner.CustomDomain}/{image.Name}.{image.Extension}";
+                return $"{image.Owner.CustomDomain}/{image.Id}.{image.Extension}";
             }
             else
             {
-                return $"/raw-img/{image.Owner.Id}/{image.Name}.{image.Extension}";
+                return $"/raw-img/{image.Owner.Id}/{image.Id}.{image.Extension}";
             }
         }
 
@@ -50,12 +51,13 @@ namespace nethloader.Services.Managers
                 {
                     var img = new Image
                     {
-                        Name = Path.GetRandomFileName(),
+                        Id = SequentialGuid.NewGuid(SequentialGuidType.SequentialAsString).ToString(),
                         Description = description,
+                        UploadDate = DateTime.Now,
                         Extension = (ImageExtensions)extension,
                         Owner = owner
                     };
-                    var path = Path.Combine(new string[4] { _env.WebRootPath, "raw-img", owner.Id, $"{img.Name}.{img.Extension}" });
+                    var path = Path.Combine(new string[4] { _env.WebRootPath, "raw-img", owner.Id, $"{img.Id}.{img.Extension}" });
                     var directory = Path.GetDirectoryName(path);
 
                     if (!Directory.Exists(directory))

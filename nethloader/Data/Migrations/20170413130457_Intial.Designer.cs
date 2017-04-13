@@ -9,8 +9,8 @@ using nethloader.Models;
 namespace nethloader.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170410183502_InitiaslMigration")]
-    partial class InitiaslMigration
+    [Migration("20170413130457_Intial")]
+    partial class Intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -127,16 +127,16 @@ namespace nethloader.Data.Migrations
 
             modelBuilder.Entity("nethloader.Models.Image", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
                     b.Property<int>("Extension");
 
-                    b.Property<string>("Name");
-
                     b.Property<string>("OwnerId");
+
+                    b.Property<DateTime>("UploadDate");
 
                     b.HasKey("Id");
 

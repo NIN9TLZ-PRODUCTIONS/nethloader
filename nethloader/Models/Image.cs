@@ -10,11 +10,10 @@ namespace nethloader.Models
     [Table("Images")]
     public class Image
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 0)]
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Id { get; set; }
         public string Description { get; set; }
+        public DateTime UploadDate { get; set; }
         public ImageExtensions Extension { get; set; }
         public virtual User Owner { get; set; }
     }

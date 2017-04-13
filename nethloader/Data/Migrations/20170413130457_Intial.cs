@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace nethloader.Data.Migrations
 {
-    public partial class InitiaslMigration : Migration
+    public partial class Intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -157,12 +157,11 @@ namespace nethloader.Data.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Extension = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    OwnerId = table.Column<string>(nullable: true)
+                    OwnerId = table.Column<string>(nullable: true),
+                    UploadDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
