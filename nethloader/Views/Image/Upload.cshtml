@@ -1,12 +1,15 @@
-
 @{
     ViewData["Title"] = "Upload";
 }
-
-<h2>Upload</h2>
-
+<div class="dialog__header">
+    <p class="dialog__header__title">Upload an image</p>
+</div>
 <form asp-controller="Image" asp-action="Upload" method="post" enctype="multipart/form-data">
-    <!--<input type="text" name="desc" value="" /><br/>-->
-    <input type="file" name="file" />
-    <input type="submit" value="Go!"/>
+    <div class="dialog__content">
+        <input type="file" name="file" />
+    </div>
+    <div class="dialog__actions flex">
+        <div class="button button--transparent pointer ta-c flex flex-full-center text--error" data-closedialog="upload">Cancel</div>
+        <input class="button button--transparent pointer ta-c flex flex-full-center text--accent" type="submit" value="Upload" />
+    </div>
 </form>

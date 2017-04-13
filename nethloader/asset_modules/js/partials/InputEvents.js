@@ -1,25 +1,25 @@
 // Contains the input elements to manage
-var inputs; 
+var inputElements; 
 
 const init = () => {
-  findInputs();
+  findElements();
   addListeners();
 }
 
 /*
 * Find all the inputs with the 'data-type' attribute
 */
-const findInputs = () => {
-  inputs = document.querySelectorAll("[data-type]");
+const findElements = () => {
+  inputElements = document.querySelectorAll("[data-type]");
 }
 
 /*
-* Add eventListeners of 'input' and 'mousedown' to every element found by 'findInputs()'
+* Add eventListeners of 'input' and 'mousedown' to every element found by 'findElements()'
 */
 const addListeners = () => {
-  for (let i = inputs.length - 1; i >= 0; i--) {
-    inputs[i].addEventListener('input', manageLabelActiveState);
-    inputs[i].addEventListener('mousedown', manageLabelActiveState);
+  for (let i = inputElements.length - 1; i >= 0; i--) {
+    inputElements[i].addEventListener('input', manageLabelActiveState);
+    inputElements[i].addEventListener('mousedown', manageLabelActiveState);
   }
 }
 

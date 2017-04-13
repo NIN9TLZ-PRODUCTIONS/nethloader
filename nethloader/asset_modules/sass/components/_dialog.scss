@@ -1,0 +1,42 @@
+﻿.dialog__wrapper {
+    position: absolute;
+    background-color: transparent;
+    transition: background-color .2s;
+
+    &.is-active {
+        z-index: 2000;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,.5);
+    }
+}
+
+.dialog {
+    z-index: 3000;
+    background-color: white;
+    border-radius: $border-radius--normal;
+    padding: $base-padding*3;
+    padding-bottom: $base-padding;
+    opacity: 0;
+    height: 0;
+    animation-delay: .2s;
+
+    &.is-active {
+        height: auto;
+        animation-name: dialog-from-top;
+        animation-duration: .5s;
+        animation-fill-mode: both;
+    }
+}
+
+.dialog__header__title {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.dialog__content {
+    padding: $base-padding*4 0;
+}
+.dialog__actions {
+    justify-content: flex-end;
+}

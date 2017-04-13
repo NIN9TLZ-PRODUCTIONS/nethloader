@@ -1,5 +1,5 @@
 body {
-    background-color: $primary-light;
+    background-color: #ebeff1;
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -14,6 +14,13 @@ body {
    width: 100%;
    height: 100%;
    position: relative;
+   flex: 1;
+}
+
+.inner-wrapper--container {
+    width: 100%;
+    height: 100%;
+    max-width: 1060px;
 }
 
 a {
