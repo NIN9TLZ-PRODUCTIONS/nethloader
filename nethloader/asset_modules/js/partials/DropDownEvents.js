@@ -7,7 +7,7 @@ const init = () => {
 }
 
 /*
-* Find all the inputs with the 'data-dropdownElement' attribute
+* Find all the inputs with the 'data-dropdownelement' attribute
 */
 const findElements = () => {
   dropdownElements = document.querySelectorAll("[data-dropdownelement]");

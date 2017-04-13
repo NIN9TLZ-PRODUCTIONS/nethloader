@@ -5,7 +5,7 @@
 <div class="inner-wrapper flex flex-dc">
     <header class="user-header flex flex-full-center">
         <div class="inner-wrapper--container flex flex-sb">
-            <button class="button button--primary button--margin button--padding-long pointer flex flex-full-center"><p>Upload</p>
+            <button class="button button--primary button--margin button--padding-long pointer flex flex-full-center" data-dialogtrigger="upload"><p>Upload</p>
              &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg>
             </button>
 
@@ -26,4 +26,10 @@
             </div>
         </div>
     </header>
+
+    <div class="dialog__wrapper flex flex-full-center" data-dialogid="upload">
+        <div class="dialog">
+            @Html.Partial("../Image/Upload.cshtml")
+        </div>
+    </div>
 </div>

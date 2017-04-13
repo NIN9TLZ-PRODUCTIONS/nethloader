@@ -17,6 +17,17 @@
     }
 }
 
+.button--transparent {
+    background-color: transparent;
+    padding: $base-padding $base-padding*2;
+    text-transform: uppercase;
+    font-size: .95em;
+
+    &:hover {
+        background-color: darken($primary-light, 3%);
+    }
+}
+
 .button--dark {
     background-color: $accent-dark;
     color: $primary-dark-colour;
