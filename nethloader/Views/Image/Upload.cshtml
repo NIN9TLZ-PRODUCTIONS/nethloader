@@ -6,10 +6,11 @@
 </div>
 <form asp-controller="Image" asp-action="Upload" method="post" enctype="multipart/form-data">
     <div class="dialog__content">
-        <input type="file" name="file" />
+        <input type="file" id="file" class="input--file" />
+        <label for="file" class="pointer label--file">Choose a file</label>
     </div>
     <div class="dialog__actions flex">
-        <div class="button button--transparent pointer ta-c flex flex-full-center text--error" data-closedialog="upload">Cancel</div>
-        <input class="button button--transparent pointer ta-c flex flex-full-center text--accent" type="submit" value="Upload" />
+        <div class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload">Cancel</div>
+        <input class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--accent" type="submit" value="Upload"/>
     </div>
 </form>

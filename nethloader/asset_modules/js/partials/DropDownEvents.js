@@ -18,7 +18,7 @@ const findElements = () => {
 */
 const addListeners = () => {
   for (let i = dropdownElements.length - 1; i >= 0; i--) {
-    dropdownElements[i].addEventListener('mousedown', manageDropdownActiveState);
+    dropdownElements[i].addEventListener('click', manageDropdownActiveState);
   }
 }
 
