@@ -16,5 +16,7 @@ namespace nethloader.Models
         public DateTime UploadDate { get; set; }
         public ImageExtensions Extension { get; set; }
         public virtual User Owner { get; set; }
+        [NotMapped]
+        public string Url { get; set; }
     }
 }

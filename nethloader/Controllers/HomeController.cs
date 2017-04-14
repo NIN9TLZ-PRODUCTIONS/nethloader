@@ -19,7 +19,12 @@ namespace nethloader.Controllers
         [Authorize]
         public async Task<IActionResult> Index(int? page)
         {
-            return View(await _imageManager.GetPaginatedUserImagesAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value,page ?? 1, 10));
+            var images = await _imageManager.GetPaginatedUserImagesAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, page ?? 1, 10);
+            foreach(var img in images)
+            {
+                img.Url = ImageManager.GetImagePath(img);
+            }
+            return View(images);
         }
         public IActionResult Error()
         {
