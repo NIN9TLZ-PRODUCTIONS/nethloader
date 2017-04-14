@@ -86,11 +86,14 @@ namespace nethloader.Services.Managers
         {
             return _db.Images.Where(x => x.Owner.Id == id);
         }
-
-        public Task<PaginatedList<Image>> GetPaginatedUserImagesAsync(string id, int page, int pageSize)
+        public IQueryable<Image> GetAllUserImagesWithOwner(string id)
         {
-
-            return PaginatedList<Image>.CreateAsync(GetAllUserImages(id), page, pageSize);
+            var images = _db.Images.Where(x => x.Owner.Id == id);
+            foreach(var img in images)
+            {
+                _db.Entry(img).Reference(b => b.Owner).Load();
+            }
+            return images;
         }
     }
 }
