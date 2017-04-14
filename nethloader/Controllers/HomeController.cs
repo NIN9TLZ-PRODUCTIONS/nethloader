@@ -16,12 +16,9 @@ namespace nethloader.Controllers
     {
         private IImageManager _imageManager;
         private readonly UserManager<User> _userManager;
-        public HomeController(UserManager<User> userManager)
+        public HomeController(UserManager<User> userManager, IImageManager imageManager)
         {
             _userManager = userManager;
-        }
-        public HomeController(IImageManager imageManager)
-        {
             _imageManager = imageManager;
         }
         [Authorize]
