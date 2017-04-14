@@ -14,11 +14,11 @@ const findTriggers = () => {
 }
 
 /*
-* Find all the dialog triggers, with the 'data-dialogtrigger' attribute
+* Add event listeners to open the dialog respectively
 */
 const addListeners = () => {
   for (let i = dialogTriggers.length - 1; i >= 0; i--) {
-    dialogTriggers[i].addEventListener('mousedown', openDialog);
+    dialogTriggers[i].addEventListener('click', openDialog);
   }
 }
 
@@ -28,15 +28,13 @@ const addListeners = () => {
 const openDialog = (event) => {
   let currentTarget = event.currentTarget;
   let dialogWrapper = document.querySelector(`[data-dialogid=${currentTarget.dataset.dialogtrigger}]`);
-  dialogWrapper.classList.add('is-active');
-  // Modal
-  dialogWrapper.children[0].classList.add('is-active');
+  dialogWrapper.classList.add('is-active'); // Overlay
+  dialogWrapper.children[0].classList.add('is-active');  // Modal
 
   let closeButton = document.querySelector(`[data-closedialog=${currentTarget.dataset.dialogtrigger}]`);
-  closeButton.addEventListener('mousedown', () => {
-    dialogWrapper.classList.remove('is-active');
-    // Modal
-    dialogWrapper.children[0].classList.remove('is-active');
+  closeButton.addEventListener('click', () => {
+    dialogWrapper.classList.remove('is-active'); // Overlay
+    dialogWrapper.children[0].classList.remove('is-active'); // Modal
   })
 }
 
