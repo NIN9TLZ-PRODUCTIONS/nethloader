@@ -26,8 +26,8 @@ bld/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
-wwwroot/raw-img/*
-!wwwroot/raw-img/.gitkeep 
+/nethloader/wwwroot/raw-img/*
+!/nethloader/wwwroot/raw-img/.gitkeep 
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
