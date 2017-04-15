@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using nethloader.Data;
 using nethloader.Models;
 using nethloader.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace nethloader.Services.Managers
 {
@@ -81,14 +82,32 @@ namespace nethloader.Services.Managers
         }
                 
         public async Task<Image> SaveImageAsync(User owner, IFormFile file) => await SaveImageAsync(owner, "", file);
+        public async Task<bool> RemoveImageAsync(string id)
+        {
+            var img = await GetImageWithOwnerAsync(id);
+            if (img == null)
+                return false;
+            try
+            {
+                _db.Images.Remove(img);
+                await _db.SaveChangesAsync();
+                File.Delete(Path.Combine(new string[4] { _env.WebRootPath, "raw-img", img.Owner.Id, $"{img.Id}.{img.Extension}" }));
+
+                return true;
+            }catch
+            {
+                return false;
+            }
+
+        }
 
         public IQueryable<Image> GetAllUserImages(string id)
         {
-            return _db.Images.Where(x => x.Owner.Id == id);
+            return _db.Images.AsNoTracking().Where(x => x.Owner.Id == id);
         }
         public IQueryable<Image> GetAllUserImagesWithOwner(string id)
         {
-            var images = _db.Images.Where(x => x.Owner.Id == id);
+            var images = _db.Images.AsNoTracking().Where(x => x.Owner.Id == id);
             foreach(var img in images)
             {
                 _db.Entry(img).Reference(b => b.Owner).Load();
