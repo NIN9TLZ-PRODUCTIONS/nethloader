@@ -12,6 +12,7 @@ namespace nethloader.Services.Managers
     {
         Task<Image> SaveImageAsync(User owner, string description, IFormFile file);
         Task<Image> SaveImageAsync(User owner, IFormFile file);
+        Task<bool> RemoveImageAsync(string id);
         Task<Image> GetImageAsync(string id);
         Task<Image> GetImageWithOwnerAsync(string id);
         IQueryable<Image> GetAllUserImages(string id);

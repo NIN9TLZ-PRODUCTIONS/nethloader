@@ -56,5 +56,18 @@ namespace nethloader.Controllers
             }
             return RedirectToAction("View", new { id = img.Id });
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var success = await _imageManager.RemoveImageAsync(id);
+            if(success)
+            {
+                return Ok();
+            }else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
