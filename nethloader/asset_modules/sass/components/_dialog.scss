@@ -20,14 +20,14 @@
     background-color: white;
     border-radius: $border-radius--normal;
     animation-delay: .2s;
+    width: 100%;
+    max-width: 400px;
     opacity: 0;
-    height: 0;
     padding: 0;
     pointer-events: none;
     @include box_shadow(3);
 
     &.is-active {
-        height: auto;
         padding: $base-padding*3;
         padding-bottom: $base-padding;
         animation-name: dialog-from-top;

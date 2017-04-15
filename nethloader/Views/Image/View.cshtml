@@ -6,7 +6,8 @@
 <h2>ViewImg</h2>
 <img src="@ViewData["ImgUrl"]"/>
 <p>
-    @Model.Owner
-    @Model.Id
-    @Model.UploadDate
+    <img src="@Model.Url" />
+    @if(User.Identity.IsAuthenticated) {
+        <p>Yes</p>
+    }
 </p>

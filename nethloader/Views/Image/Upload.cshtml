@@ -5,9 +5,12 @@
     <p class="dialog__header__title">Upload an image</p>
 </div>
 <form asp-controller="Image" asp-action="Upload" method="post" enctype="multipart/form-data">
-    <div class="dialog__content">
-        <input type="file" id="file" class="input--file" />
-        <label for="file" class="pointer label--file">Choose a file</label>
+    <div class="dialog__content flex flex-cross-center">
+        <input type="file" id="file" name="file" class="input--file" />
+        <label for="file" class="pointer label--file">
+            Choose a file
+            &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>
+        </label>
     </div>
     <div class="dialog__actions flex">
         <div class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload">Cancel</div>
