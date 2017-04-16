@@ -15,9 +15,6 @@
                     <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
                     <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
                         <ul class="flex flex-dc">
-                            <li class="user-header__user-menu__dropdown-item pointer">
-                                <p class="ta-c">Settings</p>
-                            </li>
                             <li class="logout-form">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
                                     <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
@@ -41,8 +38,8 @@
            </div>
         </div>
         <div class="image-view__actions flex flex-sa">
-            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button-accent button--margin-lr pointer">View original&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
-            <a href="@Model.Url" download rel="noopener"><div class="button button-accent button--margin-lr pointer">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
+            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--margin-lr pointer">View original&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
+            <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--margin-lr pointer">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
         </div>
 
     </div>

@@ -10,8 +10,13 @@
     <Copyright>Nethruster</Copyright>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="wwwroot\img\svgicons\**" />
+    <Content Remove="wwwroot\img\svgicons\**" />
+    <EmbeddedResource Remove="wwwroot\img\svgicons\**" />
+    <None Remove="wwwroot\img\svgicons\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="wwwroot\img\icons.svg" />
-    <Content Include="wwwroot\img\svgicons\icons.svg" />
   </ItemGroup>
   <!--<ItemGroup>
     <Content Include="wwwroot\.gitkeep" />

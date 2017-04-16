@@ -13,9 +13,9 @@
                 <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
                 <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
                     <ul class="flex flex-dc">
-                        <li class="user-header__user-menu__dropdown-item pointer">
+                        <!--<li class="user-header__user-menu__dropdown-item pointer">
                             <p class="ta-c">Settings</p>
-                        </li>
+                        </li>-->
                         <li class="logout-form">
                             <form asp-controller="Account" asp-action="Logout" method="post">
                                 <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
@@ -29,27 +29,53 @@
     <div class="user-gallery__container flex flex-full-center">
         @if (@Model.Count != 0)
         {
-            <div class="inner-wrapper--container user-gallery content-card content-card--full-height flex flex-full-center flex-sb">
-                @foreach (var i in Model)
-                {
-                    <div class="user-gallery__image-container flex flex-full-center flex-dc">
-                        <img class="user-gallery__image" src="@i.Url" />
-                        <div class="user-gallery__image__data flex flex-dc flex-sb">
-                            <p class="user-gallery__image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - hh:mm tt") <span class="user-gallery__image__data__delete pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
+            <div class="inner-wrapper--container content-card content-card--full-height flex flex-dc">
+                <div class="user-gallery flex flex-full-center flex-sb">
+                    @foreach (var i in Model)
+                    {
+                        <div class="user-gallery__image-container flex flex-full-center flex-dc">
+                            <img class="user-gallery__image" src="@i.Url" />
+                            <div class="user-gallery__image__data flex flex-dc flex-sb">
+                                <p class="user-gallery__image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - hh:mm tt") <span class="user-gallery__image__data__delete pointer" data-delimageid="@i.Id"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
                                 <a class="user-gallery__image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
                                     <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
                                     <p>View image</p>
                                 </a>
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
+                <div class="user-gallery__pagination flex flex-full-center">
+                @if (Model.HasPreviousPage)
+                {
+                    <a asp-route-page="@(Model.PageIndex - 1)">
+                        <span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span></a>
+                        }
+                        <ul class="flex flex-full-center">
+                            @for (var i = 1; i <= Model.TotalPages; i++)
+                            {
+                                @if (Model.PageIndex == @i)
+                                {
+                                    <li class="user-gallery__pagination-item current-page">@i</li>
+                                }
+                                else
+                                {
+                                    <a asp-route-page="@i"><li class="user-gallery__pagination-item pointer">@i</li></a>
+                                }
+                            }
+                        </ul>
+                        @if (Model.HasNextPage)
+                        {
+                            <a asp-route-page="@(Model.PageIndex + 1)"><span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span></a>
+                        }
+                </div>
             </div>
-        }
-        else
-        {
+            }
+            else
+            {
             <div class="inner-wrapper--container flex flex-full-center flex-dc content-card content-card--full-height">
                 <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#sad-face"></use></svg>
-                <p class="user-gallery__no-content ta-c flex flex-dc flex-full-center">It looks like you don't have any images yet</p>
+                <p class="user-gallery__no-content ta-c flex flex-dc flex-full-center">It looks like this page is empty</p>
             </div>
         }
     </div>
