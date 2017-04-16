@@ -77,6 +77,10 @@
 }
 
 .button-icon-from-left {
+    svg {
+        transition: $easeOutQuad;
+    }
+
     &:hover {
         svg {
             transform: translateX(5px);
@@ -85,6 +89,10 @@
 }
 
 .button-icon-from-right {
+    svg {
+        transition: $easeOutQuad;
+    }
+
     &:hover {
         svg {
             transform: translateX(-5px);
