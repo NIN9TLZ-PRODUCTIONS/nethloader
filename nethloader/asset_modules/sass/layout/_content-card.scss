@@ -13,3 +13,20 @@
 .content-card--w500 {
     max-width: 500px;
 }
+
+.content-card--image {
+    width: auto;
+    height: auto;
+    padding: $base-padding;
+    border-radius: 2px;
+}
+
+.content-card--image-data {
+    width: auto;
+    height: auto;
+    padding: $base-padding*2 $base-padding*4;
+    border-radius: 2px;
+    @include box_shadow(2);
+    margin: $base-padding*2;
+    font-size: .9em;
+}

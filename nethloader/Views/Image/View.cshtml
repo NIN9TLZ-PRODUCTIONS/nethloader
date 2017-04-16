@@ -1,13 +1,50 @@
 @model nethloader.Models.Image
 @{
-    ViewData["Title"] = "ViewImg";
+    ViewData["Title"] = "Nethloader image - " + @Model.Id.Substring(0, 8);
 }
+<div class="@("inner-wrapper flex flex-dc" + (!User.Identity.IsAuthenticated ? " flex-main-center" : ""))" >
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header class="user-header flex flex-full-center">
+            <div class="inner-wrapper--container flex flex-sb">
+                <a class="button button--primary button--margin button--padding-long pointer flex flex-full-center" href="/">
+                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>&nbsp;<p>My uploads</p>
+                </a>
 
-<h2>ViewImg</h2>
-<img src="@ViewData["ImgUrl"]"/>
-<p>
-    <img src="@Model.Url" />
-    @if(User.Identity.IsAuthenticated) {
-        <p>Yes</p>
+                <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu">
+                    <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
+                    <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
+                        <ul class="flex flex-dc">
+                            <li class="user-header__user-menu__dropdown-item pointer">
+                                <p class="ta-c">Settings</p>
+                            </li>
+                            <li class="logout-form">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
     }
-</p>
+    <div class="image-view flex flex-cross-center flex-dc">
+        <div class="inner-wrapper--container content-card content-card--image">
+            <img src="@Model.Url" />
+        </div>
+        <div class="image-view__data content-card content-card--image-data">
+           <div class="image-view__props">
+               <p class="image-view__prop"><span>Image ID:</span>&nbsp;@Model.Id.Substring(0,8)</p>
+               <p class="image-view__prop"><span>Uploaded by:</span>&nbsp;@Model.Owner.FullName.Split(' ')[0]</p>
+               <p class="image-view__prop"><span>Uploaded:</span>&nbsp;@Model.UploadDate.ToString("dd/MM/yyyy - hh:mm tt")</p>
+           </div>
+        </div>
+        <div class="image-view__actions flex flex-sa">
+            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button-accent button--margin-lr pointer">View original&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
+            <a href="@Model.Url" download rel="noopener"><div class="button button-accent button--margin-lr pointer">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
+        </div>
+
+    </div>
+
+</div>
