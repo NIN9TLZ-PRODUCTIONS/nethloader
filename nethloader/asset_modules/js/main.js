@@ -9,5 +9,5 @@ import AjaxEvents from './partials/AjaxEvents'
   InputEvents.init();
   DropDownEvents.init();
   DialogEvents.init();
-  AjaxEvents.deleteImagesInit();
+  AjaxEvents.init();
 })();
