@@ -82,9 +82,8 @@ namespace nethloader.Services.Managers
         }
                 
         public async Task<Image> SaveImageAsync(User owner, IFormFile file) => await SaveImageAsync(owner, "", file);
-        public async Task<bool> RemoveImageAsync(string id)
+        public async Task<bool> RemoveImageAsync(Image img)
         {
-            var img = await GetImageWithOwnerAsync(id);
             if (img == null)
                 return false;
             try
@@ -94,11 +93,26 @@ namespace nethloader.Services.Managers
                 File.Delete(Path.Combine(new string[4] { _env.WebRootPath, "raw-img", img.Owner.Id, $"{img.Id}.{img.Extension}" }));
 
                 return true;
-            }catch
+            }
+            catch
             {
                 return false;
             }
+        }
 
+        public async Task<bool> RemoveImageAsync(string id)
+        {
+            return await RemoveImageAsync(await GetImageWithOwnerAsync(id));
+
+        }
+        public async Task<bool> RemoveImageWithOwnerCheckAsync(string userId, string id)
+        {
+            var img = await GetImageWithOwnerAsync(id);
+            if (img == null)
+                return false;
+            if (img.Owner.Id != userId)
+                throw new UnauthorizedAccessException();
+            return await RemoveImageAsync(img);
         }
 
         public IQueryable<Image> GetAllUserImages(string id)

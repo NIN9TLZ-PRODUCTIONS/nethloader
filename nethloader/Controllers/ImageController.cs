@@ -60,13 +60,19 @@ namespace nethloader.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {
-            var success = await _imageManager.RemoveImageAsync(id);
-            if(success)
+            try
             {
-                return Ok();
-            }else
-            {
-                return BadRequest();
+                var success = await _imageManager.RemoveImageWithOwnerCheckAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, id);
+                if (success)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            } catch(UnauthorizedAccessException) {
+                return Unauthorized();
             }
         }
     }
