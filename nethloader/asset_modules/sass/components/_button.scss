@@ -3,6 +3,8 @@
     border: none;
     border-radius: $border-radius--normal;
     transition: $easeOutQuad;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .button--primary {
@@ -14,6 +16,7 @@
     &:hover {
         @include box_shadow(1);
         background-color: lighten($primary-dark, 15%);
+        color: $primary-dark-colour;
     }
 }
 
@@ -43,7 +46,6 @@
 }
 
 .button--big {
-    font-weight: 500;
     text-transform: uppercase;
     min-width: 150px;
     @include box_shadow(2);
@@ -87,5 +89,19 @@
         svg {
             transform: translateX(-5px);
         }
+    }
+}
+
+.button-accent {
+    background-color: $accent-dark;
+    padding: 8px 16px;
+    color: $primary-dark-colour;
+    font-weight: 300;
+    border-radius: $border-radius--normal;
+    transition: $easeOutQuad;
+
+    &:hover {
+        background-color: lighten($accent-dark, 15%);
+        @include box_shadow(1);
     }
 }

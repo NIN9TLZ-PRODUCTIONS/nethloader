@@ -1,4 +1,4 @@
-﻿@keyframes come-from-top {
+﻿@keyframes come-from-top-scale {
     from {
         transform: scale(.9) translateY(-5px);
         opacity: 0;
@@ -6,6 +6,18 @@
 
     to {
         transform: scale(.9) translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes come-from-top {
+    from {
+        transform: translateY(-5px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
         opacity: 1;
     }
 }
