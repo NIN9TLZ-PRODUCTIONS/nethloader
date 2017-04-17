@@ -1,4 +1,3 @@
-@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiforgery;
 @model nethloader.Utils.PaginatedList<nethloader.Models.Image>
 @{
     ViewData["Title"] = "Gallery - " + User.Identity.Name;
@@ -49,9 +48,14 @@
                 <div class="user-gallery__pagination flex flex-full-center">
                 @if (Model.HasPreviousPage)
                 {
-                    <a asp-route-page="@(Model.PageIndex - 1)">
-                        <span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span></a>
-                        }
+                <a asp-route-page="@(Model.PageIndex - 1)">
+                    <span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
+                </a>
+                }
+                else
+                {
+                   <span class="user-gallery__pagination__navigator disabled"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
+                }
                         <ul class="flex flex-full-center">
                             @for (var i = 1; i <= Model.TotalPages; i++)
                             {
@@ -67,7 +71,14 @@
                         </ul>
                         @if (Model.HasNextPage)
                         {
-                            <a asp-route-page="@(Model.PageIndex + 1)"><span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span></a>
+                            <a asp-route-page="@(Model.PageIndex + 1)">
+                                <span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="user-gallery__pagination__navigator disabled"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
+
                         }
                 </div>
             </div>
@@ -95,11 +106,3 @@
         </div>
     </div>
 </div>
-
-@{
-    var antiforgeryRequestToken = antiforgery.GetAndStoreTokens(Context).RequestToken;
-}
-<script>
-    //Render the token in a property readable from your client JavaScript
-    var antiforgeryToken = @Json.Serialize(antiforgeryRequestToken);
-</script>

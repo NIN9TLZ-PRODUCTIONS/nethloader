@@ -1,5 +1,5 @@
 ﻿/* 
-* Find and manage delete buttons
+* Delete image
 */
 var deleteConfirmButton;
 var deleteButtons;
@@ -7,12 +7,16 @@ var deleteButtons;
 const init = () => {
   deleteImagesInit();
   uploadImageInit();
+  loginFormInit();
+  registerFormInit();
 }
 
 const deleteImagesInit = () => {
   deleteConfirmButton = document.querySelector("[data-deleteconfirm]");
-  findDeleteButtons();
-  addDelButEventListeners();
+  if(deleteConfirmButton) {
+    findDeleteButtons();
+    addDelButEventListeners();
+  }
 }
 
 const findDeleteButtons = () => {
@@ -47,12 +51,14 @@ var tempData;
 
 const uploadImageInit = () => {
   uploadInput = document.getElementById('file');
-  uploadButton = document.getElementById('upload-button');
-  tempData = document.getElementById('temp-data');
-  uploadInput.addEventListener( 'change', () => {
-    tempData.innerHTML = uploadInput.files[0].name || '';
-  })
-  if(uploadButton){uploadButton.addEventListener('click', uploadImage)};
+  if(uploadInput){
+    uploadButton = document.getElementById('upload-button');
+    tempData = document.getElementById('temp-data');
+    uploadInput.addEventListener( 'change', () => {
+      tempData.innerHTML = uploadInput.files[0].name || '';
+    });
+    uploadButton.addEventListener('click', uploadImage);
+  };
 }
 
 const uploadImage = (event) => {
@@ -76,8 +82,86 @@ const uploadImage = (event) => {
     uploadReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
     uploadReq.send(formData);
   } else {
-    tempData.innerHTML = "Provide an image";
+    tempData.innerHTML = "Please, provide an image";
   }
+}
+
+/*
+* Login form
+*/
+var loginButton;
+var userNameInput;
+var passwordInput;
+var rememberInput;
+
+
+const loginFormInit = () => {
+  loginButton = document.getElementById('login-button');
+  if(loginButton) {
+    userNameInput = document.getElementById('email');
+    passwordInput = document.getElementById('password');
+    rememberInput = document.getElementById('remember_me');
+    loginButton.addEventListener('click', userLogin);
+  }
+}
+
+const userLogin = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  var loginReq = new XMLHttpRequest();
+  loginReq.onreadystatechange = function(e) {
+    if (this.readyState == 4 && this.status == 200) {
+        location.href = this.responseURL;
+    } else if(!this.readyState == 4 || !this.status == 200) {
+      console.log("The password or username are wrong");
+    }
+  }
+  loginReq.open("POST", "/account/login/?Email=" + userNameInput.value + "&Password=" + passwordInput.value + "&RememberMe=" + rememberInput.checked, true);
+  loginReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+  loginReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  loginReq.send();
+}
+
+/*
+* Register form
+*/
+var registerButton;
+var fullNameInput;
+var usernameInput;
+var emailInput;
+var confirmPasswordInput;
+
+
+
+const registerFormInit = () => {
+  registerButton = document.getElementById('register-button');
+  if(registerButton) {
+    fullNameInput = document.getElementById('fullname');
+    usernameInput = document.getElementById('username');
+    emailInput = document.getElementById('email');
+    passwordInput = document.getElementById('password');
+    confirmPasswordInput = document.getElementById('cpassword');
+    registerButton.addEventListener('click', userRegister);
+  }
+}
+
+const userRegister = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  var registerReq = new XMLHttpRequest();
+  registerReq.onreadystatechange = function(e) {
+    if (this.readyState == 4 && this.status == 200) {
+      location.href = this.responseURL;
+    } else if(!this.readyState == 4 || !this.status == 200) {
+      console.log("Something is wrong");
+    }
+  }
+  registerReq.open("POST", "/account/register/?FullName=" + fullNameInput.value + "&UserName=" + usernameInput.value + "&Email=" + emailInput.value + "&Password=" + passwordInput.value + "&ConfirmPassword=" + confirmPasswordInput.value, true);
+  registerReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+  registerReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  registerReq.send();
 }
 
 

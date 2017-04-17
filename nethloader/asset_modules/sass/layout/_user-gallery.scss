@@ -99,6 +99,11 @@
     &:hover {
         color: $primary-dark;
     }
+
+    &.disabled {
+        cursor: not-allowed;
+        color: lighten($primary-dark, 65%);
+    }
 }
 
 .user-gallery__pagination-item {
