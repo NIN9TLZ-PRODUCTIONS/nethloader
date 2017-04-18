@@ -6,7 +6,7 @@
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <h1 class="title title--primary">@ViewData["Title"]</h1>
     <div class="content-card content-card--w400">
-        <form>
+        <form enctype="multipart/form-data" method="post" name="registerform">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="FullName" id="fullname" type="text" class="input input--text" data-type="text" required>
                 <label for="fullname" class="label--itext flex flex-full-center">
