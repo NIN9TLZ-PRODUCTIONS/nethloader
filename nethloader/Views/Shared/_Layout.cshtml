@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiforgery;
+<!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
     <title>@ViewData["Title"]</title>
 
     <!-- Favicons -->
@@ -28,7 +29,14 @@
     <div class="app-wrapper flex flex-full-center flex-dc">
         @RenderBody()
     </div>
-    <div class="app-footer"><p class="text--primary text--light-bg ta-c"><small>Powered by Nethloader</small></p></div>
+    <div class="app-footer"><p class="text--primary text--light-bg ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;<a href="/account/login" target="_blank" rel="noopener">Login</a></small></p></div>
+    @{
+        var antiforgeryRequestToken = antiforgery.GetAndStoreTokens(Context).RequestToken;
+    }
+    <script>
+    //Render the token in a property readable from your client JavaScript
+    var antiforgeryToken = @Json.Serialize(antiforgeryRequestToken);
+    </script>
     <script src="~/js/scripts.js"></script>
 </body>
 </html>

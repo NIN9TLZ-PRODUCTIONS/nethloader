@@ -19,7 +19,7 @@ const findElements = () => {
 const addListeners = () => {
   for (let i = inputElements.length - 1; i >= 0; i--) {
     inputElements[i].addEventListener('input', manageLabelActiveState);
-    inputElements[i].addEventListener('mousedown', manageLabelActiveState);
+    inputElements[i].addEventListener('click', manageLabelActiveState);
   }
 }
 
@@ -28,11 +28,15 @@ const addListeners = () => {
 */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
-  let labelEl = eventInput.nextElementSibling;
-  if (eventInput.value) {
-      labelEl.classList.add('has-content');
-  } else if (!eventInput.value || eventInput.value == "") {
-      labelEl.classList.remove('has-content');
+  checkInputContent(eventInput)
+}
+
+const checkInputContent = (input) => {
+  let labelEl = input.nextElementSibling;
+  if (input.value) {
+    labelEl.classList.add('has-content');
+  } else if (!input.value || input.value == "") {
+    labelEl.classList.remove('has-content');
   }
 }
 

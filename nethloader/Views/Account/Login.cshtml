@@ -6,7 +6,7 @@
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <p class="title title--primary">@ViewData["Title"]</p>
     <div class="content-card content-card--w400">
-        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <form enctype="multipart/form-data" method="post" name="loginform">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
                 <label for="email" class="label--itext flex flex-full-center">
@@ -22,12 +22,12 @@
             <div class="form-row flex flex-cross-center flex-sb">
                 <span class="flex flex-full-center">
                     <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
-                    <label for="remember_me" class="label--checkbox"><small>Keep me logged in</small></label>
+                    <label for="remember_me" class="label--checkbox"><small>Remember me</small></label>
                 </span>
                 <p class="text--secondary-light-bg ta-c"><a asp-action="forgotpassword"><small>Forgot your password?</small></a></p>
             </div>
             <div class="form-row flex flex-full-center">
-                <button class="button button--dark button--big button--fw pointer ta-c flex flex-full-center button-icon-from-left" type="submit">Log In&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></button>
+                <button id="login-button" class="button button--dark button--big button--fw pointer ta-c flex flex-full-center button-icon-from-left">Log In&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></button>
             </div>
           </form>
         <h4 class="text--secondary-light-bg text--margin ta-c"><a asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Don't have an account? Click here!</small></a></h4>

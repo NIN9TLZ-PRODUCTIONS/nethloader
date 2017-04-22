@@ -19,7 +19,7 @@
     z-index: 3000;
     background-color: white;
     border-radius: $border-radius--normal;
-    animation-delay: .2s;
+    animation-delay: .1s;
     width: 100%;
     max-width: 400px;
     opacity: 0;
@@ -31,7 +31,7 @@
         padding: $base-padding*3;
         padding-bottom: $base-padding;
         animation-name: dialog-from-top;
-        animation-duration: .5s;
+        animation-duration: .2s;
         animation-fill-mode: both;
         pointer-events: initial;
     }

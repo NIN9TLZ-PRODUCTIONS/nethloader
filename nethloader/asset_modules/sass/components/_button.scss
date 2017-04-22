@@ -77,6 +77,10 @@
 }
 
 .button-icon-from-left {
+    svg {
+        transition: $easeOutQuad;
+    }
+
     &:hover {
         svg {
             transform: translateX(5px);
@@ -85,6 +89,10 @@
 }
 
 .button-icon-from-right {
+    svg {
+        transition: $easeOutQuad;
+    }
+
     &:hover {
         svg {
             transform: translateX(-5px);
@@ -92,7 +100,7 @@
     }
 }
 
-.button-accent {
+.button--accent {
     background-color: $accent-dark;
     padding: 8px 16px;
     color: $primary-dark-colour;

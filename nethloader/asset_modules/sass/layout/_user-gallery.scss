@@ -23,6 +23,7 @@
     animation-duration: .3s;
     animation-fill-mode: both;
 
+    // Generate delayed animation for each of the 16 images shown in the library
     @for $i from 1 through 16 {
         &:nth-child(#{$i}) {
             animation-delay: #{$i / 10}s;
@@ -39,16 +40,6 @@
     width: 100%;
     position: absolute;
     transition: background-color .1s ease-in-out;
-
-    &:hover {
-        background-color: rgba(0,0,0, .7);
-
-        .user-gallery__image__data__icons {
-            animation-name: come-from-top;
-            animation-duration: .3s;
-            animation-fill-mode: both;
-        }
-    }
 }
 
 .user-gallery__no-content {
@@ -76,10 +67,64 @@
 .user-gallery__image__data__icons {
     flex: 1;
     opacity: 0;
+
+    &:hover {
+        animation-name: fade-bg;
+        animation-duration: .3s;
+        animation-fill-mode: both;
+    }
 }
 
 .user-gallery__image__data__delete {
     svg {
         color: #e53935;
+    }
+}
+
+.user-gallery__pagination {
+    display: inline-flex;
+
+    ul {
+        padding: $base-padding/2;
+    }
+
+    a {
+        color: currentColor;
+    }
+}
+
+.user-gallery__pagination__navigator {
+    color: lighten($primary-dark, 45%);
+    transition: $easeOutQuad;
+
+    &:hover {
+        color: $primary-dark;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        color: lighten($primary-dark, 70%);
+    }
+}
+
+.user-gallery__pagination-item {
+    padding: $base-padding/2 $base-padding;
+    margin: 0 $base-padding/2;
+    border-radius: $border-radius--normal;
+    transition: background-color .2s ease;
+
+    &:hover {
+        background-color: $accent-dark;
+        color: $primary-light;
+    }
+
+    &.current-page {
+        color: $accent-dark;
+        border: 1px solid transparentize($primary-dark, .9);
+
+        &:hover {
+            background-color: transparent;
+            color: $accent-dark;
+        }
     }
 }

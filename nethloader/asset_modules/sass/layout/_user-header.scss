@@ -21,7 +21,7 @@
 }
 
 .user-header__user-menu__dropdown {
-    margin-top: 8px;
+    margin-top: $base-padding;
     position: absolute;
     height: 0;
     top: 100%;
@@ -40,7 +40,7 @@
 }
 
 .user-header__user-menu__dropdown-item {
-    margin: 4px 0;
+    margin: $base-padding/2 0;
     background-color: $primary-dark;
     padding: $base-padding $base-padding*2;
     width: 100%;

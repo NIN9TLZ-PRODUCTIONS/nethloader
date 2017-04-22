@@ -18,14 +18,15 @@
     width: auto;
     height: auto;
     padding: $base-padding;
-    border-radius: 2px;
+    border-radius: $border-radius--small;
+    margin-top: $base-padding*3;
 }
 
 .content-card--image-data {
     width: auto;
     height: auto;
     padding: $base-padding*2 $base-padding*4;
-    border-radius: 2px;
+    border-radius: $border-radius--small;
     @include box_shadow(2);
     margin: $base-padding*2;
     font-size: .9em;

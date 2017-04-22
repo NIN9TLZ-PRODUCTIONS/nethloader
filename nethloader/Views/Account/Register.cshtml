@@ -6,7 +6,7 @@
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <h1 class="title title--primary">@ViewData["Title"]</h1>
     <div class="content-card content-card--w400">
-        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <form enctype="multipart/form-data" method="post" name="registerform">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="FullName" id="fullname" type="text" class="input input--text" data-type="text" required>
                 <label for="fullname" class="label--itext flex flex-full-center">
@@ -38,7 +38,7 @@
                 </label>
             </div>
             <div class="form-row flex flex-full-center">
-                <button class="button button--dark button--big button--fw pointer ta-c" type="submit">Register Now</button>
+                <button id="register-button" class="button button--dark button--big button--fw pointer ta-c">Register Now</button>
             </div>
         </form>
         <h4 class="text--secondary-light-bg text--margin ta-c"><a asp-action="login" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Already have an account? Log in here.</small></a></h4>

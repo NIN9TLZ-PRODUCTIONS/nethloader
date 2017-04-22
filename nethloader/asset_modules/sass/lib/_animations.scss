@@ -10,6 +10,18 @@
     }
 }
 
+@keyframes fade-bg {
+    from {
+        opacity: 0;
+        background-color: transparent;
+    }
+
+    to {
+        opacity: 1;
+        background-color: rgba(0,0,0, .7);
+    }
+}
+
 @keyframes come-from-top {
     from {
         transform: translateY(-5px);
@@ -21,7 +33,6 @@
         opacity: 1;
     }
 }
-
 
 @keyframes dialog-from-top {
     from {

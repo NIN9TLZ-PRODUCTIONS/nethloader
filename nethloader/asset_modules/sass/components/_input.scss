@@ -1,7 +1,6 @@
 /*
-    Inputs
+*   Inputs
 */
-
 .input {
     -webkit-appearance: none;
 }
@@ -66,7 +65,7 @@
 }
 
 /*
-    Labels
+*   Labels
 */
 .label--itext {
     cursor: text;
@@ -80,6 +79,10 @@
     width: calc(100% - 16px);
     justify-content: flex-start;
     font-weight: 300;
+
+    svg {
+        transition: $easeOutQuad;
+    }
 }
 
 .input--text:focus ~ .label--itext,

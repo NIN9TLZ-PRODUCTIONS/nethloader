@@ -4,16 +4,17 @@
 <div class="dialog__header">
     <p class="dialog__header__title">Upload an image</p>
 </div>
-<form asp-controller="Image" asp-action="Upload" method="post" enctype="multipart/form-data">
-    <div class="dialog__content flex flex-cross-center">
+<form>
+    <div class="dialog__content flex flex-full-center flex-dc">
         <input type="file" id="file" name="file" class="input--file" />
-        <label for="file" class="button button-accent pointer">
+        <label for="file" class="button button--accent pointer">
             Choose a file
             &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>
         </label>
+        <p id="temp-data"></p>
     </div>
     <div class="dialog__actions flex">
         <div class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload">Cancel</div>
-        <input class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--accent" type="submit" value="Upload"/>
+        <button class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--accent" id="upload-button">Upload</button>
     </div>
 </form>
