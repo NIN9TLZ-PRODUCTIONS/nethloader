@@ -128,7 +128,7 @@ const userLogin = (event) => {
     if (this.readyState == 4 && this.status == 200) {
         location.href = this.responseURL;
     } else if(!this.readyState == 4 || !this.status == 200) {
-      console.log("The password or username are wrong");
+      console.log("Something went wrong");
     }
   }
   loginReq.open("POST", "/account/login/", true);
@@ -164,7 +164,7 @@ const userRegister = (event) => {
     if (this.readyState == 4 && this.status == 200) {
       location.href = this.responseURL;
     } else if(!this.readyState == 4 || !this.status == 200) {
-      console.log("Something is wrong");
+      console.log("Something went wrong");
     }
   }
 
