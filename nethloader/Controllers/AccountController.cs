@@ -50,6 +50,8 @@ namespace nethloader.Controllers
         // GET: /Account/Login
         public async Task<IActionResult> Login(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
 
@@ -63,6 +65,8 @@ namespace nethloader.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -93,6 +97,8 @@ namespace nethloader.Controllers
         [HttpGet]
         public IActionResult Register(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             if (!_MainConfig.AllowRegister)
             {
                 return RedirectToAction("Login");
@@ -107,7 +113,9 @@ namespace nethloader.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            if(!_MainConfig.AllowRegister)
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+            if (!_MainConfig.AllowRegister)
             {
                 return RedirectToAction("Login");
             }
