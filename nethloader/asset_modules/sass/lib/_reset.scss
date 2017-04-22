@@ -11,12 +11,12 @@
 ::before,
 ::after {
     text-decoration: inherit; /* Add text decoration inheritance in all browsers. */
-    vertical-align: inherit; /* Add vertical alignment inheritence in all browsers. */
+    vertical-align: inherit;  /* Add vertical alignment inheritence in all browsers. */
 }
 
 html {
-    box-sizing: border-box; /* Add border box sizing in all browsers. */
-    cursor: default; /* Add the default cursor in all browsers. */
+    box-sizing: border-box;  /* Add border box sizing in all browsers. */
+    cursor: default;         /* Add the default cursor in all browsers. */
     font-family: sans-serif; /* Add a flattened line height in all browsers. */
     line-height: 1.5;
 }
@@ -29,8 +29,10 @@ h4,
 h5,
 p, {
     padding: 0; /* Remove padding in all browsers */
-    margin: 0; /* Remove margin in all browsers. */
+    margin: 0;  /* Remove margin in all browsers. */
     font-weight: 300;
+    max-width: 100%;
+    word-wrap: break-word; 
 }
 
 footer,
@@ -42,7 +44,7 @@ nav {
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
-    color: currentColor; /* Inherit anchor color in all browsers. */
+    color: currentColor;                           /* Inherit anchor color in all browsers. */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove blue hightlight on tap in firefox. */
     text-decoration: none;
 }
@@ -64,7 +66,7 @@ svg {
 
 img {
     border-style: none; /* Remove the border on images inside links in IE 10. */
-    max-width: 100%; /* Responsive images. */
+    max-width: 100%;    /* Responsive images. */
 }
 
 svg {

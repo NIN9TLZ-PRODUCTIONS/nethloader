@@ -1,6 +1,6 @@
 ﻿/*---------------
-*  Delete image
-* ------------ */
+ *  Delete image
+ * ------------ */
 var deleteConfirmButton;
 var deleteButtons;
 
@@ -12,8 +12,8 @@ const init = () => {
 }
 
 /*
-* Find the delete confirm button element (located in the dialog) then find all the delete buttons on the images and listen for clicks
-*/
+ * Find the delete confirm button element (located in the dialog) then find all the delete buttons on the images and listen for clicks
+ */
 const deleteImagesInit = () => {
   deleteConfirmButton = document.querySelector("[data-deleteconfirm]");
   if(deleteConfirmButton) {
@@ -23,15 +23,15 @@ const deleteImagesInit = () => {
 }
 
 /*
-* Find the delete buttons (one per image)
-*/
+ * Find the delete buttons (one per image)
+ */
 const findDeleteButtons = () => {
   deleteButtons = document.querySelectorAll("[data-delimageid]");
 }
 
 /*
-* Listen for clicks and proceed (a dialog will be launched)
-*/
+ * Listen for clicks and proceed (a dialog will be launched)
+ */
 const addDelButEventListeners = () => {
   for (let i = deleteButtons.length - 1; i >= 0; i--) {
     deleteButtons[i].addEventListener('click', deleteImage);
@@ -39,8 +39,8 @@ const addDelButEventListeners = () => {
 }
 
 /*
-* Get the image id to be deleted and delete the image if confirmed (user has clicked on yes, delete it)
-*/
+ * Get the image id to be deleted and delete the image if confirmed (user has clicked on yes, delete it)
+ */
 const deleteImage = (event) => {
   let imageId = event.currentTarget.dataset.delimageid;
   var deleteReq = new XMLHttpRequest();
@@ -54,8 +54,8 @@ const deleteImage = (event) => {
 }
 
 /*---------------
-*  Upload image
-* ------------ */
+ *  Upload image
+ * ------------ */
 var uploadInput; // File to be uploaded
 var uploadButton;
 var tempData; // UX text response
@@ -74,8 +74,8 @@ const uploadImageInit = () => {
 }
 
 /*
-* If we have ourselves a file, then proceed with the request
-*/
+ * If we have ourselves a file, then proceed with the request
+ */
 const uploadImage = (event) => {
   event.preventDefault();
   event.stopPropagation();
@@ -102,8 +102,8 @@ const uploadImage = (event) => {
 }
 
 /*---------------
-*   Login form
-* ------------ */
+ *   Login form
+ * ------------ */
 var loginButton;
 var userNameInput;
 var passwordInput;
@@ -137,8 +137,8 @@ const userLogin = (event) => {
 }
 
 /*---------------
-* Register form
-* ------------ */
+ * Register form
+ * ------------ */
 var registerButton;
 var fullNameInput;
 var usernameInput; // Not the login one, notice the lowercase 'n'

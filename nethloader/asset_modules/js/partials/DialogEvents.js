@@ -7,15 +7,15 @@ const init = () => {
 }
 
 /*
-* Find all the dialog triggers, with the 'data-dialogtrigger' attribute
-*/
+ * Find all the dialog triggers, with the 'data-dialogtrigger' attribute
+ */
 const findTriggers = () => {
   dialogTriggers = document.querySelectorAll("[data-dialogtrigger]");
 }
 
 /*
-* Add event listeners to open the dialog respectively
-*/
+ * Add event listeners to open the dialog respectively
+ */
 const addListeners = () => {
   for (let i = dialogTriggers.length - 1; i >= 0; i--) {
     dialogTriggers[i].addEventListener('click', openDialog);
@@ -23,8 +23,8 @@ const addListeners = () => {
 }
 
 /*
-* Open the dialog element
-*/
+ * Open the dialog element
+ */
 const openDialog = (event) => {
   let currentTarget = event.currentTarget;
   let dialogWrapper = document.querySelector(`[data-dialogid=${currentTarget.dataset.dialogtrigger}]`);
