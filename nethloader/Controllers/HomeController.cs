@@ -25,7 +25,7 @@ namespace nethloader.Controllers
         public async Task<IActionResult> Index(int? page)
         {
             var user = await _userManager.GetUserAsync(User);
-            var images = await PaginatedList<Image>.CreateAsync(_imageManager.GetAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier).Value), page ?? 1, 16);
+            var images = await PaginatedList<Image>.CreateAsync(_imageManager.GetAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier).Value).OrderByDescending(x => x.Id), page ?? 1, 16);
             foreach (var img in images)
             {
                 img.Owner = user;
