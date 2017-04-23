@@ -44,12 +44,18 @@ const addDelButEventListeners = () => {
 const deleteImage = (event) => {
   let imageId = event.currentTarget.dataset.delimageid;
   var deleteReq = new XMLHttpRequest();
+  deleteReq.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      location.reload();
+    } else if(!this.readyState == 4 || !this.status == 200) {
+      console.log("Something went wrong");
+    }
+  }
   deleteReq.open("POST", "/image/delete/?id=" + imageId, true);
   deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
   deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   deleteConfirmButton.onclick = () => {
     deleteReq.send();
-    location.reload(true);
   }
 }
 

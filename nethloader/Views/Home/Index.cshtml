@@ -5,12 +5,12 @@
 <div class="inner-wrapper flex flex-dc">
     <header class="user-header flex flex-full-center">
         <div class="inner-wrapper--container flex flex-sb">
-            <button class="button button--primary button--margin button--padding-long pointer flex flex-full-center" data-dialogtrigger="upload"><p>Upload</p>
+            <button class="button button--primary button--margin button--padding-long pointer flex flex-full-center" data-dialogtrigger="upload"  ripple="ripple"><p>Upload</p>
              &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg>
             </button>
 
             <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu">
-                <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
+                <p class="user-header__user-menu flex flex-full-center" ripple="ripple">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
                 <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
                     <ul class="flex flex-dc">
                         <!--<li class="user-header__user-menu__dropdown-item pointer">
@@ -18,7 +18,7 @@
                         </li>-->
                         <li class="logout-form">
                             <form asp-controller="Account" asp-action="Logout" method="post">
-                                <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
+                                <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout"  ripple="ripple"/>
                             </form>
                         </li>
                     </ul>
@@ -36,7 +36,7 @@
                         <div class="user-gallery__image-container flex flex-full-center flex-dc">
                             <img class="user-gallery__image" src="@i.Url" />
                             <div class="user-gallery__image__data flex flex-dc flex-sb">
-                                <p class="user-gallery__image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - hh:mm tt") <span class="user-gallery__image__data__delete pointer" data-dialogtrigger="delete" data-delimageid="@i.Id"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
+                                <p class="user-gallery__image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - hh:mm tt") <span class="user-gallery__image__data__delete pointer" data-dialogtrigger="delete" data-delimageid="@i.Id" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
                                 <a class="user-gallery__image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
                                     <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
                                     <p>View image</p>
@@ -49,7 +49,7 @@
                 @if (Model.HasPreviousPage)
                 {
                 <a asp-route-page="@(Model.PageIndex - 1)">
-                    <span class="user-gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
+                    <span class="user-gallery__pagination__navigator pointer" ><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
                 </a>
                 }
                 else
