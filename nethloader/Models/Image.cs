@@ -12,7 +12,6 @@ namespace nethloader.Models
     {
         [Key, Column(Order = 0)]
         public string Id { get; set; }
-        public string Description { get; set; }
         public DateTime UploadDate { get; set; }
         public ImageExtensions Extension { get; set; }
         public virtual User Owner { get; set; }

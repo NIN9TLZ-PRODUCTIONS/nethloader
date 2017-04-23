@@ -44,7 +44,7 @@ namespace nethloader.Services.Managers
             }
         }
 
-        public async Task<Image> SaveImageAsync(User owner, string description, IFormFile file)
+        public async Task<Image> SaveImageAsync(User owner, IFormFile file)
         {
             try
             {
@@ -54,7 +54,6 @@ namespace nethloader.Services.Managers
                     var img = new Image
                     {
                         Id = SequentialGuid.NewGuid(SequentialGuidType.SequentialAsString).ToString(),
-                        Description = description,
                         UploadDate = DateTime.Now,
                         Extension = (ImageExtensions)extension,
                         Owner = owner
@@ -80,8 +79,6 @@ namespace nethloader.Services.Managers
             }
 
         }
-                
-        public async Task<Image> SaveImageAsync(User owner, IFormFile file) => await SaveImageAsync(owner, "", file);
         public async Task<bool> RemoveImageAsync(Image img)
         {
             if (img == null)
