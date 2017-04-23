@@ -1,10 +1,10 @@
 /* ------------------
     UI Layout
 ------------------ */
-@import './typography'; // Diferent sorts of text
-@import './app'; // Global app styles
+@import './typography';   // Diferent sorts of text
+@import './app';          // Global app styles
 @import './content-card'; // Main content card
-@import './form'; // Forms (with inputs)
-@import './user-header'; // User header bar
+@import './form';         // Forms (with inputs)
+@import './user-header';  // User header bar
 @import './user-gallery'; // User images gallery
-@import './image-view'; // Image view
+@import './image-view';   // Image view

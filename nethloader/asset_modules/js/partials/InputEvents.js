@@ -7,15 +7,15 @@ const init = () => {
 }
 
 /*
-* Find all the inputs with the 'data-type' attribute
-*/
+ * Find all the inputs with the 'data-type' attribute
+ */
 const findElements = () => {
   inputElements = document.querySelectorAll("[data-type]");
 }
 
 /*
-* Add eventListeners of 'input' and 'mousedown' to every element found by 'findElements()'
-*/
+ * Add eventListeners of 'input' and 'mousedown' to every element found by 'findElements()'
+ */
 const addListeners = () => {
   for (let i = inputElements.length - 1; i >= 0; i--) {
     inputElements[i].addEventListener('input', manageLabelActiveState);
@@ -24,8 +24,8 @@ const addListeners = () => {
 }
 
 /*
-* Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively
-*/
+ * Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively
+ */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
   checkInputContent(eventInput)

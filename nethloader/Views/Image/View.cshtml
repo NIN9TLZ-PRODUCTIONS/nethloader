@@ -12,12 +12,12 @@
                 </a>
 
                 <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu">
-                    <p class="user-header__user-menu flex flex-full-center">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
+                    <p class="user-header__user-menu flex flex-full-center" ripple="ripple">@User.Identity.Name&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
                     <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
                         <ul class="flex flex-dc">
                             <li class="logout-form">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" />
+                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" ripple="ripple"/>
                                 </form>
                             </li>
                         </ul>
@@ -32,14 +32,13 @@
         </div>
         <div class="image-view__data content-card content-card--image-data">
            <div class="image-view__props">
-               <p class="image-view__prop"><span>Image ID:</span>&nbsp;@Model.Id.Substring(0,8)</p>
                <p class="image-view__prop"><span>Uploaded by:</span>&nbsp;@Model.Owner.FullName.Split(' ')[0]</p>
                <p class="image-view__prop"><span>Uploaded:</span>&nbsp;@Model.UploadDate.ToString("dd/MM/yyyy - hh:mm tt")</p>
            </div>
         </div>
         <div class="image-view__actions flex flex-sa">
-            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--margin-lr pointer">View original&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
-            <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--margin-lr pointer">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
+            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--margin-lr pointer" ripple="ripple">View full size&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
+            <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--margin-lr pointer" ripple="ripple">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
         </div>
 
     </div>
