@@ -57,6 +57,22 @@ namespace nethloader.Controllers
             return RedirectToAction("View", new { id = img.Id });
         }
         [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ApiUpload(IFormFile file)
+        {
+            var user = await _userManager.FindByEmailAsync(HttpContext.Request.Headers["x-auth-email"]);
+            if (user == null)
+                return StatusCode(403);
+            if (HttpContext.Request.Headers["x-auth-key"] != user.ApiKey)
+                return StatusCode(403);
+            var img = await _imageManager.SaveImageAsync(user, file);
+            if (img == null)
+            {
+                return BadRequest();
+            }
+            return Ok(ImageManager.GetImagePath(img));
+        }
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {

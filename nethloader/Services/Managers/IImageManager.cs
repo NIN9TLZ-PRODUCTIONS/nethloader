@@ -10,7 +10,6 @@ namespace nethloader.Services.Managers
 {
     public interface IImageManager
     {
-        Task<Image> SaveImageAsync(User owner, string description, IFormFile file);
         Task<Image> SaveImageAsync(User owner, IFormFile file);
         Task<bool> RemoveImageAsync(string id);
         Task<bool> RemoveImageWithOwnerCheckAsync(string userId, string id);
