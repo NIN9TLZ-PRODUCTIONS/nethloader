@@ -6,12 +6,17 @@
 }
 
 // Text/Password Inputs
-.input--text, .input--password {
+.input--text, 
+.input--password {
     border: 1px solid lighten($primary-dark, 60%);
     border-radius: $border-radius--normal;
     padding: $base-padding*2 $base-padding*2 2px $base-padding*2;
+    margin: $base-padding 0;
 }
 
+.input--text--error {
+    border-color: #e53935;
+}
 
 // Checkbox Inputs
 .input--checkbox {
@@ -80,10 +85,62 @@
     justify-content: flex-start;
     font-weight: 300;
 
+    span {
+        transition: $easeOutQuad;
+    }
+
     svg {
         transition: $easeOutQuad;
     }
+
+    &::before {
+        content: attr(data-error);
+        font-size: .9em;
+        background-color: lighten($primary-light, 20%);
+        position: absolute;
+        left: 105%;
+        max-width: 220px;
+        width: 100%;
+        text-align: center;
+        color: #e53935;
+        @include box_shadow(2);
+        padding: $base-padding/2 $base-padding;
+        border: 1px solid #e53935;
+        border-radius: $border-radius--normal;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-10px);
+        transition: $easeOutQuad;
+    }
+
+    &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #e53935;
+        position: absolute;
+        left: 102%;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-10px);
+        transition: $easeOutQuad;
+    }
 }
+
+.input--text--error + .label--itext{
+    &::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &::after {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 
 .input--text:focus ~ .label--itext,
 .input--password:focus ~ .label--itext,
@@ -92,8 +149,10 @@
         transform: scale(.75);
     }
 
-    color: lighten($secondary-light-colour, 20%);
-    transform: translateX(-10.5%) scale(.8) translateY(-58%);
+    span {
+        color: lighten($secondary-light-colour, 20%);
+        transform: translateX(-10.5%) scale(.8) translateY(-58%);
+    }
 }
 
 .label--checkbox {
@@ -112,5 +171,21 @@
     &:hover {
         background-color: lighten($accent-dark, 15%);
         @include box_shadow(1);
+    }
+}
+
+@media(max-width: 800px) {
+/*
+ *   Labels
+ */
+    .label--itext {
+        &::before {
+            left: 0;
+            bottom: 155%;
+        }
+
+        &::after {
+            display: none;
+        }
     }
 }

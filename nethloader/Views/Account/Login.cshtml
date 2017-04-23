@@ -9,14 +9,14 @@
         <form enctype="multipart/form-data" method="post" name="loginform">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                <label for="email" class="label--itext flex flex-full-center">
-                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email
+                <label for="email" class="label--itext flex flex-full-center" data-error="You shouldn't be seeing this">
+                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
                 </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext">
-                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password
+                <label for="password" class="label--itext flex flex-full-center" data-error="You shouldn't be seeing this">
+                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
                 </label>
             </div>
             <div class="form-row flex flex-cross-center flex-sb">
@@ -26,7 +26,7 @@
                 </span>
                 <p class="text--secondary-light-bg ta-c"><a asp-action="forgotpassword"><small>Forgot your password?</small></a></p>
             </div>
-            <div class="form-row flex flex-full-center">
+            <div class="form-row flex flex-full-center flex-dc">
                 <button id="login-button" class="button button--dark button--big button--fw pointer ta-c flex flex-full-center button-icon-from-left" ripple="ripple">Log In&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></button>
             </div>
           </form>

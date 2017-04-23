@@ -111,9 +111,6 @@ const uploadImage = (event) => {
  *   Login form
  * ------------ */
 var loginButton;
-var userNameInput;
-var passwordInput;
-var rememberInput;
 
 const loginFormInit = () => {
   loginButton = document.getElementById('login-button');
@@ -139,17 +136,31 @@ const userLogin = (event) => {
   }
   loginReq.open("POST", "/account/login/", true);
   loginReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-  loginReq.send(data);
+  if(validateLogin(data)) {
+    loginReq.send(data);
+  }
+}
+
+const validateLogin = (data) => {
+  var emailInput    = document.getElementById('email');
+  var passwordInput = document.getElementById('password');
+
+  var testEm = 
+    (data.get('Email') ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) && 
+    (emailInput.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(emailInput, true) : manageInvalidField(emailInput, false));
+  var testPw = data.get('Password') ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false);
+
+  if(testEm && testPw) {
+    return true;
+  }
+
+  return false;
 }
 
 /*---------------
  * Register form
  * ------------ */
 var registerButton;
-var fullNameInput;
-var usernameInput; // Not the login one, notice the lowercase 'n'
-var emailInput;
-var confirmPasswordInput;
 
 const registerFormInit = () => {
   registerButton = document.getElementById('register-button');
@@ -176,7 +187,54 @@ const userRegister = (event) => {
 
   registerReq.open("POST", "/account/register/", true);
   registerReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-  registerReq.send(data);
+  if(validateRegister(data)) {
+    registerReq.send(data);
+  }
+}
+
+const validateRegister = (data) => {
+  var fullnameInput  = document.getElementById('fullname');
+  var usernameInput  = document.getElementById('username');
+  var emailInput     = document.getElementById('email');
+  var passwordInput  = document.getElementById('password');
+  var cpasswordInput = document.getElementById('cpassword');
+
+  var testFn = (data.get('FullName') ? manageEmptyField(fullnameInput, true) : manageEmptyField(fullnameInput, false)) &&
+    (fullnameInput.value.match(/^[a-zA-Z'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(fullnameInput, true) : manageInvalidField(fullnameInput, false));
+  var testUn = (data.get('UserName') ? manageEmptyField(usernameInput, true) : manageEmptyField(usernameInput, false)) &&
+    (usernameInput.value.match(/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(usernameInput, true) : manageInvalidField(usernameInput, false));
+  var testEm = (data.get('Email') ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) &&
+    (emailInput.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(emailInput, true) : manageInvalidField(emailInput, false));
+  var testps = (data.get('Password') ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false));
+  var testcp = (data.get('ConfirmPassword') ? manageEmptyField(cpasswordInput, true) : manageEmptyField(cpasswordInput, false));
+
+  if(testFn && testUn && testEm && testps && testcp) {
+    return true;
+  }
+
+  return false;
+}
+
+const manageEmptyField = (input, state) => {
+  if(!state) {
+    input.classList.add('input--text--error');
+    input.nextElementSibling.dataset.error = "This field can't be empty";
+    return false;
+  } else {
+    input.classList.remove('input--text--error');
+    return true;
+  }
+}
+
+const manageInvalidField = (input, state) => {
+  if(!state) {
+    input.classList.add('input--text--error');
+    input.nextElementSibling.dataset.error = "This field is not valid";
+    return false;
+  } else {
+    input.classList.remove('input--text--error');
+    return true;
+  }
 }
 
 export default {
