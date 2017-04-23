@@ -63,10 +63,10 @@ const deleteImage = (event) => {
  *  Upload image
  * ------------ */
 var uploadInput; // File to be uploaded
-var uploadButton;
+var uploadButton; // Button to open upload modal
 var tempData; // UX text response
-var loader;
-var cancelButton;
+var loader; // Uploading image....
+var cancelButton; // Maybe not
 
 const uploadImageInit = () => {
   uploadInput = document.getElementById('file');
@@ -78,12 +78,17 @@ const uploadImageInit = () => {
     // Show the name of the file when a file is selected
     uploadInput.addEventListener( 'change', () => {
       tempData.removeAttribute("style");
-      tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#file"></use></svg>&nbsp;&nbsp;${uploadInput.files[0].name || ''}`;
+      tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#file"></use></svg>&nbsp;&nbsp;<p>${uploadInput.files[0].name || ''}</p>`;
     });
     uploadButton.addEventListener('click', uploadImage);
   };
 }
 
+/*
+* Checks if a file has a specific extension
+* @param {string} filename
+* @return boolean
+*/
 const isValidFormat = (filename) => {
   var parts = filename.split('.');
   var ext = parts[parts.length - 1];
@@ -139,15 +144,18 @@ const uploadImage = (event) => {
   }
 }
 
+/*
+ * Sets the text feedback when manipulating files in the upload dialog
+ */
 const setTempData = (text) => {
-  tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#alert"></use></svg>&nbsp;&nbsp;${text}`;
+  tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#alert"></use></svg>&nbsp;&nbsp;<p>${text}</p>`;
 }
 
 /*---------------
  *   Login form
  * ------------ */
 var loginButton;
-
+// TODO: Listen to inputs to updaet the validation
 const loginFormInit = () => {
   loginButton = document.getElementById('login-button');
   if(loginButton) {
@@ -182,9 +190,9 @@ const validateLogin = (data) => {
   var passwordInput = document.getElementById('password');
 
   var testEm = 
-    (data.get('Email') ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) && 
+    (emailInput.value ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) && 
     (emailInput.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(emailInput, true) : manageInvalidField(emailInput, false));
-  var testPw = data.get('Password') ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false);
+  var testPw = passwordInput.value ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false);
 
   if(testEm && testPw) {
     return true;
@@ -197,7 +205,7 @@ const validateLogin = (data) => {
  * Register form
  * ------------ */
 var registerButton;
-
+// TODO: Listen to inputs to updaet the validation
 const registerFormInit = () => {
   registerButton = document.getElementById('register-button');
   if(registerButton) {
@@ -235,14 +243,14 @@ const validateRegister = (data) => {
   var passwordInput  = document.getElementById('password');
   var cpasswordInput = document.getElementById('cpassword');
 
-  var testFn = (data.get('FullName') ? manageEmptyField(fullnameInput, true) : manageEmptyField(fullnameInput, false)) &&
+  var testFn = (fullnameInput.value ? manageEmptyField(fullnameInput, true) : manageEmptyField(fullnameInput, false)) &&
     (fullnameInput.value.match(/^[a-zA-Z'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(fullnameInput, true) : manageInvalidField(fullnameInput, false));
-  var testUn = (data.get('UserName') ? manageEmptyField(usernameInput, true) : manageEmptyField(usernameInput, false)) &&
+  var testUn = (usernameInput.value ? manageEmptyField(usernameInput, true) : manageEmptyField(usernameInput, false)) &&
     (usernameInput.value.match(/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(usernameInput, true) : manageInvalidField(usernameInput, false));
-  var testEm = (data.get('Email') ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) &&
+  var testEm = (emailInput.value ? manageEmptyField(emailInput, true) : manageEmptyField(emailInput, false)) &&
     (emailInput.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(emailInput, true) : manageInvalidField(emailInput, false));
-  var testps = (data.get('Password') ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false));
-  var testcp = (data.get('ConfirmPassword') ? manageEmptyField(cpasswordInput, true) : manageEmptyField(cpasswordInput, false));
+  var testps = (passwordInput.value ? manageEmptyField(passwordInput, true) : manageEmptyField(passwordInput, false));
+  var testcp = (cpasswordInput.value ? manageEmptyField(cpasswordInput, true) : manageEmptyField(cpasswordInput, false));
 
   if(testFn && testUn && testEm && testps && testcp) {
     return true;

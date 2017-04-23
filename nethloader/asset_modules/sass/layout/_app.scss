@@ -26,7 +26,7 @@ body {
 }
 
 a {
-    transition: $easeOutQuad;
+    transition: color .3s ease;
     color: darken($accent-light, 24%);
 
     &:active, &:hover {
@@ -65,5 +65,15 @@ a {
 
 #temp-data {
     margin-top: $base-padding;
-    transform: scale(.85);
+    max-width: 100%;
+
+    svg {
+        transform: scale(.85);
+    }
+
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
