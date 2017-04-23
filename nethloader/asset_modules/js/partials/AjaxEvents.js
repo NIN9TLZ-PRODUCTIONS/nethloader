@@ -65,18 +65,33 @@ const deleteImage = (event) => {
 var uploadInput; // File to be uploaded
 var uploadButton;
 var tempData; // UX text response
+var loader;
+var cancelButton;
 
 const uploadImageInit = () => {
   uploadInput = document.getElementById('file');
   if(uploadInput){
+    loader = document.getElementsByClassName('loader-wrapper')[0];
+    cancelButton = document.querySelector('[data-closedialog="upload"]');
     uploadButton = document.getElementById('upload-button');
     tempData     = document.getElementById('temp-data');
     // Show the name of the file when a file is selected
     uploadInput.addEventListener( 'change', () => {
-      tempData.innerHTML = uploadInput.files[0].name || '';
+      tempData.removeAttribute("style");
+      tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#file"></use></svg>&nbsp;&nbsp;${uploadInput.files[0].name || ''}`;
     });
     uploadButton.addEventListener('click', uploadImage);
   };
+}
+
+const isValidFormat = (filename) => {
+  var parts = filename.split('.');
+  var ext = parts[parts.length - 1];
+  var result = false
+  supportedExtensions.forEach(i => {
+    if(ext === i) { result = true; }
+  });
+  return result;
 }
 
 /*
@@ -89,22 +104,43 @@ const uploadImage = (event) => {
   var uploadReq = new XMLHttpRequest();
 
   uploadReq.onreadystatechange = function() {
+    uploadButton.classList.add('button--disabled');
+    cancelButton.classList.add('button--disabled');
+    loader.classList.add('is-uploading');
     if (this.readyState == 4 && this.status == 200) {
+      loader.classList.remove('is-uploading');
+      uploadButton.classList.remove('button--disabled');
+      cancelButton.classList.remove('button--disabled');
       location.href = this.responseURL;
     } else if(!this.readyState == 4 || !this.status == 200) {
-      tempData.innerHTML = "There was an errror uploading your image";
+      loader.classList.remove('is-uploading');
+      uploadButton.classList.remove('button--disabled');
+      cancelButton.classList.remove('button--disabled');
+      tempData.style.color = "#e53935"
+      setTempData("There was an errror uploading your image");
     }
   }
 
   if(uploadInput.files[0]) {
     let formData = new FormData();
     formData.append('file', uploadInput.files[0], uploadInput.files[0].name);
-    uploadReq.open("POST", "/image/upload/", true);
-    uploadReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-    uploadReq.send(formData);
+    if(isValidFormat(uploadInput.files[0].name)) {
+      tempData.removeAttribute("style");
+      uploadReq.open("POST", "/image/upload/", true);
+      uploadReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+      uploadReq.send(formData);
+    } else {
+      tempData.style.color = "#e53935"
+      setTempData("Unsuported file extension");
+    } 
   } else {
-    tempData.innerHTML = "Please, provide an image";
+    tempData.style.color = "#e53935"
+    setTempData("Please, provide an image");
   }
+}
+
+const setTempData = (text) => {
+  tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#alert"></use></svg>&nbsp;&nbsp;${text}`;
 }
 
 /*---------------

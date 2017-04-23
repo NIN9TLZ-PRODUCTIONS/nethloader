@@ -81,9 +81,7 @@ button,
 input,
 select,
 textarea {
-    &:active {
-        outline: none;
-    }
+    outline: none;
     margin: 0; /* Remove the margin in Firefox and Safari. */
     border: none;
 }

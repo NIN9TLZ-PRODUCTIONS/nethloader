@@ -30,12 +30,9 @@
         @RenderBody()
     </div>
     <div class="app-footer"><p class="text--primary text--light-bg ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;<a href="/account/login" target="_blank" rel="noopener">Login</a></small></p></div>
-    @{
-        var antiforgeryRequestToken = antiforgery.GetAndStoreTokens(Context).RequestToken;
-    }
     <script>
-    //Render the token in a property readable from your client JavaScript
-    var antiforgeryToken = @Json.Serialize(antiforgeryRequestToken);
+        var antiforgeryToken = @Json.Serialize(antiforgery.GetAndStoreTokens(Context).RequestToken);
+        var supportedExtensions = (@Json.Serialize(string.Join(",", Enum.GetNames(typeof(nethloader.Models.ImageExtensions))))).split(',');
     </script>
     <script async src="~/js/scripts.js"></script>
 </body>

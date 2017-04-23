@@ -34,7 +34,7 @@
                     @foreach (var i in Model)
                     {
                         <div class="user-gallery__image-container flex flex-full-center flex-dc">
-                            <img class="user-gallery__image" src="@i.Url" />
+                            <img async class="user-gallery__image" src="@i.Url" />
                             <div class="user-gallery__image__data flex flex-dc flex-sb">
                                 <p class="user-gallery__image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - hh:mm tt") <span class="user-gallery__image__data__delete pointer" data-dialogtrigger="delete" data-delimageid="@i.Id" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
                                 <a class="user-gallery__image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">

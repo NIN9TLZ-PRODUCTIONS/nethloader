@@ -37,3 +37,33 @@ a {
 .app-footer {
     margin-top: 35px;
 }
+
+
+.loader-wrapper {
+    margin: $base-padding;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -5;
+    transition: $easeOutQuad;
+    position: absolute;
+    right: 65px;
+
+    &.is-uploading {
+        opacity: 1;
+        z-index: 1;
+        transform: translateX(5px);
+    }
+}
+.loader {
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid $accent-light;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 2s linear infinite;
+}
+
+#temp-data {
+    margin-top: $base-padding;
+    transform: scale(.85);
+}

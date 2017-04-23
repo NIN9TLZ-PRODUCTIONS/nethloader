@@ -113,3 +113,12 @@
         @include box_shadow(1);
     }
 }
+
+.button--disabled {
+    pointer-events: none;
+    color: #b0bec5;
+
+    &:hover {
+        background-color: transparent;
+    }
+}

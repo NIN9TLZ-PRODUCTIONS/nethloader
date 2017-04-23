@@ -11,10 +11,11 @@
             Choose a file
             &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>
         </label>
-        <p id="temp-data"></p>
+        <span id="temp-data" class="flex flex-full-center">
+        </span>
     </div>
-    <div class="dialog__actions flex">
+    <div class="dialog__actions flex flex-main-center">
         <div class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload" ripple="ripple">Cancel</div>
-        <button class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--accent" id="upload-button" ripple="ripple">Upload</button>
+        <button class="button button--transparent pointer ta-c flex flex-full-center button--margin-lr text--accent" id="upload-button" ripple="ripple">Upload</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
     </div>
 </form>
