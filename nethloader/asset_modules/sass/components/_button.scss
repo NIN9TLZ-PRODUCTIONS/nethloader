@@ -26,9 +26,7 @@
     text-transform: uppercase;
     font-size: .95em;
 
-    &:hover {
-        background-color: darken($primary-light, 3%);
-    }
+    &:hover { background-color: darken($primary-light, 3%); }
 }
 
 .button--dark {
@@ -36,13 +34,9 @@
     color: $primary-dark-colour;
     border: 2px solid transparent;
 
-    &:hover {
-        background-color: $accent-light;
-    }
+    &:hover { background-color: $accent-light; }
 
-    &:focus {
-        border-color: $accent-dark;
-    }
+    &:focus { border-color: $accent-dark; }
 }
 
 .button--big {
@@ -51,52 +45,32 @@
     @include box_shadow(2);
     padding: $base-padding $base-padding*2;
 
-    &:hover {
-        @include box_shadow(3);
-    }
+    &:hover { @include box_shadow(3); }
 }
 
-.button--fw {
-    width: 100%;
-}
+.button--fw { width: 100%; }
 
-.button--margin {
-    margin: 8px;
-}
+.button--margin { margin: 8px; }
 
-.button--padding-long {
-    padding: 0px $base-padding*2;
-}
+.button--padding-long { padding: 0px $base-padding*2; }
 
-.button--margin-lr {
-    margin: 0 $base-padding;
-}
+.button--margin-lr { margin: 0 $base-padding; }
 
-.button--margin-tb {
-    margin: 8px 0;
-}
+.button--margin-tb { margin: 8px 0; }
 
 .button-icon-from-left {
-    svg {
-        transition: $easeOutQuad;
-    }
+    svg { transition: $easeOutQuad; }
 
     &:hover {
-        svg {
-            transform: translateX(5px);
-        }
+        svg { transform: translateX(5px); }
     }
 }
 
 .button-icon-from-right {
-    svg {
-        transition: $easeOutQuad;
-    }
+    svg { transition: $easeOutQuad; }
 
     &:hover {
-        svg {
-            transform: translateX(-5px);
-        }
+        svg { transform: translateX(-5px); }
     }
 }
 
@@ -118,7 +92,5 @@
     pointer-events: none;
     color: #b0bec5;
 
-    &:hover {
-        background-color: transparent;
-    }
+    &:hover { background-color: transparent; }
 }

@@ -8,17 +8,14 @@
 
 .user-header__user-menu {
     height: 100%;
+    min-width: 80px;
     padding: 0 $base-padding*2;
     transition: $easeOutQuad;
 
-    &:hover {
-        background-color: darken(white, 5%);
-    }
+    &:hover { background-color: darken(white, 5%); }
 }
 
-.user-header__user-menu--container { 
-    position: relative;
-}
+.user-header__user-menu--container { position: relative; }
 
 .user-header__user-menu__dropdown {
     margin-top: $base-padding;
@@ -28,15 +25,11 @@
     width: 100%;
     overflow: hidden;
 
-    &.drop-open {
-        height: auto;
-    }
+    &.drop-open { height: auto; }
 
     ul, 
     li, 
-    form {
-        width: 100%;
-    }
+    form { width: 100%; }
 }
 
 .user-header__user-menu__dropdown-item {
@@ -56,21 +49,15 @@
         animation-fill-mode: both;
     }
 
-    &:hover {
-        background-color: lighten($primary-dark, 10%);
-    }
+    &:hover { background-color: lighten($primary-dark, 10%); }
 }
 
 .logout-form {
-    & .is-active {
-        animation-delay: 0.1s;
-    }
+    & .is-active { animation-delay: 0.1s; }
 }
 
 .user-header__user-menu-icon {
     transition: $easeOutQuad;
 
-    &.drop-open {
-        transform: rotate(180deg);
-    }
+    &.drop-open { transform: rotate(180deg); }
 }

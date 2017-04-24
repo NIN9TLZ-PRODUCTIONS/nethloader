@@ -86,13 +86,12 @@ const uploadImageInit = () => {
 
 /*
 * Checks if a file has a specific extension
-* @param {string} filename
-* @return boolean
 */
 const isValidFormat = (filename) => {
   var parts = filename.split('.');
   var ext = parts[parts.length - 1];
   var result = false
+  // supportedExtensions is declared and initialized in the _Layout view
   supportedExtensions.forEach(i => {
     if(ext === i) { result = true; }
   });
@@ -100,7 +99,7 @@ const isValidFormat = (filename) => {
 }
 
 /*
- * If we have ourselves a file, then proceed with the request
+ * Upload an image (upload has been clicked after selecting a file)
  */
 const uploadImage = (event) => {
   event.preventDefault();
@@ -109,18 +108,19 @@ const uploadImage = (event) => {
   var uploadReq = new XMLHttpRequest();
 
   uploadReq.onreadystatechange = function() {
-    uploadButton.classList.add('button--disabled');
-    cancelButton.classList.add('button--disabled');
-    loader.classList.add('is-uploading');
+    uploadButton.classList.toggle('button--disabled');
+    cancelButton.classList.toggle('button--disabled');
+    loader.classList.toggle('is-uploading');
+
     if (this.readyState == 4 && this.status == 200) {
-      loader.classList.remove('is-uploading');
-      uploadButton.classList.remove('button--disabled');
-      cancelButton.classList.remove('button--disabled');
+      loader.classList.toggle('is-uploading');
+      uploadButton.classList.toggle('button--disabled');
+      cancelButton.classList.toggle('button--disabled');
       location.href = this.responseURL;
     } else if(!this.readyState == 4 || !this.status == 200) {
-      loader.classList.remove('is-uploading');
-      uploadButton.classList.remove('button--disabled');
-      cancelButton.classList.remove('button--disabled');
+      loader.classList.toggle('is-uploading');
+      uploadButton.classList.toggle('button--disabled');
+      cancelButton.classList.toggle('button--disabled');
       tempData.style.color = "#e53935"
       setTempData("There was an errror uploading your image");
     }

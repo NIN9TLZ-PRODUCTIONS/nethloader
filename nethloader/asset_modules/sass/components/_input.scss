@@ -1,9 +1,8 @@
 /*
 *   Inputs
 */
-.input {
-    //-webkit-appearance: none;
-}
+
+.input { -webkit-appearance: none; }
 
 // Text/Password Inputs
 .input--text, 
@@ -14,12 +13,16 @@
     margin: $base-padding 0;
 }
 
-.input--text--error {
-    border-color: #e53935;
-}
+.input--text--error { border-color: #e53935; }
 
 // Checkbox Inputs
+
 .input--checkbox {
+    visibility: hidden;
+    display: none;
+}
+
+.check {
     background-color: transparent;
     border: 2px solid $secondary-dark-colour;
     padding: $base-padding;
@@ -30,17 +33,15 @@
     cursor: pointer;
     transition: $easeOutQuad;
 
-    &:hover {
-        border-color: $primary-dark;
-    }
+    &:hover { border-color: $primary-dark; }
 }
 
-.input--checkbox:checked {
+.input--checkbox:checked + .check {
     border-color: $primary-dark;
     background-color: $primary-dark;
 }
 
-.input--checkbox:checked::after {
+.input--checkbox:checked + .check::after {
     color: $primary-light;
     box-sizing: border-box;
     -webkit-transform: rotate(45deg);
@@ -85,13 +86,8 @@
     justify-content: flex-start;
     font-weight: 300;
 
-    span {
-        transition: $easeOutQuad;
-    }
-
-    svg {
-        transition: $easeOutQuad;
-    }
+    span, 
+    svg { transition: $easeOutQuad; }
 
     &::before {
         content: attr(data-error);
@@ -145,9 +141,7 @@
 .input--text:focus ~ .label--itext,
 .input--password:focus ~ .label--itext,
 .label--itext.has-content {
-    svg {
-        transform: scale(.75);
-    }
+    svg { transform: scale(.75); }
 
     span {
         color: lighten($secondary-light-colour, 20%);
@@ -155,10 +149,7 @@
     }
 }
 
-.label--checkbox {
-    cursor: pointer;
-}
-
+.label--checkbox:hover .check { border-color: $primary-dark; }
 
 .label--file {
     background-color: $accent-dark;
@@ -167,25 +158,9 @@
     font-weight: 300;
     border-radius: $border-radius--normal;
     transition: $easeOutQuad;
-    
+
     &:hover {
         background-color: lighten($accent-dark, 15%);
         @include box_shadow(1);
-    }
-}
-
-@media(max-width: 800px) {
-/*
- *   Labels
- */
-    .label--itext {
-        &::before {
-            left: 0;
-            bottom: 155%;
-        }
-
-        &::after {
-            display: none;
-        }
     }
 }

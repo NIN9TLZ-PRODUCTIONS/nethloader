@@ -3,21 +3,15 @@ General utils
 ------------ */
 
 /* Cursor pointer */
-.pointer {
-    cursor: pointer!important;
-}
+.pointer { cursor: pointer!important; }
 
 /* ------------
 Flexbox utils 
 ------------ */
 
-.flex {
-    display: flex;
-}
+.flex { display: flex; }
 
-.flex-dc {
-    flex-direction: column;
-}
+.flex-dc { flex-direction: column; }
 
 .flex-full-center {
     justify-content: center;
@@ -25,21 +19,14 @@ Flexbox utils
 }
 
 /* Center within the main axis */
-.flex-main-center {
-    justify-content: center;
-}
+.flex-main-center { justify-content: center; }
+
 /* Center within the cross-axis */
-.flex-cross-center {
-    align-items: center;
-}
+.flex-cross-center { align-items: center; }
 
-.flex-sb {
-    justify-content: space-between;
-}
+.flex-sb { justify-content: space-between; }
 
-.flex-sa {
-    justify-content: space-around;
-}
+.flex-sa { justify-content: space-around; }
 
 /* Responsive image element */
 .img-responsive {
@@ -48,13 +35,9 @@ Flexbox utils
 }
 
 /* Text align */
-.ta-c {
-    text-align: center;
-}
+.ta-c { text-align: center; }
 
-.ta-r {
-    text-align: right;
-}
+.ta-r { text-align: right; }
 
 /**
  * A mixin which helps you to add depth to elements.
@@ -63,19 +46,9 @@ Flexbox utils
  * Original Author: Florian Kutschera (@gefangenimnetz), Conceptboard GmbH (@conceptboardapp)
  **/
 @mixin box_shadow ($level) {
-    @if $level == 1 {
-        box-shadow: 0 1px 10px rgba(0,0,0,0.06), 0 1px 8px rgba(0,0,0,0.1);
-    }
-    @else if $level == 2 {
-        box-shadow: 0 8px 10px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.07);
-    }
-    @else if $level == 3 {
-        box-shadow: 0 12px 35px rgba(0,0,0,0.02), 0 8px 16px rgba(0,0,0,0.07);
-    }
-    @else if $level == 4 {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02), 0 12px 42px rgba(0, 0, 0, 0.07);
-    }
-    @else if $level == 5 {
-        box-shadow: 0 20px 75px rgba(0, 0, 0, 0.02), 0 22px 62px rgba(0, 0, 0, 0.07);
-    }
+    @if $level == 1 { box-shadow: 0 1px 10px rgba(0,0,0,0.06), 0 1px 8px rgba(0,0,0,0.1); }
+    @else if $level == 2 { box-shadow: 0 8px 10px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.07); }
+    @else if $level == 3 { box-shadow: 0 12px 35px rgba(0,0,0,0.02), 0 8px 16px rgba(0,0,0,0.07); }
+    @else if $level == 4 { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02), 0 12px 42px rgba(0, 0, 0, 0.07); }
+    @else if $level == 5 { box-shadow: 0 20px 75px rgba(0, 0, 0, 0.02), 0 22px 62px rgba(0, 0, 0, 0.07); }
 }

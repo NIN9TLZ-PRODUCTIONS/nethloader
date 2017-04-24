@@ -1,0 +1,36 @@
+﻿@media(max-width: 800px) {
+    // Move validation labels to fit the screen
+    .label--itext {
+        &::before {
+            left: 0;
+            bottom: 155%;
+        }
+
+        &::after { display: none; }
+    }
+}
+
+@media (max-width: 375px) {
+    // Remove text when the upload/go to gallery buttons don't have enough space
+    .button--header-nav-button {
+        margin: 0 $base-padding*2;
+        padding: 0;
+        background-color: transparent;
+        color: $primary-dark;
+
+        &:hover {
+            background-color: transparent;
+            box-shadow: none;
+            color: currentColor;
+        }
+
+        p { display: none; }
+    }
+}
+
+@media (max-width: 270px) {
+    // Remove the user email string
+    .user-header__user-menu {
+        span {display: none;}
+    }
+}

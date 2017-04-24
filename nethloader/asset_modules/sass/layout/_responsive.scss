@@ -1,0 +1,14 @@
+﻿@media (max-width: 530px) {
+    // Center images when there's only one column
+    .user-gallery {justify-content: center;}
+}
+
+@media(max-width: 315px) {
+    .image-view__actions {
+        flex-direction: column;
+        .button--accent {
+            text-align: center;
+            margin: $base-padding 0;
+        }
+    }
+}

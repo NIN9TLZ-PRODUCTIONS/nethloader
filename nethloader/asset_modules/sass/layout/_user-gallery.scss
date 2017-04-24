@@ -1,6 +1,4 @@
-﻿.user-gallery {
-    flex-wrap: wrap;
-}
+﻿.user-gallery { flex-wrap: wrap; }
 
 .user-gallery__container {
     width: 100%;
@@ -25,14 +23,10 @@
 
     // Generate delayed animation for each of the 16 images shown in the library
     @for $i from 1 through 16 {
-        &:nth-child(#{$i}) {
-            animation-delay: #{$i / 10}s;
-        }
+        &:nth-child(#{$i}) { animation-delay: #{$i / 10}s; }
     }
 
-    &:hover {
-        @include box_shadow(3);
-    }
+    &:hover { @include box_shadow(3); }
 }
 
 .user-gallery__image__data {
@@ -47,14 +41,10 @@
     font-size: 1.2em;
 }
 
-.big-icon {
-   width: 55px;
-}
+.big-icon { width: 55px; }
 
 .big-icon, 
-.user-gallery__no-content {
-    color: darken($primary-light, 25%);
-}
+.user-gallery__no-content { color: darken($primary-light, 25%); }
 
 .user-gallery__image__data__up-date {
     background-color: transparentize($primary-dark, .4);
@@ -76,30 +66,22 @@
 }
 
 .user-gallery__image__data__delete {
-    svg {
-        color: #e53935;
-    }
+    svg { color: #e53935; }
 }
 
 .user-gallery__pagination {
     display: inline-flex;
 
-    ul {
-        padding: $base-padding/2;
-    }
+    ul { padding: $base-padding/2; }
 
-    a {
-        color: currentColor;
-    }
+    a { color: currentColor; }
 }
 
 .user-gallery__pagination__navigator {
     color: lighten($primary-dark, 45%);
     transition: $easeOutQuad;
 
-    &:hover {
-        color: $primary-dark;
-    }
+    &:hover { color: $primary-dark; }
 
     &.disabled {
         cursor: not-allowed;

@@ -29,14 +29,11 @@ a {
     transition: color .3s ease;
     color: darken($accent-light, 24%);
 
-    &:active, &:hover {
-        color: darken($accent-light, 8%);
-    }
+    &:active, 
+    &:hover { color: darken($accent-light, 8%); }
 }
 
-.app-footer {
-    margin-top: 35px;
-}
+.app-footer { margin-top: 35px; }
 
 
 .loader-wrapper {
@@ -54,9 +51,10 @@ a {
         transform: translateX(5px);
     }
 }
+
 .loader {
     border: 2px solid #f3f3f3;
-    border-top: 3px solid $accent-light;
+    border-top: 2px solid $accent-light;
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -67,9 +65,7 @@ a {
     margin-top: $base-padding;
     max-width: 100%;
 
-    svg {
-        transform: scale(.85);
-    }
+    svg { transform: scale(.85); }
 
     p {
         white-space: nowrap;

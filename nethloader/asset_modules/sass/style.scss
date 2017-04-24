@@ -4,3 +4,7 @@
 @import './layout/layout';
 // Component styles
 @import './components/components';
+
+// Making sure responsive styles are loaded the last in order to override
+@import './layout/responsive';
+@import './components/responsive';

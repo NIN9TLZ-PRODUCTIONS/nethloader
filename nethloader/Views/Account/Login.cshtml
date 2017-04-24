@@ -1,8 +1,8 @@
 @model nethloader.Models.AccountViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Log In";
-
 }
+
 <div class="inner-wrapper flex flex-full-center flex-dc">
     <p class="title title--primary">@ViewData["Title"]</p>
     <div class="content-card content-card--w400">
@@ -21,8 +21,10 @@
             </div>
             <div class="form-row flex flex-cross-center flex-sb">
                 <span class="flex flex-full-center">
-                    <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
-                    <label for="remember_me" class="label--checkbox"><small>Remember me</small></label>
+                    <label for="remember_me" class="label--checkbox flex flex-full-center pointer">
+                        <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
+                        <span class="check"></span><small>Remember me</small>
+                    </label>
                 </span>
                 <p class="text--secondary-light-bg ta-c"><a asp-action="forgotpassword"><small>Forgot your password?</small></a></p>
             </div>
