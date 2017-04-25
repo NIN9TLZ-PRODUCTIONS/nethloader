@@ -27,8 +27,8 @@
         </header>
     }
     <div class="image-view flex flex-cross-center flex-dc">
-        <div class="inner-wrapper--container content-card content-card--image">
-            <img src="@Model.Url" />
+        <div id="view-image-container" class="inner-wrapper--container content-card content-card--image" data-src="@Model.Url">
+            <div class="loader"></div>
         </div>
         <div class="image-view__data content-card content-card--image-data">
            <div class="image-view__props">
@@ -42,3 +42,15 @@
         </div>
     </div>
 </div>
+
+<!-- Script loaded here for encapsulation purposes -->
+<script async defer>
+    var viewImageContainer = document.getElementById('view-image-container');
+         let curImg = new Image();
+         curImg.src = viewImageContainer.dataset.src;
+         curImg.onload = () => {
+            curImg.width = curImg.width;
+            viewImageContainer.removeChild(viewImageContainer.children[0]);
+            viewImageContainer.insertBefore(curImg, viewImageContainer.firstChild);
+        }
+</script>

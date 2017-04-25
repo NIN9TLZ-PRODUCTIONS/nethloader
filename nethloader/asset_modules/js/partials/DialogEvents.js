@@ -28,12 +28,12 @@ const addListeners = () => {
 const openDialog = (event) => {
   let currentTarget = event.currentTarget;
   let dialogWrapper = document.querySelector(`[data-dialogid=${currentTarget.dataset.dialogtrigger}]`);
-  dialogWrapper.classList.add('is-active'); // Overlay
+  dialogWrapper.classList.add('is-active');              // Overlay
   dialogWrapper.children[0].classList.add('is-active');  // Modal
 
   let closeButton = document.querySelector(`[data-closedialog=${currentTarget.dataset.dialogtrigger}]`);
   closeButton.addEventListener('click', () => {
-    dialogWrapper.classList.remove('is-active'); // Overlay
+    dialogWrapper.classList.remove('is-active');             // Overlay
     dialogWrapper.children[0].classList.remove('is-active'); // Modal
   })
 }

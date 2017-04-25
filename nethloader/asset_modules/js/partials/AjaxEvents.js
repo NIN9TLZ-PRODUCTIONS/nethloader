@@ -180,12 +180,12 @@ const userLogin = (event) => {
   }
   loginReq.open("POST", "/account/login/", true);
   loginReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-  if(validateLogin(data)) {
+  if(validateLogin()) {
     loginReq.send(data);
   }
 }
 
-const validateLogin = (data) => {
+const validateLogin = () => {
   var emailInput    = document.getElementById('email');
   var passwordInput = document.getElementById('password');
 
@@ -205,7 +205,6 @@ const validateLogin = (data) => {
  * Register form
  * ------------ */
 var registerButton;
-// TODO: Listen to inputs to updaet the validation
 const registerFormInit = () => {
   registerButton = document.getElementById('register-button');
   if(registerButton) {
@@ -231,12 +230,12 @@ const userRegister = (event) => {
 
   registerReq.open("POST", "/account/register/", true);
   registerReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-  if(validateRegister(data)) {
+  if(validateRegister()) {
     registerReq.send(data);
   }
 }
 
-const validateRegister = (data) => {
+const validateRegister = () => {
   var fullnameInput  = document.getElementById('fullname');
   var usernameInput  = document.getElementById('username');
   var emailInput     = document.getElementById('email');
