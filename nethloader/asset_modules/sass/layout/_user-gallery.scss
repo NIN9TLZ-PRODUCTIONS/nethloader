@@ -72,7 +72,10 @@
 .user-gallery__pagination {
     display: inline-flex;
 
-    ul { padding: $base-padding/2; }
+    ul { 
+        padding: $base-padding/2; 
+        flex-wrap: wrap;
+    }
 
     a { color: currentColor; }
 }

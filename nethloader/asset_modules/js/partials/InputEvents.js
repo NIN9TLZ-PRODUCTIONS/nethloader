@@ -1,5 +1,5 @@
 // Contains the input elements to manage
-var inputElements; 
+var inputElements;
 
 const init = () => {
   findElements();
@@ -10,7 +10,7 @@ const init = () => {
  * Find all the inputs with the 'data-type' attribute
  */
 const findElements = () => {
-  inputElements = document.querySelectorAll("[data-type]");
+  inputElements = document.querySelectorAll('[data-type]');
 }
 
 /*
@@ -28,14 +28,16 @@ const addListeners = () => {
  */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
-  checkInputContent(eventInput)
+
+  checkInputContent(eventInput);
 }
 
 const checkInputContent = (input) => {
   let labelEl = input.nextElementSibling;
+
   if (input.value) {
     labelEl.classList.add('has-content');
-  } else if (!input.value || input.value == "") {
+  } else if (!input.value || input.value == '') {
     labelEl.classList.remove('has-content');
   }
 }

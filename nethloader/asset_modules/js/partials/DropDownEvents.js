@@ -10,7 +10,7 @@ const init = () => {
 * Find all the inputs with the 'data-dropdownelement' attribute
 */
 const findElements = () => {
-  dropdownElements = document.querySelectorAll("[data-dropdownelement]");
+  dropdownElements = document.querySelectorAll('[data-dropdownelement]');
 }
 
 /*
@@ -26,9 +26,10 @@ const addListeners = () => {
 * Find the child elements of the dropdown and change the their state by adding or removing the 'is-active' class
 */
 const manageDropdownActiveState = (event) => {
-  let eventTarget = event.currentTarget;
-  let dropdownElement = document.querySelector(`[data-dropdownid=${eventTarget.dataset.dropdownelement}]`);
-  let dropdownItems = dropdownElement.children[0].children;
+  let eventTarget     = event.currentTarget,
+      dropdownElement = document.querySelector(`[data-dropdownid=${eventTarget.dataset.dropdownelement}]`),
+      dropdownItems   = dropdownElement.children[0].children;
+
   if(!dropdownElement.contains(event.target) || !event.target == dropdownElement) {
     document.querySelector('.user-header__user-menu-icon').classList.toggle('drop-open');
     eventTarget.children[1].classList.toggle('drop-open');
