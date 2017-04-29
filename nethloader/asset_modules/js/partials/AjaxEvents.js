@@ -65,10 +65,10 @@ const deleteImage = (event) => {
  *  Upload image
  * ------------ */
 var uploadInput,   // File to be uploaded
-    uploadButton, // Button to open upload modal
-    tempData,     // UX text response
-    loader,       // Uploading image....
-    cancelButton; // Maybe not
+    uploadButton,  // Button to open upload modal
+    tempData,      // UX text response
+    loader,        // Uploading image....
+    cancelButton;  // Maybe not
 
 const uploadImageInit = () => {
   uploadInput = document.getElementById('file');
@@ -167,7 +167,7 @@ const testName = (input) => {
 
 const testUserName = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
-    (input.value.match(/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(input, true) : manageInvalidField(input, false));
+    (input.value.match(/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$/) ? manageInvalidField(input, true) : manageInvalidField(input, false));
 }
 
 const testEmail = (input) => {
@@ -192,8 +192,8 @@ const loginFormInit = () => {
     emailInput    = document.getElementById('email');
     passwordInput = document.getElementById('password');
 
-    emailInput.addEventListener('input', () => {testEmail(emailInput);});
-    passwordInput.addEventListener('input', () => {testGeneric(passwordInput);})
+    emailInput.addEventListener('input', () => { testEmail(emailInput); });
+    passwordInput.addEventListener('input', () => { testGeneric(passwordInput); })
 
     loginButton.addEventListener('click', userLogin);
   }
@@ -252,11 +252,11 @@ const registerFormInit = () => {
     passwordInput  = document.getElementById('password');
     cpasswordInput = document.getElementById('cpassword');
 
-    fullnameInput.addEventListener('input',  () => {testName(fullnameInput);});
-    usernameInput.addEventListener('input',  () => {testUserName(usernameInput);});
-    emailInput.addEventListener('input',     () => {testEmail(emailInput);});
-    passwordInput.addEventListener('input',  () => {testGeneric(passwordInput);});
-    cpasswordInput.addEventListener('input', () => {testGeneric(cpasswordInput);})
+    fullnameInput.addEventListener('input',  () => { testName(fullnameInput); });
+    usernameInput.addEventListener('input',  () => { testUserName(usernameInput); });
+    emailInput.addEventListener('input',     () => { testEmail(emailInput); });
+    passwordInput.addEventListener('input',  () => { testGeneric(passwordInput); });
+    cpasswordInput.addEventListener('input', () => { testGeneric(cpasswordInput); })
 
     registerButton.addEventListener('click', userRegister);
   }
