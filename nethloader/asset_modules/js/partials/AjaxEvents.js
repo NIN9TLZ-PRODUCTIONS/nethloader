@@ -185,7 +185,7 @@ var loginButton,
 const loginFormInit = () => {
   loginButton = document.getElementById('login-button');
   if(loginButton) {
-    usernameInput    = document.getElementById('username');
+    usernameInput = document.getElementById('username');
     passwordInput = document.getElementById('password');
 
     usernameInput.addEventListener('input', () => { testUserName(usernameInput); });
