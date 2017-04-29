@@ -8,7 +8,6 @@ namespace nethloader.Models
 {
     public class User : IdentityUser
     {
-        public string FullName { get; set; }
         public DateTime RegisterDate { get; set; }
         public string ApiKey { get; set; }
         public bool CustomDomainStatus { get; set; }
