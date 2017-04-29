@@ -70,7 +70,7 @@ namespace nethloader.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
@@ -124,9 +124,8 @@ namespace nethloader.Controllers
             {
                 var user = new User()
                 {
-                    UserName = model.Email,
+                    UserName = model.UserName,
                     Email = model.Email,
-                    FullName = model.FullName,
                     RegisterDate = DateTime.Now,
                     ApiKey = GenerateApiKey()
                 };
