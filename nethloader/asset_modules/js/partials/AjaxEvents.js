@@ -160,10 +160,6 @@ const setTempData = (text) => {
 /*
  * Input validation functions 
  */
-const testName = (input) => {
-  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
-    (input.value.match(/^[a-zA-Z'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ\s]*$/) ? manageInvalidField(input, true) : manageInvalidField(input, false));
-}
 
 const testUserName = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
@@ -183,16 +179,16 @@ const testGeneric = (input) => {
  *   Login form
  * ------------ */
 var loginButton,
-    emailInput,
+    usernameInput,
     passwordInput;
 
 const loginFormInit = () => {
   loginButton = document.getElementById('login-button');
   if(loginButton) {
-    emailInput    = document.getElementById('email');
+    usernameInput = document.getElementById('username');
     passwordInput = document.getElementById('password');
 
-    emailInput.addEventListener('input', () => { testEmail(emailInput); });
+    usernameInput.addEventListener('input', () => { testUserName(usernameInput); });
     passwordInput.addEventListener('input', () => { testGeneric(passwordInput); })
 
     loginButton.addEventListener('click', userLogin);
@@ -223,7 +219,7 @@ const userLogin = (event) => {
 }
 
 const validateLogin = () => {
-  var testEm = testEmail(emailInput),
+  var testEm = testUserName(usernameInput),
       testPw = testGeneric(passwordInput);
 
   if(testEm && testPw) {
@@ -237,7 +233,6 @@ const validateLogin = () => {
  * Register form
  * ------------ */
 var registerButton,
-    fullnameInput,
     usernameInput,
     emailInput,
     passwordInput,
@@ -246,13 +241,11 @@ var registerButton,
 const registerFormInit = () => {
   registerButton = document.getElementById('register-button');
   if(registerButton) {
-    fullnameInput  = document.getElementById('fullname');
     usernameInput  = document.getElementById('username');
     emailInput     = document.getElementById('email');
     passwordInput  = document.getElementById('password');
     cpasswordInput = document.getElementById('cpassword');
 
-    fullnameInput.addEventListener('input',  () => { testName(fullnameInput); });
     usernameInput.addEventListener('input',  () => { testUserName(usernameInput); });
     emailInput.addEventListener('input',     () => { testEmail(emailInput); });
     passwordInput.addEventListener('input',  () => { testGeneric(passwordInput); });
@@ -286,13 +279,12 @@ const userRegister = (event) => {
 }
 
 const validateRegister = () => {
-  var testFn = testName(fullnameInput),
-      testUn = testUserName(usernameInput),
+  var testUn = testUserName(usernameInput),
       testEm = testEmail(emailInput),
       testPs = testGeneric(passwordInput),
       testCp = testGeneric(cpasswordInput);
 
-  if(testFn && testUn && testEm && testPs && testCp) {
+  if(testUn && testEm && testPs && testCp) {
     return true;
   }
 
