@@ -9,7 +9,7 @@ namespace nethloader.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
-        [RegularExpression("/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$/")]
+        [RegularExpression("^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$")]
         public string UserName { get; set; }
 
         [Required]
