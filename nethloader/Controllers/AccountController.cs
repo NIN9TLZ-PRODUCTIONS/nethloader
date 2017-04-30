@@ -262,6 +262,22 @@ namespace nethloader.Controllers
             return View();
         }
         //
+        // POST: /Account/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+                var result = await _userManager.ChangePasswordAsync(currentUser, model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                    return Ok();
+                return BadRequest(result.Errors);
+            }
+            return BadRequest(ModelState);
+        }
+        //
         // POST: /Account/RegenApiKey
         [HttpPost]
         [ValidateAntiForgeryToken]
