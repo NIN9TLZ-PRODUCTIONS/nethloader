@@ -25,11 +25,16 @@
     width: 100%;
     overflow: hidden;
 
-    &.drop-open { height: auto; }
+    &.drop-open {
+        overflow: initial;
+        height: auto;
+    }
 
-    ul, 
-    li, 
-    form { width: 100%; }
+    ul,
+    li,
+    form {
+        width: 100%;
+    }
 }
 
 .user-header__user-menu__dropdown-item {
@@ -44,16 +49,47 @@
     color: $primary-light;
 
     &.is-active {
-        animation-name: come-from-top-scale;
+        animation-name: come-from-top;
         animation-duration: .2s;
         animation-fill-mode: both;
     }
 
-    &:hover { background-color: lighten($primary-dark, 10%); }
+    &:hover {
+        background-color: lighten($primary-dark, 10%);
+    }
+}
+
+.user-header__user-menu__dropdown__link {
+    transition: $easeOutQuad;
+
+    &.is-active {
+        animation-name: come-from-top;
+        animation-duration: .2s;
+        animation-fill-mode: both;
+    }
+}
+
+.user-header__user-menu__dropdown-item--current {
+    cursor: not-allowed;
+    color: lighten($primary-light-colour, 50%);
+    background-color: $primary-light;
+
+    &:hover { background-color: $primary-light; }
+}
+
+.user-header__user-menu__dropdown__link {
+    color: currentColor;
+
+    &:hover { color: currentColor; }
 }
 
 .logout-form {
-    & .is-active { animation-delay: 0.1s; }
+    & .is-active {
+        animation-name: come-from-top;
+        animation-duration: .2s;
+        animation-fill-mode: both;
+        animation-delay: 0.1s;
+    }
 }
 
 .user-header__user-menu-icon {
