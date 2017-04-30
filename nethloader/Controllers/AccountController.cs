@@ -261,6 +261,20 @@ namespace nethloader.Controllers
         {
             return View();
         }
+        #region Settings
+        //
+        // POST: /Account/ChangeUserName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UserName(string newUsername)
+        {
+            var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            currentUser.UserName = newUsername;
+            var result = await _userManager.UpdateAsync(currentUser);
+            if (result.Succeeded)
+                return Ok();
+            return BadRequest(result.Errors);
+        }
         //
         // POST: /Account/ChangePassword
         [HttpPost]
@@ -281,12 +295,31 @@ namespace nethloader.Controllers
         // POST: /Account/RegenApiKey
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<string> RegenApiKey()
+        public async Task<IActionResult> RegenApiKey()
         {
-           var user = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-           user.ApiKey = GenerateApiKey();
-           return user.ApiKey;
+            var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            currentUser.ApiKey = GenerateApiKey();
+            var result = await _userManager.UpdateAsync(currentUser);
+            if (result.Succeeded)
+                return Ok(currentUser.ApiKey);
+            return BadRequest(result.Errors);
         }
+        //
+        // POST: /Account/ChangeCustomDomian
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeCustomDomian(string domain)
+        {
+            var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            currentUser.CustomDomainStatus = (domain == "");
+            currentUser.CustomDomain = domain;
+
+            var result = await _userManager.UpdateAsync(currentUser);
+            if (result.Succeeded)
+                return Ok();
+            return BadRequest(result.Errors);
+        }
+        #endregion
         #region Helpers
 
         private void AddErrors(IdentityResult result)
