@@ -1,6 +1,7 @@
 @model nethloader.Models.Image
 @{
     ViewData["Title"] = "Nethloader image - " + @Model.Id.Substring(0, 8);
+    ViewData["loadScript"] = User.Identity.IsAuthenticated;
 }
 
 <div class="@("inner-wrapper flex flex-dc" + (!User.Identity.IsAuthenticated ? " flex-main-center" : ""))" >
@@ -15,12 +16,17 @@
                     <p class="user-header__user-menu flex flex-full-center" ripple="ripple"><span>@User.Identity.Name</span>&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
                     <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
                         <ul class="flex flex-dc">
+                            <a class="user-header__user-menu__dropdown__link" href="/settings" rel="noopener">
+                                <li asp-action="/settings" class="user-header__user-menu__dropdown-item pointer" title="User Control Panel" ripple="ripple">
+                                    <p class="ta-c">User CP</p>
+                                </li>
+                            </a>
                             <li class="logout-form" title="Log this user out">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" ripple="ripple"/>
+                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" ripple="ripple" />
                                 </form>
                             </li>
-                        </ul>
+</ul>
                     </div>
                 </div>
             </div>

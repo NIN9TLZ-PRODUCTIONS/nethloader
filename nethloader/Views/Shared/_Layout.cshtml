@@ -34,6 +34,8 @@
         var antiforgeryToken = @Json.Serialize(antiforgery.GetAndStoreTokens(Context).RequestToken);
         var supportedExtensions = (@Json.Serialize(string.Join(",", Enum.GetNames(typeof(nethloader.Models.ImageExtensions))))).split(',');
     </script>
-    <script src="~/js/scripts.js"></script>
+    @if((bool)ViewData["loadScript"]) {
+        <script src="~/js/scripts.js"></script>
+    }
 </body>
 </html>
