@@ -269,6 +269,8 @@ namespace nethloader.Controllers
         public async Task<IActionResult> UserName(string newUsername)
         {
             var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (newUsername == currentUser.UserName)
+                return BadRequest("You are already using this username.");
             currentUser.UserName = newUsername;
             var result = await _userManager.UpdateAsync(currentUser);
             if (result.Succeeded)
@@ -311,6 +313,8 @@ namespace nethloader.Controllers
         public async Task<IActionResult> ChangeCustomDomian(string domain)
         {
             var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (domain == currentUser.CustomDomain)
+                return BadRequest("You are already using this domain.");
             currentUser.CustomDomainStatus = (domain == "");
             currentUser.CustomDomain = domain;
 
