@@ -27,10 +27,3 @@
         p { display: none; }
     }
 }
-
-@media (max-width: 270px) {
-    // Remove the user email string
-    .user-header__user-menu {
-        span {display: none;}
-    }
-}

@@ -9,7 +9,7 @@ namespace nethloader.Models.AccountViewModels
     public class LoginViewModel
     {
         [Required]
-        [RegularExpression("^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$")]
+        [RegularExpression("^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$", ErrorMessage="Username contains ilegal characters")]
         public string UserName { get; set; }
 
         [Required]

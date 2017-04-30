@@ -162,8 +162,8 @@ const setTempData = (text) => {
  */
 
 const testUserName = (input) => {
-  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
-    (input.value.match(/^[!-~ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$/) ? manageInvalidField(input, true) : manageInvalidField(input, false));
+   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
+    (input.value.match(input.dataset.valRegexPattern) ? manageInvalidField(input, true) : manageInvalidField(input, false));
 }
 
 const testEmail = (input) => {
@@ -200,21 +200,8 @@ const userLogin = (event) => {
   event.stopPropagation();
   event.stopImmediatePropagation();
 
-  var loginReq = new XMLHttpRequest(),
-      data = new FormData(document.forms.namedItem('loginform'));
-
-  loginReq.onreadystatechange = function(e) {
-    if (this.readyState == 4 && this.status == 200) {
-        location.href = this.responseURL;
-    } else if(!this.readyState == 4 || !this.status == 200) {
-      console.log('Something went wrong');
-    }
-  }
-
-  loginReq.open('POST', '/account/login/', true);
-  loginReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
   if(validateLogin()) {
-    loginReq.send(data);
+    document.forms.namedItem('loginform').submit();
   }
 }
 
@@ -260,21 +247,8 @@ const userRegister = (event) => {
   event.stopPropagation();
   event.stopImmediatePropagation();
 
-  var registerReq = new XMLHttpRequest(),
-      data = new FormData(document.forms.namedItem('registerform'));
-
-  registerReq.onreadystatechange = function(e) {
-    if (this.readyState == 4 && this.status == 200) {
-      location.href = this.responseURL;
-    } else if(!this.readyState == 4 || !this.status == 200) {
-      console.log('Something went wrong');
-    }
-  }
-
-  registerReq.open('POST', '/account/register/', true);
-  registerReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
   if(validateRegister()) {
-    registerReq.send(data);
+    document.forms.namedItem('registerform').submit();
   }
 }
 
