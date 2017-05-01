@@ -125,5 +125,14 @@ namespace nethloader.Services.Managers
             }
             return images;
         }
+
+        public async Task RemoveAllUserImages(string userId)
+        {
+            var imgs =_db.Images.AsNoTracking().Where(x => x.Owner.Id == userId);
+            foreach(var img in imgs)
+            {
+                await RemoveImageAsync(img);
+            }
+        }
     }
 }

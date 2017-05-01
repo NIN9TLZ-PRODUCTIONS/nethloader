@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using nethloader.Models;
 using nethloader.Models.AccountViewModels;
 using nethloader.Services;
+using nethloader.Services.Managers;
 using nethloader.Services.Options;
 
 namespace nethloader.Controllers
@@ -20,6 +21,7 @@ namespace nethloader.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IImageManager _imageManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
@@ -28,6 +30,7 @@ namespace nethloader.Controllers
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
+            IImageManager imageManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
             IOptions<MainOptions> mainOptions,
             IEmailSender emailSender,
@@ -35,6 +38,7 @@ namespace nethloader.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _imageManager = imageManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
             _MainConfig = mainOptions.Value;
             _emailSender = emailSender;
@@ -322,6 +326,15 @@ namespace nethloader.Controllers
             if (result.Succeeded)
                 return Ok();
             return BadRequest(result.Errors);
+        }
+        //
+        // POST: /Account/RemoveAllUserImages
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveAllUserImages()
+        {
+            await _imageManager.RemoveAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return Ok();
         }
         #endregion
         #region Helpers
