@@ -27,7 +27,7 @@
     <Folder Include="wwwroot\icons\" />
   </ItemGroup>-->
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="1.14.2" />
+    <PackageReference Include="MailKit" Version="1.16.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
@@ -36,7 +36,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
-    <PackageReference Include="SapientGuardian.EntityFrameworkCore.MySql" Version="7.1.23" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="6.10.1-beta" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="1.1.0" />
     <PackageReference Include="SimpleSequentialGuid" Version="1.0.2" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
