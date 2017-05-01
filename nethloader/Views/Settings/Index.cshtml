@@ -74,7 +74,7 @@
                 <div class="settings-card__settings__setting">
                     <form class="flex flex-cross-center">
                         <div class="form-row flex flex-dc flex-main-center flex-sa">
-                            <p>Current APIkey: <span class="settings-card__apikey-container">generic api key</span></p>
+                            <p>Current APIkey: <span class="settings-card__apikey-container">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</span></p>
                             <button class="button button--primary pointer" href="/" title="Regenerate APIkey">
                                 Generate new apikey&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg>
                             </button>
