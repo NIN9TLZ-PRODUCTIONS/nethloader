@@ -35,8 +35,15 @@ namespace nethloader
         public void ConfigureServices(IServiceCollection services)
         {
             //Add DBContext Services
-            services.AddDbContext<ApplicationDbContext>(options =>
+            if (Configuration["DatabaseType"] == "mssql")
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            } else if(Configuration["DatabaseType"] == "Npgsql")
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            }
             //Add Identy Services
             services.AddIdentity<User, IdentityRole>(options =>
             {
