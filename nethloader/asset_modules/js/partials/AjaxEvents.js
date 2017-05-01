@@ -171,12 +171,16 @@ const testEmail = (input) => {
     (input.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(input, true) : manageInvalidField(input, false));
 }
 
-const testGeneric = (input) => {
+const testPassword = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false));
 }
 
+const testPasswordLength = (input) => {
+  return (input.value.length >= 8 ? managePasswordLength(input, true) : managePasswordLength(input, false));
+}
+
 const testEqual = (input1, input2) => {
-  return ((input1.value == input2.value && input1.value && input2.value) ? manageEqualPasswords(input2, true) : manageEqualPasswords(input2, false));
+  return (input1.value == input2.value ? manageEqualPasswords(input2, true) : manageEqualPasswords(input2, false));
 }
 
 /*---------------
@@ -193,7 +197,7 @@ const loginFormInit = () => {
     passwordInput = document.getElementById('password');
 
     usernameInput.addEventListener('input', () => { testUserName(usernameInput); });
-    passwordInput.addEventListener('input', () => { testGeneric(passwordInput); })
+    passwordInput.addEventListener('input', () => { testPassword(passwordInput); })
 
     loginButton.addEventListener('click', userLogin);
   }
@@ -211,7 +215,7 @@ const userLogin = (event) => {
 
 const validateLogin = () => {
   var testEm = testUserName(usernameInput),
-      testPw = testGeneric(passwordInput);
+      testPw = testPassword(passwordInput);
 
   if(testEm && testPw) {
     return true;
@@ -239,8 +243,8 @@ const registerFormInit = () => {
 
     usernameInput.addEventListener('input',  () => { testUserName(usernameInput); });
     emailInput.addEventListener('input',     () => { testEmail(emailInput); });
-    passwordInput.addEventListener('input',  () => { testGeneric(passwordInput); });
-    cpasswordInput.addEventListener('input', () => { testGeneric(cpasswordInput); testEqual(passwordInput, cpasswordInput); })
+    passwordInput.addEventListener('input',  () => { testPasswordLength(passwordInput); testEqual(passwordInput, cpasswordInput); testPassword(passwordInput); });
+    cpasswordInput.addEventListener('input', () => { testPassword(cpasswordInput); testEqual(passwordInput, cpasswordInput); })
 
     registerButton.addEventListener('click', userRegister);
   }
@@ -259,11 +263,11 @@ const userRegister = (event) => {
 const validateRegister = () => {
   var testUn = testUserName(usernameInput),
       testEm = testEmail(emailInput),
-      testPs = testGeneric(passwordInput),
-      testCp = testGeneric(cpasswordInput),
-      testEq = testEqual(passwordInput, cpasswordInput);
+      testCp = testPassword(cpasswordInput),
+      testEq = testEqual(passwordInput, cpasswordInput),
+      testLn = testPasswordLength(passwordInput);
 
-  if(testUn && testEm && testPs && testCp && testEq) {
+      if(testUn && testEm && testCp && testLn && testEq) {
     return true;
   }
 
@@ -272,6 +276,7 @@ const validateRegister = () => {
 
 const manageEmptyField = (input, state) => {
   if(!state) {
+    input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
     input.nextElementSibling.dataset.error = "This field can't be empty.";
     return false;
@@ -283,6 +288,7 @@ const manageEmptyField = (input, state) => {
 
 const manageInvalidField = (input, state) => {
   if(!state) {
+    input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
     input.nextElementSibling.dataset.error = "This field is not valid.";
     return false;
@@ -294,11 +300,24 @@ const manageInvalidField = (input, state) => {
 
 const manageEqualPasswords = (input, state) => {
   if(!state) {
+    input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
     input.nextElementSibling.dataset.error = "The passwords don't match.";
     return false;
   } else {
     input.classList.remove('input--text--error');
+    return true;
+  }
+}
+
+const managePasswordLength = (input, state) => {
+  if(!state) {
+    input.classList.remove('input--text--error');
+    input.classList.add('input--text--warning');
+    input.nextElementSibling.dataset.error = "Use at least 8 characters.";
+    return false;
+  } else {
+    input.classList.remove('input--text--warning');
     return true;
   }
 }

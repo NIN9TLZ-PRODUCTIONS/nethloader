@@ -33,5 +33,8 @@
             </div>
           </form>
         <h4 class="text--secondary-light-bg text--margin ta-c"><a asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Don't have an account? Click here!</small></a></h4>
+        <div class="toast">
+            <div asp-validation-summary="ModelOnly" class="validation-form"></div>
+        </div>
     </div>
 </div>

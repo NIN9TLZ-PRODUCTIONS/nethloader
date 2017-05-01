@@ -1,0 +1,17 @@
+﻿.toast {
+    position: absolute;
+    width: 100%;
+    max-width: 350px;
+    animation-name: come-from-top;
+    animation-delay: .2s;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    margin: $base-padding*3 $base-padding*1.5;
+}
+
+.validation-form {
+    background-color: #D84315;
+    color: $primary-light;
+    padding: $base-padding*2 $base-padding*3;
+    border-radius: $border-radius--normal;
+}

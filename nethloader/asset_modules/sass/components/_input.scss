@@ -15,8 +15,9 @@
 
 .input--text--error { border-color: #e53935; }
 
-// Checkbox Inputs
+.input--text--warning { border-color: #FFC107; }
 
+// Checkbox Inputs
 .input--checkbox {
     visibility: hidden;
     display: none;
@@ -130,7 +131,8 @@
     }
 }
 
-.input--text--error + .label--itext{
+.input--text--error + .label--itext,
+.input--text--warning + .label--itext {
     &::before {
         opacity: 1;
         transform: translateX(0);
@@ -142,6 +144,14 @@
     }
 }
 
+.input--text--warning + .label--itext {
+    &::before {
+        color: #FFC107;
+        border-color: #FFC107;
+    }
+
+    &::after { border-right-color: #FFC107; }
+}
 
 .input--text:focus ~ .label--itext,
 .input--password:focus ~ .label--itext,
