@@ -175,6 +175,10 @@ const testGeneric = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false));
 }
 
+const testEqual = (input1, input2) => {
+  return ((input1.value == input2.value && input1.value && input2.value) ? manageEqualPasswords(input2, true) : manageEqualPasswords(input2, false));
+}
+
 /*---------------
  *   Login form
  * ------------ */
@@ -236,7 +240,7 @@ const registerFormInit = () => {
     usernameInput.addEventListener('input',  () => { testUserName(usernameInput); });
     emailInput.addEventListener('input',     () => { testEmail(emailInput); });
     passwordInput.addEventListener('input',  () => { testGeneric(passwordInput); });
-    cpasswordInput.addEventListener('input', () => { testGeneric(cpasswordInput); })
+    cpasswordInput.addEventListener('input', () => { testGeneric(cpasswordInput); testEqual(passwordInput, cpasswordInput); })
 
     registerButton.addEventListener('click', userRegister);
   }
@@ -256,9 +260,10 @@ const validateRegister = () => {
   var testUn = testUserName(usernameInput),
       testEm = testEmail(emailInput),
       testPs = testGeneric(passwordInput),
-      testCp = testGeneric(cpasswordInput);
+      testCp = testGeneric(cpasswordInput),
+      testEq = testEqual(passwordInput, cpasswordInput);
 
-  if(testUn && testEm && testPs && testCp) {
+  if(testUn && testEm && testPs && testCp && testEq) {
     return true;
   }
 
@@ -268,7 +273,7 @@ const validateRegister = () => {
 const manageEmptyField = (input, state) => {
   if(!state) {
     input.classList.add('input--text--error');
-    input.nextElementSibling.dataset.error = "This field can't be empty";
+    input.nextElementSibling.dataset.error = "This field can't be empty.";
     return false;
   } else {
     input.classList.remove('input--text--error');
@@ -279,7 +284,18 @@ const manageEmptyField = (input, state) => {
 const manageInvalidField = (input, state) => {
   if(!state) {
     input.classList.add('input--text--error');
-    input.nextElementSibling.dataset.error = "This field is not valid";
+    input.nextElementSibling.dataset.error = "This field is not valid.";
+    return false;
+  } else {
+    input.classList.remove('input--text--error');
+    return true;
+  }
+}
+
+const manageEqualPasswords = (input, state) => {
+  if(!state) {
+    input.classList.add('input--text--error');
+    input.nextElementSibling.dataset.error = "The passwords don't match.";
     return false;
   } else {
     input.classList.remove('input--text--error');
