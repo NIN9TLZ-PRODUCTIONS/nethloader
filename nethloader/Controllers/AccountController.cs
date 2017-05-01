@@ -336,6 +336,18 @@ namespace nethloader.Controllers
             await _imageManager.RemoveAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             return Ok();
         }
+        //
+        // POST: /Account/RemoveAcount
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveAccount()
+        {
+            await _imageManager.RemoveAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var result = await _userManager.DeleteAsync(await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value));
+            if (result.Succeeded)
+                return Ok();
+            return BadRequest();
+        }
         #endregion
         #region Helpers
 
