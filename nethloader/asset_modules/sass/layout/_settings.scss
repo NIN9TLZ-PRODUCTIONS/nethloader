@@ -36,11 +36,13 @@
 .settings-card__settings-title {
     text-transform: uppercase;
     font-size: 1.2em;
-    color: darken($primary-light, 30%);
+    color: darken($accent-dark, 10%);
+    align-items: flex-start;
 }
 
 .settings-card__settings-description {
     font-size: .8em;
+    margin-left: $base-padding*5;
 }
 
 .settings > div {
@@ -56,9 +58,20 @@
 }
 
 .settings-card__settings__setting {
-    padding: 0 $base-padding*2;
-    
+    padding: 0 $base-padding*5;
+    margin: 16px 0;
+
+    &:not(:last-child) { border-bottom: 1px solid transparentize($primary-dark, .9); }
+
     .form-row {
         margin: $base-padding*3 0;
     }
+}
+
+.settings-card__apikey-container {
+    padding: $base-padding;
+    border-radius: $border-radius--normal;
+    background-color: transparentize(#bdccd3, .7);
+
+    &:hover { background-color: darken(transparentize(#bdccd3, .7), 25%); }
 }

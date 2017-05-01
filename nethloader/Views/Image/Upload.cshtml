@@ -7,7 +7,7 @@
 </div>
 <form>
     <div class="dialog__content flex flex-full-center flex-dc">
-        <input type="file" id="file" name="file" class="input--file" />
+        <input type="file" id="file" name="file" class="input--file" accept=".@string.Join(",.", Enum.GetNames(typeof(nethloader.Models.ImageExtensions)))"/>
         <label for="file" class="button button--accent pointer" ripple="ripple">
             Choose a file
             &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>

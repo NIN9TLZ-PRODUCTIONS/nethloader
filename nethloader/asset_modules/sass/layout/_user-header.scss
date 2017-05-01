@@ -12,6 +12,10 @@
     padding: 0 $base-padding*2;
     transition: $easeOutQuad;
 
+    span {
+        svg { color: #bdccd3; }
+    }
+
     &:hover { background-color: darken(white, 5%); }
 }
 

@@ -5,13 +5,13 @@
     transition: $easeOutQuad;
     font-family: inherit;
     font-size: inherit;
+    font-weight: 300;
 }
 
 .button--primary {
     background-color: $primary-dark;
     color: $primary-dark-colour;
     padding: $base-padding;
-    font-weight: 300;
 
     &:hover {
         @include box_shadow(1);
@@ -50,13 +50,15 @@
 
 .button--fw { width: 100%; }
 
-.button--margin { margin: 8px; }
+.button--margin { margin: $base-padding; }
+
+.button--double-margin { margin: $base-padding*2; }
 
 .button--padding-long { padding: 0px $base-padding*2; }
 
 .button--margin-lr { margin: 0 $base-padding; }
 
-.button--margin-tb { margin: 8px 0; }
+.button--margin-tb { margin: $base-padding 0; }
 
 .button-icon-from-left {
     svg { transition: $easeOutQuad; }
@@ -76,7 +78,7 @@
 
 .button--accent {
     background-color: $accent-dark;
-    padding: 8px 16px;
+    padding: $base-padding $base-padding*2;
     color: $primary-dark-colour;
     font-weight: 300;
     border-radius: $border-radius--normal;
