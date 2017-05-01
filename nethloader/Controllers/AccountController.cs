@@ -348,6 +348,15 @@ namespace nethloader.Controllers
                 return Ok();
             return BadRequest();
         }
+        //
+        // POST: /Account/RemoveImagesBetweenTwoDates
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveImagesBetweenTwoDates(DateTime start, DateTime end)
+        {
+            await _imageManager.RemoveAllUserImagesInsideAInterval(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, start, end);
+            return Ok();
+        }
         #endregion
         #region Helpers
 

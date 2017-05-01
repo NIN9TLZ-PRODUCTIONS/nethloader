@@ -18,5 +18,7 @@ namespace nethloader.Services.Managers
         Task<Image> GetImageWithOwnerAsync(string id);
         IQueryable<Image> GetAllUserImages(string id);
         IQueryable<Image> GetAllUserImagesWithOwner(string id);
+        IQueryable<Image> GetAllUserImagesInsideAInterval(string userId, DateTime start, DateTime end);
+        Task RemoveAllUserImagesInsideAInterval(string userId, DateTime start, DateTime end);
     }
 }

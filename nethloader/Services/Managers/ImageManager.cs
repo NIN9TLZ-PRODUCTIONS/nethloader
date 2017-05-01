@@ -134,5 +134,19 @@ namespace nethloader.Services.Managers
                 await RemoveImageAsync(img);
             }
         }
+
+        public IQueryable<Image> GetAllUserImagesInsideAInterval(string userId, DateTime start, DateTime end)
+        {
+            return _db.Images.AsNoTracking().Where(x => x.Owner.Id == userId && x.UploadDate >= start && x.UploadDate <= end);
+        }
+
+        public async Task RemoveAllUserImagesInsideAInterval(string userId, DateTime start, DateTime end)
+        {
+            var imgs = GetAllUserImagesInsideAInterval(userId, start, end);
+            foreach (var img in imgs)
+            {
+                await RemoveImageAsync(img);
+            }
+        }
     }
 }
