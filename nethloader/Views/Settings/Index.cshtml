@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Settings";
+}
+
+<div class="inner-wrapper flex flex-dc">
+    <header class="user-header flex flex-full-center">
+        <div class="inner-wrapper--container flex flex-sb">
+            <a class="button button--primary button--margin button--padding-long button--header-nav-button pointer flex flex-full-center" href="/" title="Go back to the image gallery">
+                <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>&nbsp;<p>My uploads</p>
+            </a>
+            <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu" title="User menu">
+                <p class="user-header__user-menu flex flex-full-center" ripple="ripple"><span>@User.Identity.Name</span>&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
+                <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
+                    <ul class="flex flex-dc">
+                        <li class="user-header__user-menu__dropdown-item user-header__user-menu__dropdown-item--current" ripple="ripple" title="You are here">
+                            <p class="ta-c"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
+                        </li>
+                        <li class="logout-form" title="Log this user out">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button  type="submit" class=" ta-c user-header__user-menu__dropdown-item pointer" ripple="ripple"><p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                                <input hidden />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="settings flex flex-full-center">
+        <div class="inner-wrapper--container flex flex-main-center">
+            <div class="inner-wrapper--container settings-card content-card content-card--full-height flex flex-dc">
+                <p class="settings-card__settings-title"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;Account Info</p>
+                <p class="settings-card__settings-description">Manage your email and account information.</p>
+                <div class="settings-card__settings__setting">
+                    <form class="flex flex-cross-center">
+                        <div class="form-row flex flex-main-center flex-sa">
+                            <div class="settings-input-container">
+                                <input id="email" type="email" class="input input--text" data-type="text" value="accounts@gariasf.com" required>
+                                <label for="email" class="label--itext flex flex-full-center">
+                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
+                                </label>
+                            </div>
+                            <div class="settings-input-container">
+                                <input id="username" type="text" class="input input--text" data-type="text" value="gariasf" required>
+                                <label for="username" class="label--itext flex flex-full-center">
+                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <p class="settings-card__settings-title"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;Account Security</p>
+                <p class="settings-card__settings-description">Manage your password and security settings.</p>
+                <div class="settings-card__settings__setting">
+                    <form class="flex flex-cross-center">
+                        <div class="form-row flex flex-main-center flex-sa">
+                            <div class="settings-input-container">
+                                <input id="npassword" type="password" class="input input--text" data-type="text" required>
+                                <label for="npassword" class="label--itext flex flex-full-center">
+                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;New Password</span>
+                                </label>
+                            </div>
+                            <div class="settings-input-container">
+                                <input id="cpassword" type="password" class="input input--text" data-type="text" required>
+                                <label for="cpassword" class="label--itext flex flex-full-center">
+                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Repeat New Password</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <p class="settings-card__settings-title"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;Remote Settings</p>
+                <p class="settings-card__settings-description">Manage your remote apikey.</p>
+                <div class="settings-card__settings__setting">
+                    <form class="flex flex-cross-center">
+                        <div class="form-row flex flex-dc flex-main-center flex-sa">
+                            <p>Current APIkey: <span class="settings-card__apikey-container">generic api key</span></p>
+                            <button class="button button--primary pointer" href="/" title="Regenerate APIkey">
+                                Generate new apikey&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <p class="settings-card__settings-title"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#http"></use></svg>&nbsp;Domain Settings</p>
+                <p class="settings-card__settings-description">Manage your custom domain.</p>
+                <div class="settings-card__settings__setting">
+                    <form class="flex flex-cross-center">
+                        <div class="form-row flex flex-dc flex-main-center flex-sa">...</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
