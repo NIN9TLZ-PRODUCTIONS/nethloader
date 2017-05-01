@@ -4,30 +4,31 @@
 }
 
 <div class="inner-wrapper flex flex-full-center flex-dc">
+    <div asp-validation-summary="All"></div>
     <h1 class="title title--primary">@ViewData["Title"]</h1>
     <div class="content-card content-card--w400">
         <form enctype="multipart/form-data" method="post" name="registerform" asp-action="register">
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
-                <label for="username" class="label--itext  flex flex-full-center">
+                <label for="username" class="label--itext">
                     <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Userame</span>
                 </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                <label for="email" class="label--itext flex flex-full-center">
+                <label for="email" class="label--itext">
                     <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
                 </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext flex flex-full-center">
+                <label for="password" class="label--itext">
                     <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
                 </label>
             </div>
             <div class="form-row flex flex-dc flex-main-center">
                 <input asp-for="ConfirmPassword" id="cpassword" type="password" class="input input--password" data-type="password" required>
-                <label for="cpassword" class="label--itext flex flex-full-center">
+                <label for="cpassword" class="label--itext">
                     <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm Password</span>
                 </label>
             </div>

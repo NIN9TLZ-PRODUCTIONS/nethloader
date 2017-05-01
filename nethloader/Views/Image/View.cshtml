@@ -18,15 +18,16 @@
                         <ul class="flex flex-dc">
                             <a class="user-header__user-menu__dropdown__link" href="/settings" rel="noopener">
                                 <li asp-action="/settings" class="user-header__user-menu__dropdown-item pointer" title="User Control Panel" ripple="ripple">
-                                    <p class="ta-c">User CP</p>
+                                    <p class="ta-c"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
                                 </li>
                             </a>
                             <li class="logout-form" title="Log this user out">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <input class="user-header__user-menu__dropdown-item pointer" type="submit" value="Logout" ripple="ripple" />
+                                    <button type="submit" class=" ta-c user-header__user-menu__dropdown-item pointer" ripple="ripple"><p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                                    <input hidden />
                                 </form>
                             </li>
-</ul>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -50,7 +51,7 @@
 </div>
 
 <!-- Script loaded here for encapsulation purposes -->
-<script async defer>
+<script async>
     var viewImageContainer = document.getElementById('view-image-container');
          let curImg = new Image();
          curImg.src = viewImageContainer.dataset.src;
