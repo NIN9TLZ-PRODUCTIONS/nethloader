@@ -9,7 +9,7 @@ const init = () => {
   uploadImageInit();
   loginFormInit();
   registerFormInit();
-}
+};
 
 /*
  * Find the delete confirm button element (located in the dialog) then find all the delete buttons on the images and listen for clicks
@@ -20,14 +20,14 @@ const deleteImagesInit = () => {
     findDeleteButtons();
     addDelButEventListeners();
   }
-}
+};
 
 /*
  * Find the delete buttons (one per image)
  */
 const findDeleteButtons = () => {
   deleteButtons = document.querySelectorAll('[data-delimageid]');
-}
+};
 
 /*
  * Listen for clicks and proceed (a dialog will be launched)
@@ -36,7 +36,7 @@ const addDelButEventListeners = () => {
   for (let i = deleteButtons.length - 1; i >= 0; i--) {
     deleteButtons[i].addEventListener('click', deleteImage);
   }
-}
+};
 
 /*
  * Get the image id to be deleted and delete the image if confirmed (user has clicked on yes, delete it)
@@ -48,18 +48,18 @@ const deleteImage = (event) => {
   deleteReq.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       location.reload();
-    } else if(!this.readyState == 4 || !this.status == 200) {
+    } else if(this.readyState != 4 || this.status != 200) {
       console.log('Something went wrong');
     }
-  }
+  };
 
   deleteReq.open('POST', '/image/delete/?id=' + imageId, true);
   deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
   deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   deleteConfirmButton.onclick = () => {
     deleteReq.send();
-  }
-}
+  };
+};
 
 /*---------------
  *  Upload image
@@ -83,8 +83,8 @@ const uploadImageInit = () => {
       tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#file"></use></svg>&nbsp;&nbsp;<p>${uploadInput.files[0].name || ''}</p>`;
     });
     uploadButton.addEventListener('click', uploadImage);
-  };
-}
+  }
+};
 
 /*
 * Checks if a file has a specific extension
@@ -99,7 +99,7 @@ const isValidFormat = (filename) => {
   });
 
   return result;
-}
+};
 
 /*
  * Upload an image (upload has been clicked after selecting a file)
@@ -121,14 +121,14 @@ const uploadImage = (event) => {
       uploadButton.classList.toggle('button--disabled');
       cancelButton.classList.toggle('button--disabled');
       location.href = this.responseURL;
-    } else if(!this.readyState == 4 || !this.status == 200) {
+    } else if(this.readyState != 4 || this.status != 200) {
       loader.classList.toggle('is-uploading');
       uploadButton.classList.toggle('button--disabled');
       cancelButton.classList.toggle('button--disabled');
       tempData.style.color = '#e53935';
       setTempData('There was an errror uploading your image');
     }
-  }
+  };
 
   if(uploadInput.files[0]) {
     let formData = new FormData();
@@ -145,43 +145,43 @@ const uploadImage = (event) => {
       setTempData('Unsuported file extension');
     }
   } else {
-    tempData.style.color = '#e53935'
+    tempData.style.color = '#e53935';
     setTempData('Please, provide an image');
   }
-}
+};
 
 /*
  * Sets the text feedback when manipulating files in the upload dialog
  */
 const setTempData = (text) => {
   tempData.innerHTML = `<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#alert"></use></svg>&nbsp;&nbsp;<p>${text}</p>`;
-}
+};
 
 /*
  * Input validation functions 
  */
 
 const testUserName = (input) => {
-   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
-    (input.value.match(input.dataset.valRegexPattern) ? manageInvalidField(input, true) : manageInvalidField(input, false));
-}
+  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
+   (input.value.match(input.dataset.valRegexPattern) ? manageInvalidField(input, true) : manageInvalidField(input, false));
+};
 
 const testEmail = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
     (input.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(input, true) : manageInvalidField(input, false));
-}
+};
 
 const testPassword = (input) => {
   return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false));
-}
+};
 
 const testPasswordLength = (input) => {
   return (input.value.length >= 8 ? managePasswordLength(input, true) : managePasswordLength(input, false));
-}
+};
 
 const testEqual = (input1, input2) => {
   return (input1.value == input2.value ? manageEqualPasswords(input2, true) : manageEqualPasswords(input2, false));
-}
+};
 
 /*---------------
  *   Login form
@@ -197,11 +197,11 @@ const loginFormInit = () => {
     passwordInput = document.getElementById('password');
 
     usernameInput.addEventListener('input', () => { testUserName(usernameInput); });
-    passwordInput.addEventListener('input', () => { testPassword(passwordInput); })
+    passwordInput.addEventListener('input', () => { testPassword(passwordInput); });
 
     loginButton.addEventListener('click', userLogin);
   }
-}
+};
 
 const userLogin = (event) => {
   event.preventDefault();
@@ -211,7 +211,7 @@ const userLogin = (event) => {
   if(validateLogin()) {
     document.forms.namedItem('loginform').submit();
   }
-}
+};
 
 const validateLogin = () => {
   var testEm = testUserName(usernameInput),
@@ -222,7 +222,7 @@ const validateLogin = () => {
   }
 
   return false;
-}
+};
 
 /*---------------
  * Register form
@@ -244,11 +244,11 @@ const registerFormInit = () => {
     usernameInput.addEventListener('input',  () => { testUserName(usernameInput); });
     emailInput.addEventListener('input',     () => { testEmail(emailInput); });
     passwordInput.addEventListener('input',  () => { testPasswordLength(passwordInput); testEqual(passwordInput, cpasswordInput); testPassword(passwordInput); });
-    cpasswordInput.addEventListener('input', () => { testPassword(cpasswordInput); testEqual(passwordInput, cpasswordInput); })
+    cpasswordInput.addEventListener('input', () => { testPassword(cpasswordInput); testEqual(passwordInput, cpasswordInput); });
 
     registerButton.addEventListener('click', userRegister);
   }
-}
+};
 
 const userRegister = (event) => {
   event.preventDefault();
@@ -258,7 +258,7 @@ const userRegister = (event) => {
   if(validateRegister()) {
     document.forms.namedItem('registerform').submit();
   }
-}
+};
 
 const validateRegister = () => {
   var testUn = testUserName(usernameInput),
@@ -267,12 +267,12 @@ const validateRegister = () => {
       testEq = testEqual(passwordInput, cpasswordInput),
       testLn = testPasswordLength(passwordInput);
 
-      if(testUn && testEm && testCp && testLn && testEq) {
+  if(testUn && testEm && testCp && testLn && testEq) {
     return true;
   }
 
   return false;
-}
+};
 
 const manageEmptyField = (input, state) => {
   if(!state) {
@@ -284,7 +284,7 @@ const manageEmptyField = (input, state) => {
     input.classList.remove('input--text--error');
     return true;
   }
-}
+};
 
 const manageInvalidField = (input, state) => {
   if(!state) {
@@ -296,7 +296,7 @@ const manageInvalidField = (input, state) => {
     input.classList.remove('input--text--error');
     return true;
   }
-}
+};
 
 const manageEqualPasswords = (input, state) => {
   if(!state) {
@@ -308,7 +308,7 @@ const manageEqualPasswords = (input, state) => {
     input.classList.remove('input--text--error');
     return true;
   }
-}
+};
 
 const managePasswordLength = (input, state) => {
   if(!state) {
@@ -320,8 +320,8 @@ const managePasswordLength = (input, state) => {
     input.classList.remove('input--text--warning');
     return true;
   }
-}
+};
 
 export default {
   init
-}
+};
