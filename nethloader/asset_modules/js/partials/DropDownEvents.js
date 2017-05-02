@@ -30,7 +30,7 @@ const manageDropdownActiveState = (event) => {
       dropdownElement = document.querySelector(`[data-dropdownid=${eventTarget.dataset.dropdownelement}]`),
       dropdownItems   = dropdownElement.children[0].children;
 
-  if(!dropdownElement.contains(event.target) || event.target != dropdownElement) {
+  if(!dropdownElement.contains(event.target) || (!event.target == dropdownElement)) {
     document.querySelector('.user-header__user-menu-icon').classList.toggle('drop-open');
     eventTarget.children[1].classList.toggle('drop-open');
     for(let i = dropdownItems.length - 1; i >= 0; i--) {
