@@ -20,7 +20,7 @@ const addListeners = () => {
   for (let i = inputElements.length - 1; i >= 0; i--) {
     inputElements[i].addEventListener('input', manageLabelActiveState);
     inputElements[i].addEventListener('click', manageLabelActiveState);
-    checkInputContent(inputElements[i]); // In case the input has a remembered value
+    checkInputContent(inputElements[i]); // In case the input has a already a set value
   }
 };
 

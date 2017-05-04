@@ -1,75 +1,20 @@
 body {
-    background-color: #ebeff1;
+    background-color: var(--body-bg);
     width: 100vw;
     min-height: 100vh;
     height: 100%;
     position: relative;
     overflow-x: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+     font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-.app-wrapper {
+.content-wrapper {
+    height: 100%;
     width: 100%;
     flex: 1;
-}
-
-.inner-wrapper {
-   width: 100%;
-   height: 100%;
-   position: relative;
-   flex: 1;
-}
-
-.inner-wrapper--container {
-    width: 100%;
-    height: 100%;
-    max-width: $inner-container-max-width;
-}
-
-a {
-    transition: color .3s ease;
-    color: darken($accent-light, 24%);
-
-    &:active, 
-    &:hover { color: darken($accent-light, 8%); }
-}
-
-.app-footer { margin-top: 35px; }
-
-
-.loader-wrapper {
-    margin: $base-padding;
-    opacity: 0;
-    pointer-events: none;
-    z-index: -5;
-    transition: $easeOutQuad;
-    position: absolute;
-    right: 65px;
-
-    &.is-uploading {
-        opacity: 1;
-        z-index: 1;
-        transform: translateX(5px);
-    }
-}
-
-.loader {
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid $accent-light;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    animation: spin 2s linear infinite;
-}
-
-#temp-data {
-    margin-top: $base-padding;
-    max-width: 100%;
-
-    svg { transform: scale(.85); }
-
-    p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 }

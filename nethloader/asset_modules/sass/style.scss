@@ -1,10 +1,19 @@
-// Libs and vars
+/* ------------------
+  Libs and defaults
+------------------ */
 @import './lib/lib';
-// Layout styles
+
+/* ------------------
+    UI Layout
+------------------ */
 @import './layout/layout';
-// Component styles
+
+/* ------------------
+    Components
+------------------ */
 @import './components/components';
 
-// Making sure responsive styles are loaded the last in order to override
-@import './layout/responsive';
-@import './components/responsive';
+/* ------------------
+    UI Structures
+------------------ */
+@import './structures/structures';

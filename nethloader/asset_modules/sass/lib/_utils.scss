@@ -3,7 +3,13 @@ General utils
 ------------ */
 
 /* Cursor pointer */
-.pointer { cursor: pointer!important; }
+.c-pointer { cursor: pointer!important; }
+
+/* Cursor default */
+.c-default { cursor: default!important; }
+
+/* Cursor nope */
+.c-nope { cursor: not-allowed!important; }
 
 /* ------------
 Flexbox utils 
@@ -38,6 +44,8 @@ Flexbox utils
 .ta-c { text-align: center; }
 
 .ta-r { text-align: right; }
+
+.ta-l { text-align: left; }
 
 /**
  * A mixin which helps you to add depth to elements.

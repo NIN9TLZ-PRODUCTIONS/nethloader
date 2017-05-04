@@ -1,0 +1,54 @@
+﻿.auth-card__wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.auth-card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background-color: transparentize($base4, .05);
+    padding: calc(var(--base-pm) * 3);
+    color: var(--accent-contrast);
+    min-height: 350px;
+    @include box_shadow(4);
+}
+
+.auth-card--su {
+    background-color: transparentize($base2, .05);
+}
+
+.auth-card__content  {
+    width: 100%;
+}
+
+
+.auth-card__alt-su {
+    display: block;
+    will-change: padding;
+    padding: calc(var(--base-pm) * 3);
+    background-color: transparentize($base2, .05);
+    color: var(--accent-contrast-darker);
+    transition: padding 350ms var(--easeOutExpo);
+
+    &:hover { padding: calc(var(--base-pm) * 3) calc(var(--base-pm) * 5); }
+}
+
+.auth-card__alt-li {
+    display: block;
+    will-change: padding;
+    padding: calc(var(--base-pm) * 3);
+    background-color: transparentize($base4, .05);
+    color: var(--accent-contrast);
+    transition: padding 350ms var(--easeOutExpo);
+
+    &:hover { padding: calc(var(--base-pm) * 3) calc(var(--base-pm) * 5); }
+}
+
+.auth-card__alt__container {
+    will-change: opacity;
+    opacity: .65;
+    transition: opacity 500ms var(--easeOutExpo);
+
+    .auth-card__alt-su:hover & { opacity: 1; }
+}
