@@ -29,3 +29,7 @@
     margin: $base-padding*2;
     font-size: .9em;
 }
+
+.content-card--full-height {
+    min-height: calc(100vh - 154px);
+}

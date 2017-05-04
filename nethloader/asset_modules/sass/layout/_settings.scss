@@ -2,9 +2,11 @@
     justify-content: flex-end;
 }
 
-.settings-card  {
+.settings-card {
     flex: 1;
     padding: $base-padding*2;
+    overflow: hidden;
+    z-index: 10;
 }
 
 .settings-menu {
@@ -12,24 +14,23 @@
 }
 
 .settings-menu__item {
+    transition: $easeOutQuad;
     padding: $base-padding*1.5;
     margin-bottom: $base-padding*2;
     border-radius: $border-radius--normal 0 0 $border-radius--normal;
-    position: relative;
+    pointer-events: initial;
 
-    &.active {
-        background-color: white;
-        @include box_shadow(2);
-
-        &::after {
-            content: '';
-            background-color: white;
-            position: absolute;
-            left: 100%;
-            width: 14px;
-            top: 0;
-            height: 56px;
+    &:not(.is-active) {
+        &:hover {
+            background-color: transparentize($primary-dark, .9);
         }
+    }
+
+    &.is-active {
+        background-color: #fff;
+        @include box_shadow(2);
+        cursor: default !important;
+        pointer-events: none;
     }
 }
 
@@ -74,4 +75,24 @@
     background-color: transparentize(#bdccd3, .7);
 
     &:hover { background-color: darken(transparentize(#bdccd3, .7), 25%); }
+}
+
+.setting-section__container {
+    transition: transform .5s cubic-bezier(0.19, .5, 0.22, 1);
+    transform: translateX(-100vw);
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+
+    &.is-active {
+        visibility: visible;
+        opacity: 1;
+        position: relative;
+        height: 100%;
+        transform: translateX(0);
+        pointer-events: initial;
+    }
 }

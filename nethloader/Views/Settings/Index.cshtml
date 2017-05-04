@@ -28,73 +28,84 @@
     </header>
     <div class="settings flex flex-full-center">
         <div class="inner-wrapper--container flex flex-main-center">
-            <div class="inner-wrapper--container settings-card content-card content-card--full-height flex flex-dc">
-                <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                    <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;&nbsp;Info Settings</div>
-                    <p class="settings-card__settings-description">Manage your email and account information.</p>
-                    <form class="flex flex-cross-center">
-                        <div class="form-row flex flex-main-center flex-sa">
-                            <div class="settings-input-container">
-                                <input id="email" type="email" class="input input--text" data-type="text" value="accounts@gariasf.com" required>
-                                <label for="email" class="label--itext flex flex-full-center">
-                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
-                                </label>
+            <div class="settings-menu">
+                <ul class="settings__menu-items">
+                    <li class="settings-menu__item pointer is-active" data-menutrigger="account" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-settings"></use></svg>&nbsp;Account Settings</li>
+                    <li class="settings-menu__item pointer" data-menutrigger="content" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-multiple"></use></svg>&nbsp;Content Settings</li>
+                </ul>
+            </div>
+            <div class="inner-wrapper--container settings-card content-card content-card--full-height flex">
+                <div class="setting-section__container is-active" data-menuid="account">
+                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
+                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;&nbsp;Details</div>
+                        <p class="settings-card__settings-description">Manage your email and account information.</p>
+                        <form class="flex flex-cross-center">
+                            <div class="form-row flex flex-main-center flex-sa">
+                                <div class="settings-input-container">
+                                    <input id="email" type="email" class="input input--text" data-type="text" value="accounts@gariasf.com" required>
+                                    <label for="email" class="label--itext flex flex-full-center">
+                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
+                                    </label>
+                                </div>
+                                <div class="settings-input-container">
+                                    <input id="username" type="text" class="input input--text" data-type="text" value="@User.Identity.Name" required>
+                                    <label for="username" class="label--itext flex flex-full-center">
+                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="settings-input-container">
-                                <input id="username" type="text" class="input input--text" data-type="text" value="gariasf" required>
-                                <label for="username" class="label--itext flex flex-full-center">
-                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
-                                </label>
+                        </form>
+                    </div>
+                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
+                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;&nbsp;Security</div>
+                        <p class="settings-card__settings-description">Manage your password and security settings.</p>
+                        <form class="flex flex-cross-center">
+                            <div class="form-row flex flex-main-center flex-sa">
+                                <div class="settings-input-container">
+                                    <input id="npassword" type="password" class="input input--text" data-type="text" required>
+                                    <label for="npassword" class="label--itext flex flex-full-center">
+                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;&nbsp;New Password</span>
+                                    </label>
+                                </div>
+                                <div class="settings-input-container">
+                                    <input id="cpassword" type="password" class="input input--text" data-type="text" required>
+                                    <label for="cpassword" class="label--itext flex flex-full-center">
+                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;&nbsp;Repeat New Password</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                    <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;&nbsp;Security Settings</div>
-                    <p class="settings-card__settings-description">Manage your password and security settings.</p>
-                    <form class="flex flex-cross-center">
-                        <div class="form-row flex flex-main-center flex-sa">
-                            <div class="settings-input-container">
-                                <input id="npassword" type="password" class="input input--text" data-type="text" required>
-                                <label for="npassword" class="label--itext flex flex-full-center">
-                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;&nbsp;New Password</span>
-                                </label>
+                        </form>
+                    </div>
+                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
+                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;&nbsp;Remote</div>
+                        <p class="settings-card__settings-description">Manage your remote apikey.</p>
+                        <form class="flex flex-cross-center">
+                            <div class="form-row flex flex-dc flex-cross-center">
+                                <b>Current APIkey: <span class="settings-card__apikey-container pointer">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</span></b>
+                                <button class="button button--primary button--double-margin pointer" title="Regenerate APIkey">
+                                    Generate new APIkey&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg>
+                                </button>
                             </div>
-                            <div class="settings-input-container">
-                                <input id="cpassword" type="password" class="input input--text" data-type="text" required>
-                                <label for="cpassword" class="label--itext flex flex-full-center">
-                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;&nbsp;Repeat New Password</span>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                    <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;&nbsp;Remote Settings</div>
-                    <p class="settings-card__settings-description">Manage your remote apikey.</p>
-                    <form class="flex flex-cross-center">
-                        <div class="form-row flex flex-dc flex-cross-center">
-                            <b>Current APIkey: <span class="settings-card__apikey-container pointer">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</span></b>
-                            <button class="button button--primary button--double-margin pointer" title="Regenerate APIkey">
-                                Generate new APIkey&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                    <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain Settings</div>
-                    <p class="settings-card__settings-description">Manage your custom domain.</p>
+                        </form>
+                    </div>
+                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
+                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain</div>
+                        <p class="settings-card__settings-description">Manage your custom domain.</p>
 
-                    <form class="flex flex-cross-center">
-                        <div class="form-row flex flex-dc flex-main-center flex-sa">
-                            <div class="settings-input-container">
-                                <input id="domain" type="text" class="input input--text" data-type="text" value="localhost" required>
-                                <label for="domain" class="label--itext flex flex-full-center">
-                                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain</span>
-                                </label>
+                        <form class="flex flex-cross-center">
+                            <div class="form-row flex flex-dc flex-main-center flex-sa">
+                                <div class="settings-input-container">
+                                    <input id="domain" type="text" class="input input--text" data-type="text" value="localhost" required>
+                                    <label for="domain" class="label--itext flex flex-full-center">
+                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="setting-section__container" data-menuid="content">
+
                 </div>
             </div>
         </div>
