@@ -15,6 +15,7 @@ $base5: #F4F4F9; // Light
     --accent-contrast-darker: darken($base5, 10%);
 
     --accent: $base4;
+    --accent-darker: darken($base4, 5%);
     --accent-lighter: lighten($base4, 5%);
 
     --primary-dark: $base2;
@@ -23,11 +24,13 @@ $base5: #F4F4F9; // Light
     --text-error: #e53935;
     --text-warning: #ff8f00;
     --text-success: #00C853;
-
     /* ------------------
         UI values
     ------------------ */
     --base-pm: 8px;
+    --content-max-width: 1060px;
+    --content-mid-width: 530px;
+    --content-narrow-width: 350px;
 
     /* ------------------
        Transitions

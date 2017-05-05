@@ -1,0 +1,12 @@
+﻿.paper-card {
+    background-color: transparentize(#fff, .05);
+    padding: calc(var(--base-pm) * 2);
+    border-radius: 2px;
+}
+
+.paper-card--fw { width: 100%; }
+
+.paper-card--dark {
+    background-color: transparentize($base2, .05);
+    color: var(--accent-contrast);
+}

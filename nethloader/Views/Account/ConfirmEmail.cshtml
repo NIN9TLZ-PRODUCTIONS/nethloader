@@ -1,9 +1,11 @@
 @{
     ViewData["Title"] = "Email confirmed";
+    ViewData["img-bg"] = true;
 }
 
-<div class="inner-wrapper flex flex-full-center flex-dc">
-    <div class="content-card content-card--w500 flex flex-full-center flex-dc">
-        <p class="text--success text--300 ta-c">Your email has been confirmed.</p>
+<div class="content-mid-wrapper flex flex-full-center flex-dc">
+    <div class="paper-card paper-card--fw paper-card--dark flex-dc flex flex-full-center">
+        <p class="text--success ta-c">Your email has been confirmed.</p>
+        <a asp-action="login" class="ta-c text--secondary"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;Go back to login</small></a>
     </div>
 </div>

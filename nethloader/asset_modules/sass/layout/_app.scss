@@ -8,8 +8,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--primary-dark);
 
     &.img-bg { background-image: url(../img/login-bg.jpg); }
 }
@@ -18,4 +18,14 @@ body {
     height: 100%;
     width: 100%;
     flex: 1;
+}
+
+.content-mid-wrapper {
+    width: 100%;
+    max-width: var(--content-mid-width);
+}
+
+.content-narrow-wrapper {
+    width: 100%;
+    max-width: var(--content-narrow-width);
 }

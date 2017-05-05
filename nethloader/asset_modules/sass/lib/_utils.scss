@@ -40,12 +40,14 @@ Flexbox utils
     height: auto;
 }
 
-/* Text align */
+/* Text utols */
 .ta-c { text-align: center; }
 
 .ta-r { text-align: right; }
 
 .ta-l { text-align: left; }
+
+.t-upp { text-transform: uppercase; }
 
 /**
  * A mixin which helps you to add depth to elements.

@@ -44,7 +44,10 @@ a {
 b,
 strong { font-weight: bolder; } /* Add the correct font weight in Chrome, Edge, and Safari. */
 
-small { font-size: 80%; } /* Add the correct font size in all browsers. */
+small { /* Add the correct font size in all browsers. */
+    font-size: 80%;
+    svg { transform: scale(.8); }
+} 
 
 img,
 svg { vertical-align: middle; }  /* Change the alignment on media elements in all browers. */
@@ -56,9 +59,7 @@ img {
 
 svg { fill: currentColor; } /* Change the fill color to match the text color in all browsers. */
 
-svg:not(:root) {
-    overflow: hidden; /* Hide the overflow in IE. */
-}
+svg:not(:root) { overflow: hidden; } /* Hide the overflow in IE. */ 
 
 button,
 input {
@@ -110,9 +111,8 @@ button:-moz-focusring,
 }
 
 [type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none; /* Remove the inner padding and cancel buttons in Chrome and Safari on macOS. */
-}
+[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+/* Remove the inner padding and cancel buttons in Chrome and Safari on macOS. */
 
 ol,
 ul {

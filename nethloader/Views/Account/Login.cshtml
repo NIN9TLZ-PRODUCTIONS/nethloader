@@ -9,24 +9,26 @@
         <div class="auth-card__content flex flex-dc flex-sb">
             <p class="text--title-fancy">Log In</p>
             <form enctype="multipart/form-data" method="post" name="loginform" asp-action="login" autocomplete="off">
-                <div class="auth-form-row">
+                <div class="form-row">
                     <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
-                    <label for="username" class="label--itext" data-for="username" data-error="You shouldn't be seeing this.">
+                    <label for="username" class="label--itext">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
                     </label>
+                    <div class="input--validation" data-for="username">&nbsp;</div>
                 </div>
-                <div class="auth-form-row">
+                <div class="form-row">
                     <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                    <label for="password" class="label--itext" data-for="password" data-error="You shouldn't be seeing this">
+                    <label for="password" class="label--itext">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
                     </label>
+                    <div class="input--validation" data-for="password">&nbsp;</div>
                 </div>
-                <div class="auth-form-row flex flex-sb">
+                <div class="form-row flex flex-sb">
                     <label for="remember_me" class="label--checkbox flex flex-full-center c-pointer">
                         <input asp-for="RememberMe" id="remember_me" class="input input--checkbox" type="checkbox">
                         <span class="check"></span><small>Remember me</small>
                     </label>
-                    <button id="login-button" class="button button--primary button--fancy-font button--icon-to-right button--shadow1 flex flex-full-center c-pointer">Log In&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>
+                    <button id="login-button" class="button button--primary button--fancy-font button--icon-to-right button--shadow1 flex flex-full-center c-pointer t-upp">Log In&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>
                     </button>
                 </div>
             </form>

@@ -11,14 +11,18 @@
     background-color: var(--primary-dark);
     border-radius: 2px;
     padding: calc(var(--base-pm) / 2) calc(var(--base-pm) * 2);
-    text-transform: uppercase;
     font-size: .9em;
+    color: currentColor;
 
     &:hover {
         background-color: var(--secondary-dark);
     }
 
     svg { transform: scale(.8); }
+}
+
+.button--fat {
+    padding: var(--base-pm) calc(var(--base-pm) * 2);
 }
 
 .button--shadow1 { @include box_shadow(1); }

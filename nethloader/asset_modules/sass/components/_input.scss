@@ -6,17 +6,16 @@
 .input { -webkit-appearance: none; }
 
 .input[data-type] {
-    margin-top: calc(var(--base-pm) * 2);
+    margin: calc(var(--base-pm) * 2) 0;
     position: relative;
-    border-bottom: 1.2px solid var(--accent-contrast-darker);
+    border-bottom: 1px solid var(--accent-contrast-darker);
     width: 100%;
-    transition: border-color 300ms var(--easeOutBack);
+    transition: border-color 350ms var(--easeOutBack);
 }
 
 .input--text--error { border-bottom-color: var(--text-error)!important; }
 
 .input--text--warning { border-bottom-color: var(--text-warning)!important; }
-
 
 /* Checkbox Inputs */
 .input--checkbox {
@@ -59,7 +58,6 @@
     transition: all 500ms var(--easeOutExpo);
 }
 
-
 /*
 *   Labels
 */
@@ -77,45 +75,42 @@
         pointer-events: none;
     }
 
-
     svg { width: 20px; }
+}
 
-    &::before {
-        transition: transform 500ms var(--easeOutExpo), opacity 500ms var(--easeOutExpo);
-        content: attr(data-error);
-        font-size: .8em;
-        background-color: transparentize(#fff, .1);
-        position: absolute;
-        left: 32%;
-        max-width: 200px;
-        width: 100%;
-        text-align: center;
-        color: var(--text-error);
-        padding: calc(var(--base-pm) / 2);
-        border-radius: 2px;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-10px);
-        top: -8px;
-    }
+.input--validation {
+    transition: transform 500ms var(--easeOutExpo), opacity 500ms var(--easeOutExpo);
+    font-size: .8em;
+    background-color: transparentize(#fff, .1);
+    position: absolute;
+    right: 0;
+    max-width: 200px;
+    text-align: center;
+    color: var(--text-error);
+    padding: calc(var(--base-pm) / 2) calc(var(--base-pm));
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+    top: 80%;
 }
 
 .input--text--error + .label--itext,
 .input--text--warning + .label--itext {
-    &::before {
+    & + .input--validation {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
 .input--text--warning + .label--itext {
-    &::before { color: var(--text-warning); }
+    & + .input--validation { color: var(--text-warning); }
 }
 
 .input[data-type]:focus ~ .label--itext,
 .input[data-type]:active ~ .label--itext,
 .label--itext.has-content {
-    transform: translateY(-22px) translateX(-26px) scale(.85);
+    transform: translateY(-80%) translateX(-8%) scale(.85);
 
     span { opacity: .65; }
 }
