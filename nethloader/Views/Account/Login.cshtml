@@ -1,6 +1,7 @@
 @model nethloader.Models.AccountViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Nethloader - Log In";
+    ViewData["img-bg"] = true;
 }
 
 <div class="auth-card__wrapper flex flex-main-center ">
@@ -10,13 +11,13 @@
             <form enctype="multipart/form-data" method="post" name="loginform" asp-action="login" autocomplete="off">
                 <div class="auth-form-row">
                     <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
-                    <label for="username" class="label--itext" data-error="You shouldn't be seeing this">
+                    <label for="username" class="label--itext" data-for="username" data-error="You shouldn't be seeing this.">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
                     </label>
                 </div>
                 <div class="auth-form-row">
                     <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                    <label for="password" class="label--itext" data-error="You shouldn't be seeing this">
+                    <label for="password" class="label--itext" data-for="password" data-error="You shouldn't be seeing this">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
                     </label>
                 </div>
@@ -34,17 +35,10 @@
             </div>
         </div>
     </div>
-    <a class="auth-card__alt-su" asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]">
-        <div class="su-container flex flex-dc flex-cross-center">
+    <a class="auth-card__alt auth-card__alt--su" asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <div class="auth-card__alt__container flex flex-dc flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-plus"></use></svg>
             <small>Sign Up</small>
         </div>
     </a>
 </div>
-
-<!-- Dirty, but it's easy and works -->
-<style>
-    body {
-        background-image: url('/img/login-bg.jpg');
-    }
-</style>

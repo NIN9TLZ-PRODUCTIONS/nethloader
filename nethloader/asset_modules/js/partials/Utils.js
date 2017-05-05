@@ -27,10 +27,11 @@ const testEqual = (input1, input2) => {
  * Input state functions 
  */
 const manageEmptyField = (input, state) => {
+  var inputVal = document.querySelector(`[data-for="${input.id}"]`);
   if(!state) {
     input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
-    input.nextElementSibling.dataset.error = "This field can't be empty.";
+    inputVal.dataset.error = "This field can't be empty.";
     return false;
   } else {
     input.classList.remove('input--text--error');
@@ -39,10 +40,11 @@ const manageEmptyField = (input, state) => {
 };
 
 const manageInvalidField = (input, state) => {
+  var inputVal = document.querySelector(`[data-for="${input.id}"]`);
   if(!state) {
     input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
-    input.nextElementSibling.dataset.error = "This field is not valid.";
+    inputVal.dataset.error = "This field is not valid.";
     return false;
   } else {
     input.classList.remove('input--text--error');
@@ -51,10 +53,11 @@ const manageInvalidField = (input, state) => {
 };
 
 const manageEqualPasswords = (input, state) => {
+  var inputVal = document.querySelector(`[data-for="${input.id}"]`);
   if(!state) {
     input.classList.remove('input--text--warning');
     input.classList.add('input--text--error');
-    input.nextElementSibling.dataset.error = "The passwords don't match.";
+    inputVal.dataset.error = "The passwords don't match.";
     return false;
   } else {
     input.classList.remove('input--text--error');
@@ -63,10 +66,11 @@ const manageEqualPasswords = (input, state) => {
 };
 
 const managePasswordLength = (input, state) => {
+  var inputVal = document.querySelector(`[data-for="${input.id}"]`);
   if(!state) {
     input.classList.remove('input--text--error');
     input.classList.add('input--text--warning');
-    input.nextElementSibling.dataset.error = "Use at least 8 characters.";
+    inputVal.dataset.error = "Use at least 8 characters.";
     return false;
   } else {
     input.classList.remove('input--text--warning');

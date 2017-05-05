@@ -12,7 +12,7 @@ $base5: #F4F4F9; // Light
     --body-bg: $base5;
 
     --accent-contrast: #fff;
-    --accent-contrast-darker: darken($base5, 20%);
+    --accent-contrast-darker: darken($base5, 10%);
 
     --accent: $base4;
     --accent-lighter: lighten($base4, 5%);
@@ -21,11 +21,14 @@ $base5: #F4F4F9; // Light
     --secondary-dark: $base3;
 
     --text-error: #e53935;
+    --text-warning: #ff8f00;
     --text-success: #00C853;
+
     /* ------------------
         UI values
     ------------------ */
     --base-pm: 8px;
+
     /* ------------------
        Transitions
     ------------------ */

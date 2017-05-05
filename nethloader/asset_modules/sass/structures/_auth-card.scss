@@ -4,7 +4,6 @@
 }
 
 .auth-card {
-    position: relative;
     width: 100%;
     max-width: 400px;
     background-color: transparentize($base4, .05);
@@ -23,26 +22,24 @@
 }
 
 
-.auth-card__alt-su {
+.auth-card__alt {
     display: block;
     will-change: padding;
     padding: calc(var(--base-pm) * 3);
-    background-color: transparentize($base2, .05);
     color: var(--accent-contrast-darker);
-    transition: padding 350ms var(--easeOutExpo);
+    transition: padding 350ms var(--easeOutExpo), color 350ms var(--easeOutExpo);
 
-    &:hover { padding: calc(var(--base-pm) * 3) calc(var(--base-pm) * 5); }
+    &:hover {
+        padding: calc(var(--base-pm) * 3) calc(var(--base-pm) * 5);
+        color: var(--accent-contrast);
+    }
 }
 
-.auth-card__alt-li {
-    display: block;
-    will-change: padding;
-    padding: calc(var(--base-pm) * 3);
+.auth-card__alt--su { background-color: transparentize($base2, .05); }
+
+.auth-card__alt--li {
     background-color: transparentize($base4, .05);
     color: var(--accent-contrast);
-    transition: padding 350ms var(--easeOutExpo);
-
-    &:hover { padding: calc(var(--base-pm) * 3) calc(var(--base-pm) * 5); }
 }
 
 .auth-card__alt__container {
@@ -50,5 +47,5 @@
     opacity: .65;
     transition: opacity 500ms var(--easeOutExpo);
 
-    .auth-card__alt-su:hover & { opacity: 1; }
+    .auth-card__alt:hover & { opacity: 1; }
 }

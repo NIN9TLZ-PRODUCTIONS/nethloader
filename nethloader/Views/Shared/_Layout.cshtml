@@ -25,7 +25,7 @@
     <!-- Main Styles -->
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<body class="flex flex-dc">
+<body class="@("flex flex-dc" + ((bool)ViewData["img-bg"] ? " img-bg" : ""))">
     <div class="content-wrapper flex flex-full-center">
         @RenderBody()
     </div>

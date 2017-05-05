@@ -1,10 +1,11 @@
 @model nethloader.Models.AccountViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Nethloader - Sign Up";
+    ViewData["img-bg"] = true;
 }
 
 <div class="auth-card__wrapper flex flex-main-center ">
-    <a class="auth-card__alt-li" asp-action="login" asp-route-returnurl="@ViewData["ReturnUrl"]">
+    <a class="auth-card__alt auth-card__alt--li" asp-action="login" asp-route-returnurl="@ViewData["ReturnUrl"]">
         <div class="auth-card__alt__container flex flex-dc flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>
             <small>Log In</small>
@@ -16,25 +17,25 @@
             <form enctype="multipart/form-data" method="post" name="registerform" asp-action="register" autocomplete="off">
                 <div class="auth-form-row">
                     <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
-                    <label for="username" class="label--itext" data-error="You shouldn't be seeing this">
+                    <label for="username" class="label--itext" data-for="username" data-error="You shouldn't be seeing this">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
                     </label>
                 </div>
                 <div class="auth-form-row">
                     <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                    <label for="email" class="label--itext">
+                    <label for="email" class="label--itext" data-for="email" data-error="You shouldn't be seeing this">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
                     </label>
                 </div>
                 <div class="auth-form-row">
                     <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                    <label for="password" class="label--itext" data-error="You shouldn't be seeing this">
+                    <label for="password" class="label--itext" data-for="password" data-error="You shouldn't be seeing this">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
                     </label>
                 </div>
                 <div class="auth-form-row">
                     <input asp-for="ConfirmPassword" id="cpassword" type="password" class="input input--password" data-type="password" required>
-                    <label for="cpassword" class="label--itext" data-error="You shouldn't be seeing this">
+                    <label for="cpassword" class="label--itext" data-for="cpassword" data-error="You shouldn't be seeing this">
                         <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm Password</span>
                     </label>
                 </div>
@@ -47,9 +48,3 @@
         </div>
     </div>
 </div>
-<!-- Dirty, but it's easy and works -->
-<style>
-    body {
-        background-image: url('/img/login-bg.jpg');
-    }
-</style>
