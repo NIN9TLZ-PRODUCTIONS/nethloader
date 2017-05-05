@@ -1,15 +1,14 @@
 body {
-    background-color: var(--body-bg);
     width: 100vw;
     min-height: 100vh;
     height: 100%;
     position: relative;
     overflow-x: hidden;
-    background-size: cover;
-    background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
     color: var(--primary-dark);
+    background-color: #f4f4f9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23cecece' fill-opacity='0.58' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 
     &.img-bg { background-image: url(../img/login-bg.jpg); }
 }
@@ -20,12 +19,33 @@ body {
     flex: 1;
 }
 
-.content-mid-wrapper {
+.inner-wrapper {
+    width: 100%;
+    max-width: var(--content-max-width);
+    flex: 1;
+}
+
+.inner-mid-wrapper {
     width: 100%;
     max-width: var(--content-mid-width);
 }
 
-.content-narrow-wrapper {
+.inner-narrow-wrapper {
     width: 100%;
     max-width: var(--content-narrow-width);
+}
+
+.app-footer { margin-top: calc(var(--base-pm) * 4); }
+
+#temp-data {
+    margin-top: var(--base-pm);
+    max-width: 100%;
+
+    svg { transform: scale(.85); }
+
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

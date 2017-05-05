@@ -1,0 +1,46 @@
+﻿.dialog__wrapper {
+    position: absolute;
+    background-color: transparent;
+    transition: background-color .2s;
+    animation-delay: .1s;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+
+    &.is-active {
+        z-index: 2000;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,.5);
+    }
+}
+
+.dialog {
+    z-index: 3000;
+    background-color: white;
+    border-radius: 2px;
+    animation-delay: .1s;
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    padding: 0;
+    pointer-events: none;
+    @include box_shadow(3);
+
+    &.is-active {
+        padding: calc(var(--base-pm) * 3);
+        padding-bottom: var(--base-pm);
+        animation-name: come-from-top-long;
+        animation-duration: .2s;
+        animation-fill-mode: both;
+        pointer-events: initial;
+    }
+}
+
+.dialog__header__title {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.dialog__content { padding: calc(var(--base-pm) * 4) 0; }

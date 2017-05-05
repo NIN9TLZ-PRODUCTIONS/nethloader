@@ -6,14 +6,22 @@
     font-family: 'Exo', 'Roboto', sans-serif;
 }
 
+.text--title {
+    text-transform: uppercase;
+    color: currentColor;
+    font-size: 1.2em;
+}
+
 .text--secondary {
     will-change: opacity;
     opacity: .65;
     transition: opacity 400ms var(--easeOutExpo);
-    
-    &:hover { opacity: 1; }
 }
 
 .text--error { color: var(--text-error) !important; }
 
 .text--warning { color: var(--text-warinng) !important; }
+
+.text--accent { color: var(--accent) !important; }
+
+.text--accent-contrast { color: var(--accent-contrast) !important; }

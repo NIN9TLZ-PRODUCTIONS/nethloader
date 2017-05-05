@@ -26,9 +26,10 @@
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body class="@("flex flex-dc" + ((bool)ViewData["img-bg"] ? " img-bg" : ""))">
-    <div class="content-wrapper flex flex-full-center">
+    <div class="@("content-wrapper flex flex-full-center flex-dc" + ((bool)ViewData["img-bg"] ? "" : " flex-sb"))">
         @RenderBody()
     </div>
+    <div class="app-footer"><p class="ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;<a href="/account/login" target="_blank" rel="noopener">Login</a></small></p></div>
     <script>
         var antiforgeryToken = @Json.Serialize(antiforgery.GetAndStoreTokens(Context).RequestToken);
         var supportedExtensions = (@Json.Serialize(string.Join(",", Enum.GetNames(typeof(nethloader.Models.ImageExtensions))))).split(',');

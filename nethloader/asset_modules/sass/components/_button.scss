@@ -9,25 +9,12 @@
 
 .button--primary {
     background-color: var(--primary-dark);
-    border-radius: 2px;
     padding: calc(var(--base-pm) / 2) calc(var(--base-pm) * 2);
     font-size: .9em;
-    color: currentColor;
+    color: var(--accent-contrast);
 
-    &:hover {
-        background-color: var(--secondary-dark);
-    }
-
-    svg { transform: scale(.8); }
+    &:hover { background-color: var(--secondary-dark-darker); }
 }
-
-.button--fat {
-    padding: var(--base-pm) calc(var(--base-pm) * 2);
-}
-
-.button--shadow1 { @include box_shadow(1); }
-
-.button--fw { width: 100%; }
 
 .button--accent {
     color: var(--accent-contrast);
@@ -36,10 +23,27 @@
     &:hover { background-color: var(--accent-lighter); }
 }
 
-.button--icon-to-right {
-    svg { transition: transform 400ms var(--easeOutExpo); }
+.button--transparent {
+    background-color: transparent;
 
-    &:hover {
-        svg { transform: scale(.8) translateX(5px); }
-    }
+    &:hover { background-color: var(--accent-contrast-darker); }
 }
+
+.button--fat { 
+    padding: var(--base-pm) calc(var(--base-pm) * 2); 
+    border-radius: 2px;
+}
+
+.button--fat-long {
+    margin: var(--base-pm) 0;
+    padding: var(--base-pm) calc(var(--base-pm) * 3);
+    border-radius: 2px;
+}
+
+.button--shadow1 { @include box_shadow(1); }
+
+.button--shadow2 { @include box_shadow(2); }
+
+.button--fw { width: 100%; }
+
+.button--margin-lr { margin: 0 var(--base-pm); }

@@ -1,0 +1,24 @@
+﻿.loader-wrapper {
+    margin: var(--base-pm);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -5;
+    transition: opacity 400ms var(--easeOutExpo), transform 300ms var(--easeOutBack);
+    position: absolute;
+    right: 65px;
+
+    &.is-uploading {
+        opacity: 1;
+        z-index: 1;
+        transform: translateX(5px);
+    }
+}
+
+.loader {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 2s linear infinite;
+}

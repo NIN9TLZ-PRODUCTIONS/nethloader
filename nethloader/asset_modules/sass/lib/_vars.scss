@@ -2,7 +2,7 @@
 $base1: #1E1E1E; // Dark
 $base2: #2F4550; // Dark1
 $base3: #587282; // Dark2
-$base4: #9a6df7; // Accent
+$base4: #03A9F4; // Accent
 $base5: #F4F4F9; // Light
 
 :root {
@@ -12,18 +12,20 @@ $base5: #F4F4F9; // Light
     --body-bg: $base5;
 
     --accent-contrast: #fff;
-    --accent-contrast-darker: darken($base5, 10%);
+    --accent-contrast-darker: darken(#fff, 10%);
 
     --accent: $base4;
-    --accent-darker: darken($base4, 5%);
-    --accent-lighter: lighten($base4, 5%);
+    --accent-darker: darken($base4, 10%);
+    --accent-lighter: lighten($base4, 10%);
 
     --primary-dark: $base2;
     --secondary-dark: $base3;
+    --secondary-dark-darker: darken($base3, 10%);
 
     --text-error: #e53935;
     --text-warning: #ff8f00;
     --text-success: #00C853;
+
     /* ------------------
         UI values
     ------------------ */
