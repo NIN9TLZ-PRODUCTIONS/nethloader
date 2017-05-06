@@ -3,7 +3,13 @@ General utils
 ------------ */
 
 /* Cursor pointer */
-.pointer { cursor: pointer!important; }
+.c-pointer { cursor: pointer!important; }
+
+/* Cursor default */
+.c-default { cursor: default!important; }
+
+/* Cursor nope */
+.c-nope { cursor: not-allowed!important; }
 
 /* ------------
 Flexbox utils 
@@ -17,6 +23,8 @@ Flexbox utils
     justify-content: center;
     align-items: center;
 }
+
+.flex-f1 { flex: 1; }
 
 /* Center within the main axis */
 .flex-main-center { justify-content: center; }
@@ -34,10 +42,14 @@ Flexbox utils
     height: auto;
 }
 
-/* Text align */
+/* Text utols */
 .ta-c { text-align: center; }
 
 .ta-r { text-align: right; }
+
+.ta-l { text-align: left; }
+
+.t-upp { text-transform: uppercase; }
 
 /**
  * A mixin which helps you to add depth to elements.

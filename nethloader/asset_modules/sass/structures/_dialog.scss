@@ -19,7 +19,7 @@
 .dialog {
     z-index: 3000;
     background-color: white;
-    border-radius: $border-radius--normal;
+    border-radius: 2px;
     animation-delay: .1s;
     width: 100%;
     max-width: 400px;
@@ -29,9 +29,9 @@
     @include box_shadow(3);
 
     &.is-active {
-        padding: $base-padding*3;
-        padding-bottom: $base-padding;
-        animation-name: dialog-from-top;
+        padding: calc(var(--base-pm) * 3);
+        padding-bottom: var(--base-pm);
+        animation-name: come-from-top-long;
         animation-duration: .2s;
         animation-fill-mode: both;
         pointer-events: initial;
@@ -43,4 +43,4 @@
     font-weight: 300;
 }
 
-.dialog__content { padding: $base-padding*4 0; }
+.dialog__content { padding: calc(var(--base-pm) * 4) 0; }

@@ -1,23 +1,23 @@
-/*
+﻿/*
 *   Inputs
 */
 
+/* Text input */
 .input { -webkit-appearance: none; }
 
-// Text/Password Inputs
-.input--text, 
-.input--password {
-    border: 1px solid lighten($primary-dark, 60%);
-    border-radius: $border-radius--normal;
-    padding: $base-padding*2 $base-padding*2 2px $base-padding*2;
-    margin: $base-padding 0;
+.input[data-type] {
+    margin: calc(var(--base-pm) * 2) 0;
+    position: relative;
+    border-bottom: 1px solid var(--accent-contrast-darker);
+    width: 100%;
+    transition: border-color 350ms var(--easeOutBack);
 }
 
-.input--text--error { border-color: #e53935; }
+.input--text--error { border-bottom-color: var(--text-error)!important; }
 
-.input--text--warning { border-color: #FFC107; }
+.input--text--warning { border-bottom-color: var(--text-warning)!important; }
 
-// Checkbox Inputs
+/* Checkbox Inputs */
 .input--checkbox {
     visibility: hidden;
     display: none;
@@ -25,43 +25,40 @@
 
 .check {
     background-color: transparent;
-    border: 2px solid $secondary-dark-colour;
-    padding: $base-padding;
-    margin: 0 8px;
-    border-radius: $border-radius--small;
+    border: 1px solid var(--accent-contrast-darker);
+    padding: var(--base-pm);
+    margin-right: var(--base-pm);
     display: inline-block;
     position: relative;
-    cursor: pointer;
-    transition: $easeOutQuad;
+    transition: all 500ms var(--easeOutExpo);
+    border-radius: 2px;
 
-    &:hover { border-color: $primary-dark; }
+    &:hover { border-color: var(--primary-dark); }
 }
 
 .input--checkbox:checked + .check {
-    border-color: $primary-dark;
-    background-color: $primary-dark;
+    border-color: var(--primary-dark);
+    background-color: var(--primary-dark);
 }
 
 .input--checkbox:checked + .check::after {
-    color: $primary-light;
-    box-sizing: border-box;
-    -webkit-transform: rotate(45deg);
+    color: var(--accent-contrast-darker);
     transform: rotate(45deg);
     position: absolute;
-    left: 5px;
-    top: .2px;
+    left: 6px;
+    top: 0.8px;
     display: table;
-    width: 6px;
-    height: 13px;
-    border-width: 2px;
+    width: 5px;
+    height: 12px;
+    border-width: 1px;
     border-style: solid;
     border-top: 0;
     border-left: 0;
     content: "";
-    transition: $easeOutQuad;
+    transition: all 500ms var(--easeOutExpo);
 }
 
-// File inputs
+/* File inputs */
 .input--file {
     width: 0.1px;
     height: 0.1px;
@@ -75,107 +72,57 @@
 *   Labels
 */
 .label--itext {
+    width: 100%;
     cursor: text;
     position: absolute;
-    color: $secondary-light-colour;
-    transition: $easeOutQuad;
-    will-change: transform, color;
-    margin-left: $base-padding;
-    border-radius: $border-radius--normal;
+    left: 0;
+    top: calc(var(--base-pm) * 2);
     pointer-events: none;
-    width: calc(100% - 16px);
-    justify-content: flex-start;
-    font-weight: 300;
-    top: 18px;
+    transition: transform 300ms var(--easeOutBack), opacity 500ms var(--easeOutExpo);
 
-    span,
-    svg { transition: $easeOutQuad; }
-
-    span { display: block; }
-
-    &::before {
-        transition: $easeOutQuad;
-        content: attr(data-error);
-        font-size: .9em;
-        background-color: lighten($primary-light, 20%);
-        position: absolute;
-        left: 105%;
-        max-width: 220px;
-        width: 100%;
-        text-align: center;
-        color: #e53935;
-        @include box_shadow(2);
-        padding: $base-padding/2 $base-padding;
-        border: 1px solid #e53935;
-        border-radius: $border-radius--normal;
-        opacity: 0;
+    span {
+        left: 0;
         pointer-events: none;
-        transform: translateX(-10px);
-        top: -5px;
     }
 
-    &::after {
-        transition: $easeOutQuad;
-        content: '';
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid #e53935;
-        position: absolute;
-        left: 102%;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-10px);
-        top: 0;
-    }
+    svg { width: 20px; }
+}
+
+.input--validation {
+    transition: transform 500ms var(--easeOutExpo), opacity 500ms var(--easeOutExpo);
+    font-size: .8em;
+    background-color: transparentize(#fff, .1);
+    position: absolute;
+    right: 0;
+    max-width: 200px;
+    text-align: center;
+    color: var(--text-error);
+    padding: calc(var(--base-pm) / 2) calc(var(--base-pm));
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+    top: 80%;
 }
 
 .input--text--error + .label--itext,
 .input--text--warning + .label--itext {
-    &::before {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    &::after {
+    & + .input--validation {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
 .input--text--warning + .label--itext {
-    &::before {
-        color: #FFC107;
-        border-color: #FFC107;
-    }
-
-    &::after { border-right-color: #FFC107; }
+    & + .input--validation { color: var(--text-warning); }
 }
 
-.input--text:focus ~ .label--itext,
-.input--password:focus ~ .label--itext,
+.input[data-type]:focus ~ .label--itext,
+.input[data-type]:active ~ .label--itext,
 .label--itext.has-content {
-    svg { transform: scale(.75); }
+    transform: translateY(-80%) translateX(-8%) scale(.85);
 
-    span {
-        color: lighten($secondary-light-colour, 20%);
-        transform: translateX(-10.5%) scale(.8) translateY(-58%);
-    }
+    span { opacity: .65; }
 }
 
-.label--checkbox:hover .check { border-color: $primary-dark; }
-
-.label--file {
-    background-color: $accent-dark;
-    padding: 8px 16px;
-    color: $primary-dark-colour;
-    font-weight: 300;
-    border-radius: $border-radius--normal;
-    transition: $easeOutQuad;
-
-    &:hover {
-        background-color: lighten($accent-dark, 15%);
-        @include box_shadow(1);
-    }
-}
+.label--checkbox:hover .check { border-color: var(--primary-dark); }

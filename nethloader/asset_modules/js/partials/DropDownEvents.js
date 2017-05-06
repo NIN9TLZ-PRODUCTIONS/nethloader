@@ -4,14 +4,14 @@ var dropdownElements;
 const init = () => {
   findElements();
   addListeners();
-}
+};
 
 /*
 * Find all the inputs with the 'data-dropdownelement' attribute
 */
 const findElements = () => {
   dropdownElements = document.querySelectorAll('[data-dropdownelement]');
-}
+};
 
 /*
 * Add eventListeners 'mousedown' to every element found by 'findElements()'
@@ -20,7 +20,7 @@ const addListeners = () => {
   for (let i = dropdownElements.length - 1; i >= 0; i--) {
     dropdownElements[i].addEventListener('click', manageDropdownActiveState);
   }
-}
+};
 
 /*
 * Find the child elements of the dropdown and change the their state by adding or removing the 'is-active' class
@@ -41,8 +41,8 @@ const manageDropdownActiveState = (event) => {
       }
     }
   }
-}
+};
 
 export default {
   init
-}
+};

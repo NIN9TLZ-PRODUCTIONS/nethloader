@@ -1,0 +1,29 @@
+﻿.paper-card {
+    background-color: transparentize(#fff, .05);
+    padding: calc(var(--base-pm) * 2);
+    border-radius: 2px;
+}
+
+.paper-card--thin-p {
+    padding: var(--base-pm);
+    background-color: var(--accent-contrast);
+}
+
+.paper-card--shadow1 { @include box_shadow(1); }
+
+.paper-card--shadow2 { @include box_shadow(2); }
+
+.paper-card--shadow3 { @include box_shadow(3); }
+
+
+.paper-card--fw { 
+    width: 100%; 
+    flex-wrap: wrap;
+}
+
+.paper-card--margin { margin: calc(var(--base-pm) * 2); }
+
+.paper-card--dark {
+    background-color: transparentize($base2, .05);
+    color: var(--accent-contrast);
+}

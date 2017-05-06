@@ -4,27 +4,30 @@
     ViewData["loadScript"] = User.Identity.IsAuthenticated;
 }
 
-<div class="@("inner-wrapper flex flex-dc" + (!User.Identity.IsAuthenticated ? " flex-main-center" : ""))" >
     @if (User.Identity.IsAuthenticated)
     {
         <header class="user-header flex flex-full-center">
-            <div class="inner-wrapper--container flex flex-sb">
-                <a class="button button--primary button--margin button--padding-long button--header-nav-button pointer flex flex-full-center" href="/" title="Go back to the image gallery">
-                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>&nbsp;<p>My uploads</p>
+            <div class="inner-wrapper flex flex-sb">
+                <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery">
+                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;
+                    Go back
                 </a>
-                <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu" title="User menu">
-                    <p class="user-header__user-menu flex flex-full-center" ripple="ripple"><span>@User.Identity.Name</span>&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
-                    <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
-                        <ul class="flex flex-dc">
-                            <a class="user-header__user-menu__dropdown__link" href="/settings" rel="noopener">
-                                <li asp-action="/settings" class="user-header__user-menu__dropdown-item pointer" title="User Control Panel" ripple="ripple">
-                                    <p class="ta-c"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
+                <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
+                    <div class="user-header__user-dropdown-trigger flex flex-cross-center">
+                        <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
+                        <span class="flex flex-dc">@User.Identity.Name<small class="text--secondary">16 files</small></span>&nbsp;
+                        <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
+                    </div>
+                    <div class="user-header__user-dropdown" data-dropdownid="user-menu">
+                        <ul class="user-header__user-dropdown__items">
+                            <a href="/settings">
+                                <li class="user-header__user-dropdown__item c-pointer">
+                                    <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
                                 </li>
                             </a>
-                            <li class="logout-form" title="Log this user out">
-                                <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <button type="submit" class=" ta-c user-header__user-menu__dropdown-item pointer" ripple="ripple"><p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
-                                    <input hidden />
+                            <li>
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
+                                    <button type="submit" class="user-header__user-dropdown__item c-pointer"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
                                 </form>
                             </li>
                         </ul>
@@ -33,31 +36,31 @@
             </div>
         </header>
     }
-    <div class="image-view flex flex-cross-center flex-dc">
-        <div id="view-image-container" class="inner-wrapper--container content-card content-card--image" data-src="@Model.Url">
+<div class="inner-wrapper flex flex-full-center">
+    <div class="flex flex-cross-center flex-dc">
+        <div id="view-image-container" class="paper-card paper-card--thin-p paper-card--shadow3" data-src="@Model.Url">
             <div class="loader"></div>
         </div>
-        <div class="image-view__data content-card content-card--image-data">
-           <div class="image-view__props">
-               <p class="image-view__prop"><span>Uploaded by:</span>&nbsp;@Model.Owner.UserName</p>
-               <p class="image-view__prop"><span>Uploaded:</span>&nbsp;@Model.UploadDate.ToString("dd/MM/yyyy - HH:mm")</p>
-           </div>
+        <div class="paper-card paper-card--thin-p paper-card--margin paper-card--shadow2">
+            <div class="image-view__props">
+                <p class="image-view__prop"><small><b>Uploaded by:</b>&nbsp;@Model.Owner.UserName</small></p>
+                <p class="image-view__prop"><small><b>Uploaded:</b>&nbsp;@Model.UploadDate.ToString("dd/MM/yyyy - HH:mm")</small></p>
+            </div>
         </div>
         <div class="image-view__actions flex flex-sa">
-            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--margin-lr pointer" ripple="ripple" title="Open raw image url">View full size&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
-            <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--margin-lr pointer" ripple="ripple">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
+            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--fat-long button--margin-lr button--shadow1 c-pointer" ripple="ripple" title="Open raw image url">View full size&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
+            <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--fat button--margin-lr button--shadow1 c-pointer" ripple="ripple">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
         </div>
     </div>
 </div>
-
-<!-- Script loaded here for encapsulation purposes -->
-<script async>
-    var viewImageContainer = document.getElementById('view-image-container');
-         let curImg = new Image();
-         curImg.src = viewImageContainer.dataset.src;
-         curImg.onload = () => {
+    <!-- Script loaded here for encapsulation purposes -->
+    <script async>
+        var viewImageContainer = document.getElementById('view-image-container');
+        let curImg = new Image();
+        curImg.src = viewImageContainer.dataset.src;
+        curImg.onload = () => {
             curImg.width = curImg.width;
             viewImageContainer.removeChild(viewImageContainer.children[0]);
             viewImageContainer.insertBefore(curImg, viewImageContainer.firstChild);
         }
-</script>
+    </script>

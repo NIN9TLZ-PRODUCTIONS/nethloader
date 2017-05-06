@@ -1,28 +1,42 @@
-/* ------------------
-    Colour palette
------------------- */
-$primary-light: #f5f5f5;
-$primary-light-colour: #263238; // What?
-$primary-dark: #263238;
-$primary-dark-colour: #fff;
-$secondary-dark-colour: #D2D1D7;
-$secondary-light-colour: #95949B;
+/* Base colours */
+$base1: #1E1E1E; // Dark
+$base2: #2F4550; // Dark1
+$base3: #587282; // Dark2
+$base4: #03A9F4; // Accent
+$base5: #F4F4F9; // Light
 
-$accent-light: #4FC3F7;
-$accent-dark: #03A9F4;
+:root {
+    /* ------------------
+        Colours
+    ------------------ */
+    --body-bg: $base5;
 
-/* ------------------
-    UI values
------------------- */
-$border-radius--big: 10px;
-$border-radius--normal: 4px;
-$border-radius--small: 2px;
+    --accent-contrast: #fff;
+    --accent-contrast-darker: darken(#fff, 10%);
 
-$base-padding: 8px;
+    --accent: $base4;
+    --accent-darker: darken($base4, 10%);
+    --accent-lighter: lighten($base4, 10%);
 
-$inner-container-max-width: 1060px;
+    --primary-dark: $base2;
+    --secondary-dark: $base3;
+    --secondary-dark-darker: darken($base3, 10%);
 
-/* ------------------
-   Transitions
------------------- */
-$easeOutQuad: all 300ms cubic-bezier(0.19, .5, 0.22, 1);
+    --text-error: #e53935;
+    --text-warning: #ff8f00;
+    --text-success: #00C853;
+
+    /* ------------------
+        UI values
+    ------------------ */
+    --base-pm: 8px;
+    --content-max-width: 1060px;
+    --content-mid-width: 530px;
+    --content-narrow-width: 350px;
+
+    /* ------------------
+       Transitions
+    ------------------ */
+    --easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1)
+}

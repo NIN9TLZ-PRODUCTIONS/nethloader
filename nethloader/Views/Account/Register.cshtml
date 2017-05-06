@@ -1,43 +1,54 @@
 @model nethloader.Models.AccountViewModels.RegisterViewModel
 @{
-    ViewData["Title"] = "Create an account";
+    ViewData["Title"] = "Nethloader - Sign Up";
+    ViewData["img-bg"] = true;
 }
 
-<div class="inner-wrapper flex flex-full-center flex-dc">
-    <h1 class="title title--primary">@ViewData["Title"]</h1>
-    <div class="content-card content-card--w400">
-        <form enctype="multipart/form-data" method="post" name="registerform" asp-action="register">
-            <div class="form-row flex flex-dc flex-main-center">
-                <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
-                <label for="username" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Userame</span>
-                </label>
-            </div>
-            <div class="form-row flex flex-dc flex-main-center">
-                <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
-                <label for="email" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
-                </label>
-            </div>
-            <div class="form-row flex flex-dc flex-main-center">
-                <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
-                </label>
-            </div>
-            <div class="form-row flex flex-dc flex-main-center">
-                <input asp-for="ConfirmPassword" id="cpassword" type="password" class="input input--password" data-type="password" required>
-                <label for="cpassword" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm Password</span>
-                </label>
-            </div>
-            <div class="form-row flex flex-full-center">
-                <button id="register-button" class="button button--dark button--big button--fw pointer ta-c" ripple="ripple">Register Now</button>
-            </div>
-        </form>
-        <h4 class="text--secondary-light-bg text--margin ta-c"><a asp-action="login" asp-route-returnurl="@ViewData["ReturnUrl"]"><small>Already have an account? Log in here.</small></a></h4>
-        <div class="toast">
-            <div asp-validation-summary="ModelOnly" class="validation-form"></div>
+<div class="auth-card__wrapper flex flex-main-center ">
+    <a class="auth-card__alt auth-card__alt--li" asp-action="login" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <div class="auth-card__alt__container flex flex-dc flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>
+            <small>Log In</small>
+        </div>
+    </a>
+    <div class="auth-card auth-card--su flex">
+        <div class="auth-card__content flex flex-dc flex-sb">
+            <p class="text--title-fancy">Sign Up</p>
+            <form enctype="multipart/form-data" method="post" name="registerform" asp-action="register" autocomplete="off">
+                <div class="form-row">
+                    <input asp-for="UserName" id="username" type="text" class="input input--text" data-type="text" required>
+                    <label for="username" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
+                    </label>
+                    <div class="input--validation" data-for="username">&nbsp;</div>
+                </div>
+                <div class="form-row">
+                    <input asp-for="Email" id="email" type="email" class="input input--text" data-type="text" required>
+                    <label for="email" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
+                    </label>
+                    <div class="input--validation" data-for="email">&nbsp;</div>
+                </div>
+                <div class="form-row">
+                    <input asp-for="Password" id="password" type="password" class="input input--password" data-type="password" required>
+                    <label for="password" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;Password</span>
+                    </label>
+                    <div class="input--validation" data-for="password">&nbsp;</div>
+                </div>
+                <div class="form-row">
+                    <input asp-for="ConfirmPassword" id="cpassword" type="password" class="input input--password" data-type="password" required>
+                    <label for="cpassword" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm Password</span>
+                    </label>
+                    <div class="input--validation" data-for="cpassword">&nbsp;</div>
+                </div>
+                <div class="form-row flex flex-sb">
+                    <button id="register-button" class="button button--primary button--shadow1 button--fw button--accent flex flex-full-center c-pointer t-upp">
+                        Register&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></small>
+</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

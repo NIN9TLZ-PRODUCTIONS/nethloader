@@ -19,17 +19,17 @@
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="theme-color" content="#03a9f4">
 
-    <!-- Main FontFamily -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Exo:300,400|Roboto:300,400,500" rel="stylesheet">
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<body class="flex flex-dc">
-    <div class="app-wrapper flex flex-full-center flex-dc">
+<body class="@("flex flex-dc" + ((bool)ViewData["img-bg"] ? " img-bg" : ""))">
+    <div class="@("content-wrapper flex flex-full-center flex-dc" + ((bool)ViewData["img-bg"] ? "" : " flex-sb"))">
         @RenderBody()
     </div>
-    <div class="app-footer"><p class="text--primary text--light-bg ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;<a href="/account/login" target="_blank" rel="noopener">Login</a></small></p></div>
+    <div class="app-footer"><p class="ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;<a href="/account/login" target="_blank" rel="noopener">Login</a></small></p></div>
     <script>
         var antiforgeryToken = @Json.Serialize(antiforgery.GetAndStoreTokens(Context).RequestToken);
         var supportedExtensions = (@Json.Serialize(string.Join(",", Enum.GetNames(typeof(nethloader.Models.ImageExtensions))))).split(',');
