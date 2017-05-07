@@ -54,6 +54,7 @@ namespace nethloader.Controllers
         // GET: /Account/Login
         public async Task<IActionResult> Login(string returnUrl = null)
         {
+            ViewData["AllowRegister"] = _MainConfig.AllowRegister;
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
             // Clear the existing external cookie to ensure a clean login process

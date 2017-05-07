@@ -37,10 +37,13 @@
             </div>
         </div>
     </div>
+    @if ((bool)ViewData["AllowRegister"])
+    {
     <a class="auth-card__alt auth-card__alt--su" asp-action="register" asp-route-returnurl="@ViewData["ReturnUrl"]">
         <div class="auth-card__alt__container flex flex-dc flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-plus"></use></svg>
             <small>Sign Up</small>
         </div>
     </a>
+    }
 </div>
