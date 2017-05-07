@@ -1,0 +1,16 @@
+﻿.gallery-pagination__item {
+    height: 28px;
+    width: 28px;
+    border-radius: 2px;
+    margin: 0 2px;
+
+    &:hover,
+    &.current-page {
+        background-color: var(--accent);
+        color: var(--accent-contrast);
+    }
+}
+
+.gallery-pagination__navigator {
+    &:hover { color: var(--secondary-dark); }
+}

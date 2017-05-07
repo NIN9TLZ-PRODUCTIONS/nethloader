@@ -4,38 +4,51 @@
     ViewData["loadScript"] = User.Identity.IsAuthenticated;
 }
 
+<header class="user-header flex flex-full-center">
+    <div class="inner-wrapper flex flex-sb">
     @if (User.Identity.IsAuthenticated)
     {
-        <header class="user-header flex flex-full-center">
-            <div class="inner-wrapper flex flex-sb">
-                <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery">
-                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;
-                    Go back
-                </a>
-                <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
+        <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;
+            My gallery
+        </a>
+        <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
+            <div class="user-header__user-dropdown-trigger flex flex-cross-center">
+                <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
+                <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
+                <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
+            </div>
+            <div class="user-header__user-dropdown" data-dropdownid="user-menu">
+                <ul class="user-header__user-dropdown__items">
+                    <a href="/settings">
+                        <li class="user-header__user-dropdown__item c-pointer">
+                            <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
+                        </li>
+                    </a>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
+                            <button type="submit" class="user-header__user-dropdown__item c-pointer"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <a>&nbsp;</a>
+
+            <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
+                <a href="/account/login" target="_blank">
                     <div class="user-header__user-dropdown-trigger flex flex-cross-center">
                         <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
-                        <span class="flex flex-dc">@User.Identity.Name<small class="text--secondary">16 files</small></span>&nbsp;
-                        <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
+                        <span class="flex flex-dc">Log In</span>
                     </div>
-                    <div class="user-header__user-dropdown" data-dropdownid="user-menu">
-                        <ul class="user-header__user-dropdown__items">
-                            <a href="/settings">
-                                <li class="user-header__user-dropdown__item c-pointer">
-                                    <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
-                                </li>
-                            </a>
-                            <li>
-                                <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
-                                    <button type="submit" class="user-header__user-dropdown__item c-pointer"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                </a>
             </div>
-        </header>
-    }
+            }
+</div>
+</header>
 <div class="inner-wrapper flex flex-full-center">
     <div class="flex flex-cross-center flex-dc">
         <div id="view-image-container" class="paper-card paper-card--thin-p paper-card--shadow3" data-src="@Model.Url">
@@ -53,14 +66,15 @@
         </div>
     </div>
 </div>
-    <!-- Script loaded here for encapsulation purposes -->
-    <script async>
-        var viewImageContainer = document.getElementById('view-image-container');
-        let curImg = new Image();
-        curImg.src = viewImageContainer.dataset.src;
-        curImg.onload = () => {
-            curImg.width = curImg.width;
-            viewImageContainer.removeChild(viewImageContainer.children[0]);
-            viewImageContainer.insertBefore(curImg, viewImageContainer.firstChild);
-        }
-    </script>
+
+<!-- Script loaded here for encapsulation purposes -->
+<script async>
+    var viewImageContainer = document.getElementById('view-image-container');
+    let curImg = new Image();
+    curImg.src = viewImageContainer.dataset.src;
+    curImg.onload = () => {
+        curImg.width = curImg.width;
+        viewImageContainer.removeChild(viewImageContainer.children[0]);
+        viewImageContainer.insertBefore(curImg, viewImageContainer.firstChild);
+    }
+</script>

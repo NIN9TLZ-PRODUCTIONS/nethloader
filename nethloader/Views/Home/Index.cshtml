@@ -11,7 +11,7 @@
         <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
             <div class="user-header__user-dropdown-trigger flex flex-cross-center">
                 <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
-                <span class="flex flex-dc">@User.Identity.Name<small class="text--secondary">16 files</small></span>&nbsp;
+                <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
                 <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
             </div>
             <div class="user-header__user-dropdown" data-dropdownid="user-menu">
@@ -32,61 +32,64 @@
     </div>
 </header>
 <div class="inner-wrapper flex flex-full-center flex-dc">
-        @if (@Model.Count != 0)
-        {
-                <div class="paper-card paper-card--shadow2 paper-card--fw flex flex-full-center flex-sb flex-f1" id="user-gallery">
-                    @foreach (var i in Model)
-                    {
-                        <div class="gallery-image flex flex-full-center flex-dc" id="@i.Id" data-src="@i.Url">
-                            <div class="loader"></div>
-                            <div class="gallery-image__data flex flex-dc flex-sb">
-                                <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") <span class="gallery-image__data__delete c-pointer text--error" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
-                                <a class="gallery-image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
-                                    <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
-                                    <p>View image</p>
-                                </a>
-                            </div>
+    @if (@Model.Count != 0)
+    {
+        <div class="button button--accent button--fat-long button--shadow1 c-pointer as-fe"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#filter"></use></svg>&nbsp;Filter images</div>
+        <div class="paper-card paper-card--shadow2 paper-card--fw flex flex-main-center  flex-sb flex-f1 flex-dc">
+            <div class=" paper-card--fw flex flex-main-center flex-sb" id="user-gallery">
+                @foreach (var i in Model)
+                {
+                    <div class="gallery-image flex flex-full-center flex-dc" id="@i.Id" data-src="@i.Url">
+                        <div class="loader"></div>
+                        <div class="gallery-image__data flex flex-dc flex-sb">
+                            <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") <span class="gallery-image__data__delete c-pointer text--error" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
+                            <a class="gallery-image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
+                                <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
+                                <p>View image</p>
+                            </a>
                         </div>
-                    }
-                </div>
-                <!--<div class="gallery__pagination flex flex-full-center">
-                    @if (Model.HasPreviousPage)
-            {
-                        <a asp-route-page="@(Model.PageIndex - 1)" title="Previous page">
-                            <span class="gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
-                        </a>
-                    }
-                    else
+                    </div>
+                }
+            </div>
+            <div class="gallery-pagination flex flex-full-center">
+                @if (Model.HasPreviousPage)
+                {
+                    <a asp-route-page="@(Model.PageIndex - 1)" title="Previous page">
+                        <span class="gallery-pagination__navigator c-pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
+                    </a>
+                }
+                else
+                {
+                    <span class="gallery-pagination__navigator text--secondary c-nope" title="No previous page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
+                }
+                <ul class="flex flex-full-center">
+                    @for (var i = 1; i <= Model.TotalPages; i++)
                     {
-                        <span class="gallery__pagination__navigator disabled" title="No previous page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
-                    }
-                    <ul class="flex flex-full-center">
-                        @for (var i = 1; i <= Model.TotalPages; i++)
+                        @if (Model.PageIndex == @i)
                         {
-                            @if (Model.PageIndex == @i)
-                            {
-                                <li class="gallery__pagination-item current-page" title="You are here">@i</li>
-                            }
-                            else
-                            {
-                                <a asp-route-page="@i"><li class="gallery__pagination-item pointer" title="Page @i">@i</li></a>
-                            }
+                            <li class="gallery-pagination__item flex flex-full-center current-page" title="You are here">@i</li>
                         }
-                    </ul>
-                    @if (Model.HasNextPage)
-                    {
-                        <a asp-route-page="@(Model.PageIndex + 1)">
-                            <span class="gallery__pagination__navigator pointer" title="Next page"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
-                        </a>
+                        else
+                        {
+                            <a asp-route-page="@i"><li class="gallery-pagination__item flex flex-full-center c-pointer" title="Page @i">@i</li></a>
+                        }
                     }
-                    else
-                    {
-                        <span class="gallery__pagination__navigator disabled" title="No next page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
-                    }
-                </div>-->
-        }
-        else
-        {
+                </ul>
+                @if (Model.HasNextPage)
+                {
+                    <a asp-route-page="@(Model.PageIndex + 1)">
+                        <span class="gallery-pagination__navigator c-pointer" title="Next page"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
+                    </a>
+                }
+                else
+                {
+                    <span class="gallery-pagination__navigator text--secondary c-nope" title="No next page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
             <div class="flex flex-full-center flex-dc text--secondary">
                 <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#sad-face"></use></svg>
                 <p class="text--title ta-c flex flex-dc flex-full-center">It looks like this page is empty</p>
@@ -97,22 +100,22 @@
                     </a>
                 }
             </div>
-        }
-    </div>
-
-    <!-- Upload image dialog, standalone -->
-    <div class="dialog__wrapper flex flex-full-center" data-dialogid="upload">
-        <div class="dialog">
-            @Html.Partial("../Image/Upload.cshtml")
+            }
         </div>
-    </div>
 
-    <!-- Delete image dialog, standalone -->
-    <div class="dialog__wrapper flex flex-full-center" data-dialogid="delete">
-        <div class="dialog">
-            @Html.Partial("../Image/Delete.cshtml")
-        </div>
+<!-- Upload image dialog, standalone -->
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="upload">
+    <div class="dialog">
+        @Html.Partial("../Image/Upload.cshtml")
     </div>
+</div>
+
+<!-- Delete image dialog, standalone -->
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="delete">
+    <div class="dialog">
+        @Html.Partial("../Image/Delete.cshtml")
+    </div>
+</div>
 
 <!-- Script loaded here for encapsulation purposes -->
 <script async>

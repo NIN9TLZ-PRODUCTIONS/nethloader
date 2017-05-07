@@ -3,7 +3,7 @@
     background-color: var(--primary-dark);
     @include box_shadow(1);
     z-index: 40;
-    margin-bottom: calc(var(--base-pm) * 4);
+    margin-bottom: calc(var(--base-pm) * 3);
 
     .inner-wrapper { height: 60px; }
 }
