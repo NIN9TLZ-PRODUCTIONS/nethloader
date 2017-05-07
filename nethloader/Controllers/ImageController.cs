@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using nethloader.Models;
 using nethloader.Services.Managers;
+using Newtonsoft.Json;
 
 namespace nethloader.Controllers
 {
@@ -90,6 +91,10 @@ namespace nethloader.Controllers
             } catch(UnauthorizedAccessException) {
                 return Unauthorized();
             }
+        }
+        public IActionResult Filter()
+        {
+            return View(JsonConvert.SerializeObject(_imageManager.GetAllUserImages(User.FindFirst(ClaimTypes.NameIdentifier).Value).OrderByDescending(x => x.Id)));
         }
     }
 }
