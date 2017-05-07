@@ -9,6 +9,7 @@
     background-color: transparentize($base4, .05);
     padding: calc(var(--base-pm) * 3);
     color: var(--accent-contrast);
+    border-radius: 2px 0 0 2px;
     min-height: 350px;
     @include box_shadow(4);
 }
@@ -23,6 +24,7 @@
 
 
 .auth-card__alt {
+    border-radius: 0 2px 2px 0;
     display: block;
     will-change: padding;
     padding: calc(var(--base-pm) * 3);

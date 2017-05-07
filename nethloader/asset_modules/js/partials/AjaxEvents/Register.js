@@ -32,6 +32,7 @@ const userRegister = (event) => {
   event.stopImmediatePropagation();
 
   if (validateRegister()) {
+    document.getElementsByClassName('dyn-icon')[0].innerHTML = "<div class='loader-wrapper flex flex-full-center is-processing'><div class='loader'></div></div>";
     document.forms.namedItem('registerform').submit();
   }
 };

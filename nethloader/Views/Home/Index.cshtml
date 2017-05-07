@@ -35,7 +35,7 @@
     @if (@Model.Count != 0)
     {
         <div class="button button--accent button--fat-long button--shadow1 c-pointer as-fe"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#filter"></use></svg>&nbsp;Filter images</div>
-        <div class="paper-card paper-card--shadow2 paper-card--fw flex flex-main-center  flex-sb flex-f1 flex-dc">
+        <div class="paper-card paper-card--shadow2 paper-card--fw flex flex-main-center flex-sb flex-f1 flex-dc">
             <div class=" paper-card--fw flex flex-main-center flex-sb" id="user-gallery">
                 @foreach (var i in Model)
                 {
@@ -90,13 +90,13 @@
     }
     else
     {
-            <div class="flex flex-full-center flex-dc text--secondary">
+            <div class="paper-card paper-card--shadow2 paper-card--fw text--secondary flex flex-f1 flex-full-center flex-dc">
                 <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#sad-face"></use></svg>
                 <p class="text--title ta-c flex flex-dc flex-full-center">It looks like this page is empty</p>
                 @if (!Model.HasNextPage && Model.PageIndex != 1)
                 {
                     <a asp-route-page="1">
-                        <span class="gallery__pagination__navigator pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>Go back to the first page</span>
+                        <div class="button button--accent button--fat-long button--shadow1 c-pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>Go back to the first page</div>
                     </a>
                 }
             </div>

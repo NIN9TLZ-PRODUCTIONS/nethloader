@@ -5,12 +5,21 @@
     z-index: -5;
     transition: opacity 400ms var(--easeOutExpo), transform 300ms var(--easeOutBack);
     position: absolute;
-    right: 65px;
+    right: 55px;
 
     &.is-uploading {
         opacity: 1;
         z-index: 1;
         transform: translateX(5px);
+    }
+
+    &.is-processing {
+        opacity: 1;
+        z-index: 1;
+        transform: scale(.7);
+        margin: 0;
+        position: relative;
+        left: 0;
     }
 }
 

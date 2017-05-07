@@ -72,6 +72,7 @@ namespace nethloader.Controllers
         {
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
+            ViewData["AllowRegister"] = _MainConfig.AllowRegister;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {

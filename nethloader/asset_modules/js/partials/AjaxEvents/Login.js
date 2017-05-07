@@ -26,6 +26,7 @@ const userLogin = (event) => {
   event.stopImmediatePropagation();
 
   if (validateLogin()) {
+    document.getElementsByClassName('dyn-icon')[0].innerHTML = "<div class='loader-wrapper flex flex-full-center is-processing'><div class='loader'></div></div>";
     document.forms.namedItem('loginform').submit();
   }
 };
