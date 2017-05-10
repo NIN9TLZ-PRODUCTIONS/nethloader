@@ -5,11 +5,11 @@
 
 <header class="user-header flex flex-full-center">
     <div class="inner-wrapper flex flex-sb">
-        <a class="button button--primary c-pointer flex flex-full-center text--accent-contrast" data-dialogtrigger="upload" title="Upload an image">
+        <a class="button button--primary c-pointer flex flex-full-center text--accent-contrast" data-dialogtrigger="upload" title="Upload an image" ripple="ripple">
         Upload&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg>
         </a>
         <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
-            <div class="user-header__user-dropdown-trigger flex flex-cross-center">
+            <div class="user-header__user-dropdown-trigger flex flex-cross-center" ripple="ripple">
                 <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
                 <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
                 <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
@@ -17,13 +17,13 @@
             <div class="user-header__user-dropdown" data-dropdownid="user-menu">
                 <ul class="user-header__user-dropdown__items">
                     <a href="/settings">
-                        <li class="user-header__user-dropdown__item c-pointer">
+                        <li class="user-header__user-dropdown__item c-pointer" title="User CP" ripple="ripple">
                             <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
                         </li>
                     </a>
                     <li>
                         <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
-                            <button type="submit" class="user-header__user-dropdown__item c-pointer"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                            <button type="submit" class="user-header__user-dropdown__item c-pointer" title="Log this user out" ripple="ripple"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
                         </form>
                     </li>
                 </ul>
@@ -34,7 +34,7 @@
 <div class="inner-wrapper flex flex-full-center flex-dc">
     @if (@Model.Count != 0)
     {
-        <div class="button button--accent button--fat-long button--shadow1 c-pointer as-fe"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#filter"></use></svg>&nbsp;Filter images</div>
+        <div class="button button--accent button--fat-long button--shadow1 c-pointer as-fe" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#filter"></use></svg>&nbsp;Filter images</div>
         <div class="paper-card paper-card--shadow2 paper-card--fw flex flex-main-center flex-sb flex-f1 flex-dc">
             <div class=" paper-card--fw flex flex-main-center flex-sb" id="user-gallery">
                 @foreach (var i in Model)
@@ -42,7 +42,7 @@
                     <div class="gallery-image flex flex-full-center flex-dc" id="@i.Id" data-src="@i.Url">
                         <div class="loader"></div>
                         <div class="gallery-image__data flex flex-dc flex-sb">
-                            <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") <span class="gallery-image__data__delete c-pointer text--error" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
+                            <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") <span class="gallery-image__data__delete c-pointer text--accent-contrast" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)" ripple="ripple"><svg class="text--error" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
                             <a class="gallery-image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
                                 <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
                                 <p>View image</p>
@@ -67,11 +67,11 @@
                     {
                         @if (Model.PageIndex == @i)
                         {
-                            <li class="gallery-pagination__item flex flex-full-center current-page" title="You are here">@i</li>
+                            <li class="gallery-pagination__item flex flex-full-center current-page" title="You are here" ripple="ripple">@i</li>
                         }
                         else
                         {
-                            <a asp-route-page="@i"><li class="gallery-pagination__item flex flex-full-center c-pointer" title="Page @i">@i</li></a>
+                            <a asp-route-page="@i"><li class="gallery-pagination__item flex flex-full-center c-pointer" title="Page @i" ripple="ripple">@i</li></a>
                         }
                     }
                 </ul>
@@ -96,7 +96,7 @@
                 @if (!Model.HasNextPage && Model.PageIndex != 1)
                 {
                     <a asp-route-page="1">
-                        <div class="button button--accent button--fat-long button--shadow1 c-pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>Go back to the first page</div>
+                        <div class="button button--accent button--fat-long button--shadow1 c-pointer" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>Go back to the first page</div>
                     </a>
                 }
             </div>

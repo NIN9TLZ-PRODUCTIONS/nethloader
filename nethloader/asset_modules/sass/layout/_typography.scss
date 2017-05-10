@@ -9,7 +9,7 @@
 .text--title {
     text-transform: uppercase;
     color: currentColor;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .text--secondary {
@@ -25,3 +25,9 @@
 .text--accent { color: var(--accent) !important; }
 
 .text--accent-contrast { color: var(--accent-contrast) !important; }
+
+.text--margin-lr { margin: 0 var(--base-pm); }
+
+.text--margin-tb { margin: var(--base-pm) 0; }
+
+.text--margin { margin: var(--base-pm) calc(var(--base-pm) * 2 ); }

@@ -1,6 +1,6 @@
 import InputEvents from './partials/InputEvents';
 import DropDownEvents from './partials/DropDownEvents';
-import SettingsMenuEvents from './partials/SettingsMenuEvents';
+import SettingsEvents from './partials/SettingsEvents';
 import DialogEvents from './partials/DialogEvents';
 import AjaxEvents from './partials/AjaxEvents';
 import './partials/mdripple.js';

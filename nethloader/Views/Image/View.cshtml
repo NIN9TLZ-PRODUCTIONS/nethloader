@@ -8,12 +8,12 @@
     <div class="inner-wrapper flex flex-sb">
     @if (User.Identity.IsAuthenticated)
     {
-        <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery">
+        <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery" ripple="ripple">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;
             My gallery
         </a>
         <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
-            <div class="user-header__user-dropdown-trigger flex flex-cross-center">
+            <div class="user-header__user-dropdown-trigger flex flex-cross-center" ripple="ripple">
                 <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
                 <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
                 <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
@@ -21,13 +21,13 @@
             <div class="user-header__user-dropdown" data-dropdownid="user-menu">
                 <ul class="user-header__user-dropdown__items">
                     <a href="/settings">
-                        <li class="user-header__user-dropdown__item c-pointer">
+                        <li class="user-header__user-dropdown__item c-pointer" title="User CP" ripple="ripple">
                             <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
                         </li>
                     </a>
                     <li>
                         <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
-                            <button type="submit" class="user-header__user-dropdown__item c-pointer"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                            <button type="submit" class="user-header__user-dropdown__item c-pointer" title="Log this user out" ripple="ripple"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
                         </form>
                     </li>
                 </ul>
@@ -38,15 +38,15 @@
     {
         <a>&nbsp;</a>
 
-            <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="User menu">
-                <a href="/account/login" target="_blank">
-                    <div class="user-header__user-dropdown-trigger flex flex-cross-center">
-                        <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
-                        <span class="flex flex-dc">Log In</span>
-                    </div>
-                </a>
-            </div>
-            }
+        <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu" title="Log In">
+            <a href="/account/login" target="_blank">
+                <div class="user-header__user-dropdown-trigger flex flex-cross-center">
+                    <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
+                    <span class="flex flex-dc">Log In</span>
+                </div>
+            </a>
+        </div>
+        }
 </div>
 </header>
 <div class="inner-wrapper flex flex-full-center">
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="image-view__actions flex flex-sa">
-            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--fat-long button--margin-lr button--shadow1 c-pointer" ripple="ripple" title="Open raw image url">View full size&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
+            <a href="@Model.Url" target="_blank" rel="noopener"><div class="button button--accent button--fat-long button--margin-lr button--shadow1 c-pointer" title="Open raw image url" ripple="ripple">View full size&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#open"></use></svg></div></a>
             <a href="@Model.Url" download rel="noopener"><div class="button button--accent button--fat button--margin-lr button--shadow1 c-pointer" ripple="ripple">Download&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#download"></use></svg></div></a>
         </div>
     </div>

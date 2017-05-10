@@ -14,7 +14,7 @@ const findElements = () => {
 };
 
 /*
- * Add eventListeners of 'input' and 'mousedown' to every element found by 'findElements()'
+ * Add eventListeners of 'input' and 'click' to every element found by 'findElements()'
  */
 const addListeners = () => {
   for (let i = inputElements.length - 1; i >= 0; i--) {

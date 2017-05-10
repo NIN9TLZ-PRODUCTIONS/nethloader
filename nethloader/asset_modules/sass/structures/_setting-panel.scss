@@ -1,0 +1,18 @@
+﻿.setting-panel { padding: 0; }
+
+.setting-panel__item {
+    div {
+        width: 100%;
+        padding: var(--base-pm);
+    }
+
+    &:not(:last-child) { border-bottom: 1px solid var(--accent-contrast-darker); }
+}
+
+.setting-panel__item-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.setting-panel__item-edit { padding: 0 calc(var(--base-pm) * 2); }

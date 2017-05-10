@@ -30,7 +30,7 @@ const openDialog = (event) => {
       dialogWrapper = document.querySelector(`[data-dialogid=${currentTarget.dataset.dialogtrigger}]`),
       closeButton   = document.querySelector(`[data-closedialog=${currentTarget.dataset.dialogtrigger}]`);
 
-  dialogWrapper.style.top =  `${Math.round(window.pageYOffset)}px`; // Ensure that is always in the middle of the viewport
+  dialogWrapper.style.top =  `${Math.round(window.pageYOffset)}px`; // Ensure that the modal is always in the middle of the viewport
   dialogWrapper.classList.add('is-active');              // Overlay
   dialogWrapper.children[0].classList.add('is-active');  // Modal
 

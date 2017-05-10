@@ -23,6 +23,8 @@
 
 .paper-card--margin { margin: calc(var(--base-pm) * 2); }
 
+.paper-card--margin-tb { margin: calc(var(--base-pm) * 2) 0; }
+
 .paper-card--dark {
     background-color: transparentize($base2, .05);
     color: var(--accent-contrast);

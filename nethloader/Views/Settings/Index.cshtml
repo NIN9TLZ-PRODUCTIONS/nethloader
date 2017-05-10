@@ -2,112 +2,208 @@
     ViewData["Title"] = "Settings";
 }
 
-<div class="inner-wrapper flex flex-dc">
-    <header class="user-header flex flex-full-center">
-        <div class="inner-wrapper--container flex flex-sb">
-            <a class="button button--primary button--margin button--padding-long button--header-nav-button pointer flex flex-full-center" href="/" title="Go back to the image gallery">
-                <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg>&nbsp;<p>My uploads</p>
-            </a>
-            <div class="user-header__user-menu--container flex flex-cross-center flex-sa pointer" data-dropdownelement="user-menu" title="User menu">
-                <p class="user-header__user-menu flex flex-full-center" ripple="ripple"><span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;@User.Identity.Name</span>&nbsp;<svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg></p>
-                <div class="user-header__user-menu__dropdown flex flex-full-center" data-dropdownid="user-menu">
-                    <ul class="flex flex-dc">
-                        <li class="user-header__user-menu__dropdown-item user-header__user-menu__dropdown-item--current" ripple="ripple" title="You are here">
-                            <p class="ta-c"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
-                        </li>
-                        <li class="logout-form" title="Log this user out">
-                            <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button  type="submit" class=" ta-c user-header__user-menu__dropdown-item pointer" ripple="ripple"><p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
-                                <input hidden />
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+<header class="user-header flex flex-full-center">
+    <div class="inner-wrapper flex flex-sb">
+        <a href="/" class="button button--primary c-pointer flex flex-full-center" title="Go back to gallery" ripple="ripple">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg>&nbsp;
+            Go back
+        </a>
+        <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu">
+            <div class="user-header__user-dropdown-trigger flex flex-cross-center" title="User menu" ripple="ripple">
+                <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
+                <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
+                <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
             </div>
-        </div>
-    </header>
-    <div class="settings flex flex-full-center">
-        <div class="inner-wrapper--container flex flex-main-center">
-            <div class="settings-menu">
-                <ul class="settings__menu-items">
-                    <li class="settings-menu__item pointer is-active" data-menutrigger="account" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-settings"></use></svg>&nbsp;Account Settings</li>
-                    <li class="settings-menu__item pointer" data-menutrigger="content" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-multiple"></use></svg>&nbsp;Content Settings</li>
+            <div class="user-header__user-dropdown" data-dropdownid="user-menu">
+                <ul class="user-header__user-dropdown__items">
+                    <li class="user-header__user-dropdown__item c-nope" ripple="ripple" title="You are here">
+                        <p><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#settings"></use></svg>&nbsp;User CP</p>
+                    </li>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="c-pointer">
+                            <button type="submit" class="user-header__user-dropdown__item c-pointer" ripple="ripple" title="Log this user out"><p class="ta-l"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#exit"></use></svg>&nbsp;Logout</p></button>
+                        </form>
+                    </li>
                 </ul>
             </div>
-            <div class="inner-wrapper--container settings-card content-card content-card--full-height flex">
-                <div class="setting-section__container is-active" data-menuid="account">
-                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;&nbsp;Details</div>
-                        <p class="settings-card__settings-description">Manage your email and account information.</p>
-                        <form class="flex flex-cross-center">
-                            <div class="form-row flex flex-main-center flex-sa">
-                                <div class="settings-input-container">
-                                    <input id="email" type="email" class="input input--text" data-type="text" value="accounts@gariasf.com" required>
-                                    <label for="email" class="label--itext flex flex-full-center">
-                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;Email</span>
-                                    </label>
-                                </div>
-                                <div class="settings-input-container">
-                                    <input id="username" type="text" class="input input--text" data-type="text" value="@User.Identity.Name" required>
-                                    <label for="username" class="label--itext flex flex-full-center">
-                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;Username</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;&nbsp;Security</div>
-                        <p class="settings-card__settings-description">Manage your password and security settings.</p>
-                        <form class="flex flex-cross-center">
-                            <div class="form-row flex flex-main-center flex-sa">
-                                <div class="settings-input-container">
-                                    <input id="npassword" type="password" class="input input--text" data-type="text" required>
-                                    <label for="npassword" class="label--itext flex flex-full-center">
-                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;&nbsp;New Password</span>
-                                    </label>
-                                </div>
-                                <div class="settings-input-container">
-                                    <input id="cpassword" type="password" class="input input--text" data-type="text" required>
-                                    <label for="cpassword" class="label--itext flex flex-full-center">
-                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;&nbsp;Repeat New Password</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;&nbsp;Remote</div>
-                        <p class="settings-card__settings-description">Manage your remote apikey.</p>
-                        <form class="flex flex-cross-center">
-                            <div class="form-row flex flex-dc flex-cross-center">
-                                <b>Current APIkey: <span class="settings-card__apikey-container pointer">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</span></b>
-                                <button class="button button--primary button--double-margin pointer" title="Regenerate APIkey">
-                                    Generate new APIkey&nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="settings-card__settings__setting flex flex-dc flex-cross-center">
-                        <div class="settings-card__settings-title flex"><svg class="settings-card__settings__icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain</div>
-                        <p class="settings-card__settings-description">Manage your custom domain.</p>
-
-                        <form class="flex flex-cross-center">
-                            <div class="form-row flex flex-dc flex-main-center flex-sa">
-                                <div class="settings-input-container">
-                                    <input id="domain" type="text" class="input input--text" data-type="text" value="localhost" required>
-                                    <label for="domain" class="label--itext flex flex-full-center">
-                                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;&nbsp;Domain</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="setting-section__container" data-menuid="content">
-
-                </div>
+        </div>
+    </div>
+</header>
+<div class="inner-wrapper flex flex-dc">
+    <div class="paper-card--margin">
+        <div class="text--title text--margin-lr flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;<span>Account</span>
+        </div>
+        <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--margin-tb">
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Username</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).UserName)</div>
+                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chuname">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
+                </span>
+            </div>
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Email</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).Email)</div>
+                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chmail">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
+                </span>
             </div>
         </div>
+        <div class="text--title text--margin-lr flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;<span>Security</span>
+        </div>
+        <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Password</strong></div><div class="setting-panel__item-value text--margin text--secondary">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</div>
+                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chpass">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
+                </span>
+            </div>
+        </div>
+        <div class="text--title text--margin-lr flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;<span>Remote</span>
+        </div>
+        <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>APIkey</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</div>
+                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="gnapik">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg></small>
+                </span>
+            </div>
+        </div>
+        <div class="text--title text--margin-lr flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;<span>Domain</span>
+        </div>
+        <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Domain</strong></div><div class="setting-panel__item-value text--margin text--secondary">@if (!(((nethloader.Models.User)ViewData["User"]).CustomDomainStatus)) {
+                    <p>No custom domain set</p>
+                }
+                else
+                {
+                    <p>@(((nethloader.Models.User)ViewData["User"]).CustomDomain)</p>
+                }</div>
+                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chdomain">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="chuname">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Username</p>
+        </div>
+        <form>
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <div class="form-row">
+                    <input id="nusername" type="text" class="input input--text" data-type="text" required>
+                    <label for="nusername" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Username</span>
+                    </label>
+                    <div class="input--validation" data-for="nusername">&nbsp;</div>
+                </div>
+                </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chuname" title="Maybe not" ripple="ripple">Cancel</div>
+                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change username" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="chmail">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Email</p>
+        </div>
+        <form>
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <div class="form-row">
+                    <input id="nmail" type="email" class="input input--text" data-type="text" required>
+                    <label for="nmail" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;New Email</span>
+                    </label>
+                    <div class="input--validation" data-for="nmail">&nbsp;</div>
+                </div>
+            </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chmail" title="Maybe not" ripple="ripple">Cancel</div>
+                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change username" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="chpass">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Password</p>
+        </div>
+        <form>
+            <div class="form-row">
+                <input id="npassword" type="password" class="input input--password" data-type="password" required>
+                <label for="npassword" class="label--itext">
+                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;New Password</span>
+                </label>
+                <div class="input--validation" data-for="npassword">&nbsp;</div>
+            </div>
+            <div class="form-row">
+                <div class="input--validation" data-for="npassword">&nbsp;</div>
+                <input id="cnpassword" type="password" class="input input--password" data-type="password" required>
+                <label for="cnpassword" class="label--itext">
+                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm New Password</span>
+                </label>
+                <div class="input--validation" data-for="cnpassword">&nbsp;</div>
+            </div>
+            <div class="form-row">
+                <input id="password" type="password" class="input input--password" data-type="password" required>
+                <label for="password" class="label--itext">
+                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-edit"></use></svg>&nbsp;Current Password</span>
+                </label>
+            </div>
+                <div class="input--validation" data-for="npassword">&nbsp;</div>
+                <div class="dialog__actions flex flex-main-center">
+                    <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chpass" title="Maybe not" ripple="ripple">Cancel</div>
+                    <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change password" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+                </div>
+        </form>
+    </div>
+</div>
+
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="gnapik">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Generate new APIkey?</p>
+        </div>
+        <div class="dialog__content">Any app or software using your current key won't work until you give them the new key.</div>
+        <div class="dialog__actions flex flex-main-center">
+            <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="gnapik" title="Maybe not" ripple="ripple">No, wait</div>
+            <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Yes, please!" ripple="ripple">Yes, do it</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="chdomain">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Domain</p>
+        </div>
+        <form>
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <div class="form-row">
+                    <input id="ndomain" type="text" class="input input--text" data-type="text" required>
+                    <label for="ndomain" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Domain</span>
+                    </label>
+                    <div class="input--validation" data-for="ndomain">&nbsp;</div>
+                </div>
+            </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chdomain" title="Maybe not" ripple="ripple">Cancel</div>
+                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change domain" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+            </div>
+        </form>
     </div>
 </div>
