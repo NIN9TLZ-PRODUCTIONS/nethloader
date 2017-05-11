@@ -12,7 +12,7 @@
                     </label>
                     <div class="input--validation" data-for="ndomain">&nbsp;</div>
                 </div>
-                @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == false)
+                @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == true)
                 {
                     <div class="button button--fat button--transparent c-pointer ta-c flex flex-full-center text--error" title="Reset domain" ripple="ripple" data-removedomain>
                         Remove custom domain&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#reset-domain"></use></svg></small>

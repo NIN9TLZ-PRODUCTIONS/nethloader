@@ -76,7 +76,7 @@
         <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
             <div class="setting-panel__item flex">
                 <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Domain</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="domain">
-                    @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == false)
+                    @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == true)
                     {
                        @(((nethloader.Models.User)ViewData["User"]).CustomDomain)
                     }
