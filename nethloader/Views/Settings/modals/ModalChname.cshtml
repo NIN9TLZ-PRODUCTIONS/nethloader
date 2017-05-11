@@ -1,0 +1,22 @@
+﻿<div class="dialog__wrapper flex flex-full-center" data-dialogid="chuname">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Username</p>
+        </div>
+        <form name="chunameForm" autocomplete="off">
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <div class="form-row paper-card--fw">
+                    <input id="nusername" type="text" class="input input--text" data-type="text" data-val-regex-pattern="^[A-z0-9ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏàáâãäåæçèéêëìíîïÐÑÒÓÔÕÖØÙÚÛÜÝÞßðñòóôõöøùúûüýþÿ]*$" required>
+                    <label for="nusername" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Username</span>
+                    </label>
+                    <div class="input--validation" data-for="nusername">&nbsp;</div>
+                </div>
+            </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chuname" title="Maybe not" ripple="ripple"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;Cancel</div>
+                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change username" ripple="ripple" data-param="pusername">Save&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#save"></use></svg></small></button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -36,10 +36,14 @@ const openDialog = (event) => {
 
 
   closeButton.addEventListener('click', () => {
-    dialogWrapper.classList.remove('is-active');             // Overlay
-    dialogWrapper.children[0].classList.remove('is-active'); // Modal
+    closeDialog(dialogWrapper);
   });
 };
+
+const closeDialog = (dialogWrapper) => {
+  dialogWrapper.classList.remove('is-active');             // Overlay
+  dialogWrapper.children[0].classList.remove('is-active'); // Modal
+}
 
 export default {
   init

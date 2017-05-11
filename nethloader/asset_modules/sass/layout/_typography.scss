@@ -9,7 +9,7 @@
 .text--title {
     text-transform: uppercase;
     color: currentColor;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .text--secondary {
@@ -31,3 +31,5 @@
 .text--margin-tb { margin: var(--base-pm) 0; }
 
 .text--margin { margin: var(--base-pm) calc(var(--base-pm) * 2 ); }
+
+.text--500 { font-weight: 500; }

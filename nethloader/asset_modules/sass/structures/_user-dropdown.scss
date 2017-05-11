@@ -1,4 +1,7 @@
-﻿.user-header__user-dropdown__wrapper { position: relative; }
+﻿.user-header__user-dropdown__wrapper {
+    position: relative;
+    min-width: 124px;
+}
 
 
 .user-header__user-dropdown-trigger {

@@ -1,0 +1,34 @@
+﻿<div class="dialog__wrapper flex flex-full-center" data-dialogid="chdomain">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Change Custom Domain</p>
+        </div>
+        <form name="chdomainForm" autocomplete="off">
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <div class="form-row paper-card--fw">
+                    <input id="ndomain" type="text" class="input input--text" data-type="text" required>
+                    <label for="ndomain" class="label--itext">
+                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Domain</span>
+                    </label>
+                    <div class="input--validation" data-for="ndomain">&nbsp;</div>
+                </div>
+                @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == false)
+                {
+                    <div class="button button--fat button--transparent c-pointer ta-c flex flex-full-center text--error" title="Reset domain" ripple="ripple" data-removedomain>
+                        Remove custom domain&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#reset-domain"></use></svg></small>
+                    </div>
+                }
+            </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long button--margin-lr text--error c-pointer ta-c flex flex-full-center " data-closedialog="chdomain" title="Maybe not" ripple="ripple">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;
+                    Cancel
+                </div>
+                <button class="button button--transparent button--fat-long button--margin-lr text--accent c-pointer ta-c flex flex-full-center" title="Change domain" ripple="ripple" data-param="pdomain">
+                    Save&nbsp;
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#save"></use></svg></small>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

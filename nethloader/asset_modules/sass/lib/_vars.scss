@@ -9,7 +9,7 @@ $base5: #F4F4F9; // Light
     /* ------------------
         Colours
     ------------------ */
-    --body-bg: $base5;
+    --body-bg: lighten($base3, 50%);
 
     --accent-contrast: #fff;
     --accent-contrast-darker: darken(#fff, 10%);

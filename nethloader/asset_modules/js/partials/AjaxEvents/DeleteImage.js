@@ -7,7 +7,7 @@ var deleteConfirmButton,
 /*
  * Find the delete confirm button element (located in the dialog) then find all the delete buttons on the images and listen for clicks
  */
-const deleteImagesInit = () => {
+const init = () => {
   deleteConfirmButton = document.querySelector('[data-deleteconfirm]');
   if (deleteConfirmButton) {
     findDeleteButtons();
@@ -39,21 +39,23 @@ const deleteImage = (event) => {
   var deleteReq = new XMLHttpRequest();
 
   deleteReq.onreadystatechange = function () {
+    deleteConfirmButton.children[0].innerHTML = '<div class=\'loader-wrapper flex flex-full-center is-processing\'><div class=\'loader\'></div></div>';
     if (this.readyState == 4 && this.status == 200) {
       location.reload();
     } else if (this.status > 200) {
+      deleteConfirmButton.children[0].innerHTML = '<svg viewBox=\'0 0 24 24\'><use xlink:href=\'/img/icons.svg#delete\'></use></svg>';
       console.log('Something went wrong');
     }
   };
-
-  deleteReq.open('POST', '/image/delete/?id=' + imageId, true);
-  deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-  deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  
   deleteConfirmButton.onclick = () => {
+    deleteReq.open('POST', '/image/delete/?id=' + imageId, true);
+    deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+    deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     deleteReq.send();
   };
 };
 
 export default {
-  deleteImagesInit
+  init
 };

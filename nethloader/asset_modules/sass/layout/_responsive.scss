@@ -1,1 +1,6 @@
-﻿
+﻿@media (max-width: 530px) {
+    // Center images when there's only one column
+    #user-gallery {
+        justify-content: center;
+    }
+}

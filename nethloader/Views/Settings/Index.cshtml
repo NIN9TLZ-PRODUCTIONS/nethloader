@@ -9,9 +9,9 @@
             Go back
         </a>
         <div class="user-header__user-dropdown__wrapper c-pointer" data-dropdownelement="user-menu">
-            <div class="user-header__user-dropdown-trigger flex flex-cross-center" title="User menu" ripple="ripple">
+            <div class="user-header__user-dropdown-trigger flex flex-full-center" title="User menu" ripple="ripple">
                 <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user-round"></use></svg>&nbsp;
-                <span class="flex flex-dc">@User.Identity.Name</span>&nbsp;
+                &nbsp;
                 <svg class="user-header__user-menu-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#menu-down"></use></svg>
             </div>
             <div class="user-header__user-dropdown" data-dropdownid="user-menu">
@@ -30,59 +30,62 @@
     </div>
 </header>
 <div class="inner-wrapper flex flex-dc">
-    <div class="paper-card--margin">
-        <div class="text--title text--margin-lr flex flex-cross-center">
+    <div class="paper-card--margin flex flex-dc">
+        <div class="text--title setting-panel-title text--500 flex flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;<span>Account</span>
         </div>
         <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--margin-tb">
             <div class="setting-panel__item flex">
-                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Username</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).UserName)</div>
-                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chuname">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Username</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="username">@(((nethloader.Models.User)ViewData["User"]).UserName)</div>
+                <span class="setting-panel__item-edit text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chuname">
                     <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
                 </span>
             </div>
             <div class="setting-panel__item flex">
-                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Email</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).Email)</div>
-                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chmail">
-                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Email</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="email">@(((nethloader.Models.User)ViewData["User"]).Email)</div>
+                <span class="setting-panel__item-edit text--secondary button flex flex-full-center" ripple="ripple">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity-mail"></use></svg></small>
                 </span>
             </div>
         </div>
-        <div class="text--title text--margin-lr flex flex-cross-center">
+        <div class="text--title setting-panel-title text--500 flex flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#security"></use></svg>&nbsp;<span>Security</span>
         </div>
         <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
             <div class="setting-panel__item flex">
                 <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Password</strong></div><div class="setting-panel__item-value text--margin text--secondary">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</div>
-                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chpass">
+                <span class="setting-panel__item-edit text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chpass">
                     <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
                 </span>
             </div>
         </div>
-        <div class="text--title text--margin-lr flex flex-cross-center">
+        <div class="text--title setting-panel-title text--500 flex flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#remote"></use></svg>&nbsp;<span>Remote</span>
         </div>
         <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
             <div class="setting-panel__item flex">
-                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>APIkey</strong></div><div class="setting-panel__item-value text--margin text--secondary">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</div>
-                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="gnapik">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>APIkey</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="apikey">@(((nethloader.Models.User)ViewData["User"]).ApiKey)</div>
+                <span class="setting-panel__item-edit text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="gnapik">
                     <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key-reset"></use></svg></small>
                 </span>
             </div>
         </div>
-        <div class="text--title text--margin-lr flex flex-cross-center">
-            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;<span>Domain</span>
+        <div class="text--title setting-panel-title text--500 flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#world"></use></svg>&nbsp;<span>Custom Domain</span>
         </div>
         <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--thin-p paper-card--margin-tb">
             <div class="setting-panel__item flex">
-                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Domain</strong></div><div class="setting-panel__item-value text--margin text--secondary">@if (!(((nethloader.Models.User)ViewData["User"]).CustomDomainStatus)) {
-                    <p>No custom domain set</p>
-                }
-                else
-                {
-                    <p>@(((nethloader.Models.User)ViewData["User"]).CustomDomain)</p>
-                }</div>
-                <span class="setting-panel__item-edit text--margin-lr text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chdomain">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Domain</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="domain">
+                    @if ((((nethloader.Models.User)ViewData["User"]).CustomDomainStatus) == false)
+                    {
+                       @(((nethloader.Models.User)ViewData["User"]).CustomDomain)
+                    }
+                    else
+                    {
+                        @Html.Raw("N/D");
+                    }
+                </div>
+                <span class="setting-panel__item-edit text--secondary button button--transparent flex flex-full-center c-pointer" ripple="ripple" data-dialogtrigger="chdomain">
                     <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#edit"></use></svg></small>
                 </span>
             </div>
@@ -90,120 +93,10 @@
     </div>
 </div>
 
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="chuname">
-    <div class="dialog">
-        <div class="dialog__header">
-            <p class="text--title">Change Username</p>
-        </div>
-        <form>
-            <div class="dialog__content flex flex-full-center flex-dc">
-                <div class="form-row">
-                    <input id="nusername" type="text" class="input input--text" data-type="text" required>
-                    <label for="nusername" class="label--itext">
-                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Username</span>
-                    </label>
-                    <div class="input--validation" data-for="nusername">&nbsp;</div>
-                </div>
-                </div>
-            <div class="dialog__actions flex flex-main-center">
-                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chuname" title="Maybe not" ripple="ripple">Cancel</div>
-                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change username" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-            </div>
-        </form>
-    </div>
-</div>
+@Html.Partial("./modals/ModalChname.cshtml")
 
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="chmail">
-    <div class="dialog">
-        <div class="dialog__header">
-            <p class="text--title">Change Email</p>
-        </div>
-        <form>
-            <div class="dialog__content flex flex-full-center flex-dc">
-                <div class="form-row">
-                    <input id="nmail" type="email" class="input input--text" data-type="text" required>
-                    <label for="nmail" class="label--itext">
-                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#email"></use></svg>&nbsp;New Email</span>
-                    </label>
-                    <div class="input--validation" data-for="nmail">&nbsp;</div>
-                </div>
-            </div>
-            <div class="dialog__actions flex flex-main-center">
-                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chmail" title="Maybe not" ripple="ripple">Cancel</div>
-                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change username" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-            </div>
-        </form>
-    </div>
-</div>
+@Html.Partial("./modals/ModalChpassword.cshtml")
 
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="chpass">
-    <div class="dialog">
-        <div class="dialog__header">
-            <p class="text--title">Change Password</p>
-        </div>
-        <form>
-            <div class="form-row">
-                <input id="npassword" type="password" class="input input--password" data-type="password" required>
-                <label for="npassword" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#key"></use></svg>&nbsp;New Password</span>
-                </label>
-                <div class="input--validation" data-for="npassword">&nbsp;</div>
-            </div>
-            <div class="form-row">
-                <div class="input--validation" data-for="npassword">&nbsp;</div>
-                <input id="cnpassword" type="password" class="input input--password" data-type="password" required>
-                <label for="cnpassword" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#subkey"></use></svg>&nbsp;Confirm New Password</span>
-                </label>
-                <div class="input--validation" data-for="cnpassword">&nbsp;</div>
-            </div>
-            <div class="form-row">
-                <input id="password" type="password" class="input input--password" data-type="password" required>
-                <label for="password" class="label--itext">
-                    <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-edit"></use></svg>&nbsp;Current Password</span>
-                </label>
-            </div>
-                <div class="input--validation" data-for="npassword">&nbsp;</div>
-                <div class="dialog__actions flex flex-main-center">
-                    <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chpass" title="Maybe not" ripple="ripple">Cancel</div>
-                    <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change password" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-                </div>
-        </form>
-    </div>
-</div>
+@Html.Partial("./modals/ModalRegenKey.cshtml")
 
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="gnapik">
-    <div class="dialog">
-        <div class="dialog__header">
-            <p class="text--title">Generate new APIkey?</p>
-        </div>
-        <div class="dialog__content">Any app or software using your current key won't work until you give them the new key.</div>
-        <div class="dialog__actions flex flex-main-center">
-            <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="gnapik" title="Maybe not" ripple="ripple">No, wait</div>
-            <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Yes, please!" ripple="ripple">Yes, do it</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-        </div>
-    </div>
-</div>
-
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="chdomain">
-    <div class="dialog">
-        <div class="dialog__header">
-            <p class="text--title">Change Domain</p>
-        </div>
-        <form>
-            <div class="dialog__content flex flex-full-center flex-dc">
-                <div class="form-row">
-                    <input id="ndomain" type="text" class="input input--text" data-type="text" required>
-                    <label for="ndomain" class="label--itext">
-                        <span><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#user"></use></svg>&nbsp;New Domain</span>
-                    </label>
-                    <div class="input--validation" data-for="ndomain">&nbsp;</div>
-                </div>
-            </div>
-            <div class="dialog__actions flex flex-main-center">
-                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="chdomain" title="Maybe not" ripple="ripple">Cancel</div>
-                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" title="Change domain" ripple="ripple">Save</button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-            </div>
-        </form>
-    </div>
-</div>
+@Html.Partial("./modals/ModalChDomain.cshtml")

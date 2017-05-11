@@ -16,3 +16,9 @@
 }
 
 .setting-panel__item-edit { padding: 0 calc(var(--base-pm) * 2); }
+
+.setting-panel-title {
+    font-size: 1em;
+    color: $base3;
+    margin-top: calc(var(--base-pm) * 2);
+}

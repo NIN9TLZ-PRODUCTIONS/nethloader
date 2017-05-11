@@ -2,17 +2,17 @@
  * Input validation functions 
  */
 const testUserName = (input) => {
-  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
+  return ((input.value && (!input.value.trim() == '')) ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
    (input.value.match(input.dataset.valRegexPattern) ? manageInvalidField(input, true) : manageInvalidField(input, false));
 };
 
 const testEmail = (input) => {
-  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
+  return ((input.value && (!input.value.trim() == '')) ? manageEmptyField(input, true) : manageEmptyField(input, false)) &&
     (input.value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i) ? manageInvalidField(input, true) : manageInvalidField(input, false));
 };
 
 const testPassword = (input) => {
-  return (input.value ? manageEmptyField(input, true) : manageEmptyField(input, false));
+  return ((input.value && (!input.value.trim() == '')) ? manageEmptyField(input, true) : manageEmptyField(input, false));
 };
 
 const testPasswordLength = (input) => {
@@ -22,6 +22,10 @@ const testPasswordLength = (input) => {
 const testEqual = (input1, input2) => {
   return (input1.value == input2.value ? manageEqualPasswords(input2, true) : manageEqualPasswords(input2, false));
 };
+
+const testDomain = (input) => {
+  return ((input.value && (!input.value.trim() == '')) ? manageEmptyField(input, true) : manageEmptyField(input, false)) && ((input.value.match(/[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/) || input.value.match(/localhost$|^127(?:\.[0-9]+){0,2}\.[0-9]+$|^(?:0*\:)*?:?0*1$/)) ? manageInvalidField(input, true) : manageInvalidField(input, false));
+}
 
 /*
  * Input state functions 
@@ -83,5 +87,6 @@ export default {
   testEmail,
   testPassword,
   testPasswordLength,
-  testEqual
+  testEqual,
+  testDomain
 };

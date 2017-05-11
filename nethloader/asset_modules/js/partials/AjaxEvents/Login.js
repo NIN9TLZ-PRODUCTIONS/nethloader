@@ -7,7 +7,7 @@ var loginButton,
     usernameInput,
     passwordInput;
 
-const loginFormInit = () => {
+const init = () => {
   loginButton = document.getElementById('login-button');
   if (loginButton) {
     usernameInput = document.getElementById('username');
@@ -43,5 +43,5 @@ const validateLogin = () => {
 };
 
 export default {
-  loginFormInit
+  init
 };

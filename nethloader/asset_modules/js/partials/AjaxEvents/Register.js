@@ -9,7 +9,7 @@ var registerButton,
     passwordInput,
     cpasswordInput;
 
-const registerFormInit = () => {
+const init = () => {
   registerButton = document.getElementById('register-button');
   if (registerButton) {
     usernameInput = document.getElementById('username');
@@ -52,5 +52,5 @@ const validateRegister = () => {
 };
 
 export default {
-  registerFormInit
+  init
 };

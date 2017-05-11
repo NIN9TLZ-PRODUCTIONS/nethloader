@@ -272,7 +272,7 @@ namespace nethloader.Controllers
         // POST: /Account/ChangeUserName
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UserName(string newUsername)
+        public async Task<IActionResult> ChangeUserName(string newUsername)
         {
             var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             if (newUsername == currentUser.UserName)
@@ -280,7 +280,7 @@ namespace nethloader.Controllers
             currentUser.UserName = newUsername;
             var result = await _userManager.UpdateAsync(currentUser);
             if (result.Succeeded)
-                return Ok();
+                return Ok(currentUser.UserName);
             return BadRequest(result.Errors);
         }
         //
@@ -313,20 +313,20 @@ namespace nethloader.Controllers
             return BadRequest(result.Errors);
         }
         //
-        // POST: /Account/ChangeCustomDomian
+        // POST: /Account/ChangeCustomDomain
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangeCustomDomian(string domain)
+        public async Task<IActionResult> ChangeCustomDomain(string domain)
         {
             var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             if (domain == currentUser.CustomDomain)
                 return BadRequest("You are already using this domain.");
-            currentUser.CustomDomainStatus = (domain == "");
+            currentUser.CustomDomainStatus = String.IsNullOrEmpty(domain);
             currentUser.CustomDomain = domain;
 
             var result = await _userManager.UpdateAsync(currentUser);
             if (result.Succeeded)
-                return Ok();
+                return Ok(currentUser.CustomDomain);
             return BadRequest(result.Errors);
         }
         //

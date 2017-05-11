@@ -34,7 +34,7 @@ namespace nethloader.Services.Managers
 
         public static string GetImagePath(Image image)
         {
-            if (image.Owner.CustomDomainStatus == true)
+            if (image.Owner.CustomDomainStatus == false)
             {
                 return $"{image.Owner.CustomDomain}/{image.Id}.{image.Extension}";
             }
