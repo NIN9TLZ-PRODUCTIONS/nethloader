@@ -321,7 +321,7 @@ namespace nethloader.Controllers
             var currentUser = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             if (domain == currentUser.CustomDomain)
                 return BadRequest("You are already using this domain.");
-            currentUser.CustomDomainStatus = String.IsNullOrEmpty(domain);
+            currentUser.CustomDomainStatus = !string.IsNullOrEmpty(domain);
             currentUser.CustomDomain = domain;
 
             var result = await _userManager.UpdateAsync(currentUser);
