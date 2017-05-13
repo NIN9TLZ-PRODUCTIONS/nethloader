@@ -30,7 +30,7 @@
     </div>
 </header>
 <div class="inner-wrapper flex flex-dc">
-    <div class="paper-card--margin flex flex-dc">
+    <div class="paper-card--margin-lr flex flex-dc">
         <div class="text--title setting-panel-title text--500 flex flex-cross-center">
             <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity"></use></svg>&nbsp;<span>Account</span>
         </div>
@@ -42,10 +42,26 @@
                 </span>
             </div>
             <div class="setting-panel__item flex">
-                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Email</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="email">@(((nethloader.Models.User)ViewData["User"]).Email)</div>
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Email</strong></div><div class="setting-panel__item-value text--margin text--secondary" data-itemvalueid="email">@(((nethloader.Models.User)ViewData["User"]).Email)
+                    @if (!((nethloader.Models.User)ViewData["User"]).EmailConfirmed)
+                    {
+                        <small class="paper-card paper-card--thin-p2 paper-card--dark paper-card--margin">Not confirmed</small>
+                    }
+                </div>
                 <span class="setting-panel__item-edit text--secondary button flex flex-full-center" ripple="ripple">
                     <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#identity-mail"></use></svg></small>
                 </span>
+            </div>
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-id t-upp text--margin text--secondary"><strong>Registered</strong></div><div class="setting-panel__item-value text--margin text--secondary" >@(((nethloader.Models.User)ViewData["User"]).RegisterDate)</div>
+                <span class="setting-panel__item-edit text--secondary button flex flex-full-center" ripple="ripple">
+                    <small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#cal-clock"></use></svg></small>
+                </span>
+            </div>
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-value">
+                    <div class="button button--transparent ta-c t-upp text--error text--500 c-pointer" ripple="ripple" data-dialogtrigger="delacc">Delete account</div>
+                </div>
             </div>
         </div>
         <div class="text--title setting-panel-title text--500 flex flex-cross-center">
@@ -90,6 +106,16 @@
                 </span>
             </div>
         </div>
+        <div class="text--title setting-panel-title text--500 flex flex-cross-center">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-multiple"></use></svg>&nbsp;<span>Content</span>
+        </div>
+        <div class="setting-panel paper-card paper-card--fw paper-card--shadow2 paper-card--margin-tb">
+            <div class="setting-panel__item flex">
+                <div class="setting-panel__item-value">
+                    <div class="button button--transparent ta-c t-upp text--error c-pointer" ripple="ripple" data-dialogtrigger="deldata">Delete all images</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -100,3 +126,7 @@
 @Html.Partial("./modals/ModalRegenKey.cshtml")
 
 @Html.Partial("./modals/ModalChDomain.cshtml")
+
+@Html.Partial("./modals/ModalDelAcc.cshtml")
+
+@Html.Partial("./modals/ModalDelData.cshtml")

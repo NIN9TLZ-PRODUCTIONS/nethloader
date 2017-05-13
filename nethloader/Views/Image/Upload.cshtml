@@ -1,18 +1,23 @@
-<div class="dialog__header">
-    <p class="text--title">Upload an image</p>
+<!-- Upload image dialog, standalone -->
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="upload">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Upload an image</p>
+        </div>
+        <form>
+            <div class="dialog__content flex flex-full-center flex-dc">
+                <input type="file" id="file" name="file" class="input--file" accept=".@string.Join(",.", Enum.GetNames(typeof(nethloader.Models.ImageExtensions)))" />
+                <label for="file" class="button button--accent button--fat-long button--shadow1 c-pointer" ripple="ripple">
+                    Choose a file
+                    &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>
+                </label>
+                <span id="temp-data" class="flex flex-full-center">
+                </span>
+            </div>
+            <div class="dialog__actions flex flex-main-center">
+                <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload" title="Maybe not" ripple="ripple"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;Cancel</div>
+                <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" id="upload-button" title="Up we go!" ripple="ripple">Upload&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg></small></button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
+            </div>
+        </form>
+    </div>
 </div>
-<form>
-    <div class="dialog__content flex flex-full-center flex-dc">
-        <input type="file" id="file" name="file" class="input--file" accept=".@string.Join(",.", Enum.GetNames(typeof(nethloader.Models.ImageExtensions)))"/>
-        <label for="file" class="button button--accent button--fat-long button--shadow1 c-pointer" ripple="ripple">
-            Choose a file
-            &nbsp;<svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#image-upload"></use></svg>
-        </label>
-        <span id="temp-data" class="flex flex-full-center">
-        </span>
-    </div>
-    <div class="dialog__actions flex flex-main-center">
-        <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" data-closedialog="upload" title="Maybe not" ripple="ripple"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;Cancel</div>
-        <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" id="upload-button" title="Up we go!" ripple="ripple">Upload&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#upload"></use></svg></small></button><div class="loader-wrapper flex flex-full-center"><div class="loader"></div></div>
-    </div>
-</form>

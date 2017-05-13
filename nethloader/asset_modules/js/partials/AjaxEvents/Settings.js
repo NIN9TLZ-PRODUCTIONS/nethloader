@@ -1,10 +1,12 @@
 ﻿import Utils from '../Utils';
 
-var usernameTrigger,     // Username edit button
-    passwordTrigger,     // Password edit button
-    apikeyTrigger,       // APIkey edit button
-    domainTrigger,       // Domain edit button
-    removeDomainTrigger, // Remove domain button
+var usernameTrigger,      // Username edit button
+    passwordTrigger,      // Password edit button
+    apikeyTrigger,        // APIkey edit button
+    domainTrigger,        // Domain edit button
+    removeDomainTrigger,  // Remove domain button
+    deleteAccountTrigger, // Remove account button
+    deleteDataTrigger,    // Remove images button
 
     newUserNameInput,  // New username input
     newPasswordInput,  // New password input
@@ -23,11 +25,13 @@ const init = () => {
  * Find all the inputs with the 'data-type' attribute
  */
 const findElements = () => {
-  usernameTrigger     = document.querySelector('[data-param=\'pusername\'');
-  passwordTrigger     = document.querySelector('[data-param=\'ppassword\'');
-  apikeyTrigger       = document.querySelector('[data-param=\'papik\'');
-  domainTrigger       = document.querySelector('[data-param=\'pdomain\''),
-  removeDomainTrigger = document.querySelector('[data-removedomain]');
+  usernameTrigger      = document.querySelector('[data-param=\'pusername\'');
+  passwordTrigger      = document.querySelector('[data-param=\'ppassword\'');
+  apikeyTrigger        = document.querySelector('[data-param=\'papik\'');
+  domainTrigger        = document.querySelector('[data-param=\'pdomain\''),
+  removeDomainTrigger  = document.querySelector('[data-removedomain]'),
+  deleteAccountTrigger = document.querySelector('[data-deleteaccount]'),
+  deleteDataTrigger    = document.querySelector('[data-deletedata]');
 
   cNewPasswordInput = document.getElementById('cnpassword');
   newUserNameInput  = document.getElementById('nusername');
@@ -45,6 +49,8 @@ const addListeners = () => {
     passwordTrigger.addEventListener('click', changePassword);
     apikeyTrigger.addEventListener('click', rengenApik);
     domainTrigger.addEventListener('click', changeDomain);
+    deleteAccountTrigger.addEventListener('click', removeAccount);
+    deleteDataTrigger.addEventListener('click', removeData);
     if(removeDomainTrigger){ removeDomainTrigger.addEventListener('click', removeDomain); }
 
     newUserNameInput.addEventListener('input', () => { Utils.testUserName(newUserNameInput); });
@@ -55,7 +61,7 @@ const addListeners = () => {
 };
 
 /*
-* Validates and end a new username to the server to be updated in the database
+* Validates and sends a new username to the server to be updated in the database
 */
 const changeUsername = (event) => {
   event.preventDefault();
@@ -210,6 +216,47 @@ const removeDomain = () => {
   removeDomainReq.send();
 }
 
+/*
+* Request user account removal from the server
+*/
+const removeAccount = () => {
+  var remAccReq = new XMLHttpRequest();
+
+  remAccReq.onreadystatechange = function () {
+    deleteAccountTrigger.children[0].innerHTML = '<div class=\'loader-wrapper flex flex-full-center is-processing\'><div class=\'loader\'></div></div>';
+  }
+
+  remAccReq.open('POST', '/Account/RemoveAccount/', true);
+  remAccReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+  remAccReq.send();
+}
+
+/*
+* Request user data(images) removal from the server
+*/
+const removeData = () => {
+  var remDataReq = new XMLHttpRequest();
+
+
+  remDataReq.onreadystatechange = function () {
+    deleteAccountTrigger.children[0].innerHTML = '<div class=\'loader-wrapper flex flex-full-center is-processing\'><div class=\'loader\'></div></div>';
+
+    if (this.readyState == 4) {
+      deleteAccountTrigger.children[0].innerHTML = '<svg viewBox=\'0 0 24 24\'><use xlink:href=\'/img/icons.svg#del-sweep\'></use></svg>';
+      activeDialogElements = document.getElementsByClassName('is-active');
+      for (let i = activeDialogElements.length - 1; i >= 0; i--) {
+        activeDialogElements[i].classList.toggle('is-active');
+      } 
+    } else {
+      deleteAccountTrigger.children[0].innerHTML = '<svg viewBox=\'0 0 24 24\'><use xlink:href=\'/img/icons.svg#del-sweep\'></use></svg>';
+    }
+    
+  }
+
+  remDataReq.open('POST', '/Account/RemoveAllUserImages/', true);
+  remDataReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+  remDataReq.send();
+}
 
 
 const validateNewPassword = () => {

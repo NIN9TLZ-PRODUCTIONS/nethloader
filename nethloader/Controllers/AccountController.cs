@@ -339,7 +339,7 @@ namespace nethloader.Controllers
             return Ok();
         }
         //
-        // POST: /Account/RemoveAcount
+        // POST: /Account/RemoveAccount
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveAccount()

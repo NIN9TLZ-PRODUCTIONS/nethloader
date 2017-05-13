@@ -1,0 +1,16 @@
+﻿<div class="dialog__wrapper flex flex-full-center" data-dialogid="delacc">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Delete account?</p>
+        </div>
+        <div class="dialog__content">
+            <p><small>You will never be able to use this account again and <span class="t-upp">all your data and images will be deleted</span>.</small></p>
+            <p><small>Are you sure that you want to do this?</small></p>
+            <span class="text--error" title="This is serious">This process cannot be reverted.</span>
+        </div>
+        <div class="dialog__actions flex flex-main-center">
+            <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" data-closedialog="delacc" title="Maybe not" ripple="ripple"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;No, wait</div>
+            <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" title="Yes, I'm sure" ripple="ripple" data-deleteaccount>Yes, do it&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#account-remove"></use></svg></small></button>
+        </div>
+    </div>
+</div>

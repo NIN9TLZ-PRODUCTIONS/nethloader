@@ -103,19 +103,10 @@
             }
         </div>
 
-<!-- Upload image dialog, standalone -->
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="upload">
-    <div class="dialog">
-        @Html.Partial("../Image/Upload.cshtml")
-    </div>
-</div>
+@Html.Partial("../Image/Upload.cshtml")
 
-<!-- Delete image dialog, standalone -->
-<div class="dialog__wrapper flex flex-full-center" data-dialogid="delete">
-    <div class="dialog">
-        @Html.Partial("../Image/Delete.cshtml")
-    </div>
-</div>
+@Html.Partial("../Image/Delete.cshtml")
+
 
 <!-- Script loaded here for encapsulation purposes -->
 <script async>

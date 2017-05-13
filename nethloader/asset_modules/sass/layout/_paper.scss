@@ -9,6 +9,11 @@
     background-color: var(--accent-contrast);
 }
 
+.paper-card--thin-p2 {
+    padding: calc(var(--base-pm) / 2);
+    background-color: var(--accent-contrast);
+}
+
 .paper-card--shadow1 { @include box_shadow(1); }
 
 .paper-card--shadow2 { @include box_shadow(2); }
@@ -22,6 +27,8 @@
 }
 
 .paper-card--margin { margin: calc(var(--base-pm) * 2); }
+
+.paper-card--margin-lr { margin: 0 calc(var(--base-pm) * 2); }
 
 .paper-card--margin-tb { margin: calc(var(--base-pm) * 2) 0; }
 

@@ -1,0 +1,16 @@
+<div class="dialog__wrapper flex flex-full-center" data-dialogid="deldata">
+    <div class="dialog">
+        <div class="dialog__header">
+            <p class="text--title">Delete all images?</p>
+        </div>
+        <div class="dialog__content">
+            <p><span class="t-upp">All your data and images will be deleted</span>.</p>
+            <p>Are you sure that you want to do this?</p>
+            <span class="text--error" title="This is serious">This process cannot be reverted.</span>
+        </div>
+        <div class="dialog__actions flex flex-main-center">
+            <div class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--accent" data-closedialog="deldata" title="Maybe not" ripple="ripple"><small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#close"></use></svg></small>&nbsp;No, wait</div>
+            <button class="button button--transparent button--fat-long c-pointer ta-c flex flex-full-center button--margin-lr text--error" title="Yes, I'm sure" ripple="ripple" data-deletedata>Yes, do it&nbsp;<small><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#del-sweep"></use></svg></small></button>
+        </div>
+    </div>
+</div>
