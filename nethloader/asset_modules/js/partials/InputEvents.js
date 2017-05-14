@@ -25,7 +25,7 @@ const addListeners = () => {
 };
 
 /*
- * Change the input's label state depending of wether it has content or not by adding or removing the 'has-content' class respectively
+ * Change the input's label state depending on wether it has content or not by adding or removing the 'has-content' class respectively
  */
 const manageLabelActiveState = (event) => {
   let eventInput = event.currentTarget;
@@ -38,7 +38,7 @@ const checkInputContent = (input) => {
 
   if (input.value) {
     labelEl.classList.add('has-content');
-  } else if (!input.value || input.value === '') {
+  } else if (!input.value || input.value.trim() === '') {
     labelEl.classList.remove('has-content');
   }
 };

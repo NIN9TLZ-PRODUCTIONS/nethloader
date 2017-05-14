@@ -7,11 +7,16 @@
     height: 150px;
     margin-bottom: calc(var(--base-pm) * 3);
     max-height: 140px;
-    overflow: hidden;
     position: relative;
     @include box_shadow(2);
 
-    &:hover { @include box_shadow(3); }
+    .gallery-image__wrapper {
+        overflow: hidden;
+    }
+
+    &:hover {
+        @include box_shadow(3);
+    }
 }
 
 .gallery-image__data {

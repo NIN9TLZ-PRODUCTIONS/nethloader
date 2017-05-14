@@ -49,10 +49,12 @@ const deleteImage = (event) => {
   };
   
   deleteConfirmButton.onclick = () => {
-    deleteReq.open('POST', '/image/delete/?id=' + imageId, true);
-    deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
-    deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    deleteReq.send();
+    if(imageId) {
+      deleteReq.open('POST', '/image/delete/?id=' + imageId, true);
+      deleteReq.setRequestHeader('RequestVerificationToken', antiforgeryToken);
+      deleteReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      deleteReq.send();
+    }
   };
 };
 

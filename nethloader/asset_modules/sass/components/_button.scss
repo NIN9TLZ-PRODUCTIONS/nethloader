@@ -40,6 +40,13 @@
     border-radius: 2px;
 }
 
+.button--disabled {
+    pointer-events: none;
+    color: #b0bec5!important;
+
+    &:hover { background-color: transparent; }
+}
+
 .button--shadow1 { @include box_shadow(1); }
 
 .button--shadow2 { @include box_shadow(2); }

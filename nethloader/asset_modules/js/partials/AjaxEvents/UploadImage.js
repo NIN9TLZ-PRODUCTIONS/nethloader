@@ -58,8 +58,6 @@ const uploadImage = (event) => {
       setTempData('There was an errror uploading your image');
       uploadButton.children[0].innerHTML = '<svg viewBox=\'0 0 24 24\'><use xlink:href=\'/img/icons.svg#upload\'></use></svg>';
     } else if (this.readyState == 4 && this.status == 200) {
-      uploadButton.classList.toggle('button--disabled');
-      cancelButton.classList.toggle('button--disabled');
       location.href = this.responseURL;
     }
   };

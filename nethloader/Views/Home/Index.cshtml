@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Gallery - " + User.Identity.Name;
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
 <header class="user-header flex flex-full-center">
     <div class="inner-wrapper flex flex-sb">
         <a class="button button--primary c-pointer flex flex-full-center text--accent-contrast" data-dialogtrigger="upload" title="Upload an image" ripple="ripple">
@@ -41,8 +41,16 @@
                 {
                     <div class="gallery-image flex flex-full-center flex-dc" id="@i.Id" data-src="@i.Url">
                         <div class="loader"></div>
+                        <div class="gallery-image__wrapper flex flex-full-center"></div>
                         <div class="gallery-image__data flex flex-dc flex-sb">
-                            <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") <span class="gallery-image__data__delete c-pointer text--accent-contrast" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)" ripple="ripple"><svg class="text--error" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg></span></p>
+                            <p class="gallery-image__data__up-date flex flex-full-center flex-sb">@i.UploadDate.ToString("dd/MM/yyyy - HH:mm") 
+                            <span>
+                                <span class="c-pointer data-cp" data-clipboard-text="" title="Copy link to this image" ripple="ripple"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
+                                </span>&nbsp;
+                                <span class="c-pointer" data-dialogtrigger="delete" data-delimageid="@i.Id" title="Delete this image (forever)" ripple="ripple"><svg class="text--error" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#delete"></use></svg>
+                                </span>
+                            </span>
+                            </p>
                             <a class="gallery-image__data__icons flex flex-full-center flex-dc" href="/image/view/@i.Id" rel="noopener">
                                 <svg class="big-icon" viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#link"></use></svg>
                                 <p>View image</p>
@@ -108,7 +116,11 @@
 @Html.Partial("../Image/Delete.cshtml")
 
 
-<!-- Script loaded here for encapsulation purposes -->
+<!-- Scripts loaded here for encapsulation purposes -->
+<script>
+    new Clipboard('.data-cp');
+</script>
+
 <script async>
     var gallery = document.getElementById('user-gallery');
     if (gallery && gallery.hasChildNodes()) {
@@ -119,7 +131,8 @@
             curImg.src = galleryImagesContainers[i].dataset.src;
             curImg.onload = () => {
                 galleryImagesContainers[i].removeChild(galleryImagesContainers[i].children[0]);
-                galleryImagesContainers[i].insertBefore(curImg, galleryImagesContainers[i].firstChild);
+                galleryImagesContainers[i].children[0].appendChild(curImg, galleryImagesContainers[i].firstChild);
+                galleryImagesContainers[i].querySelector('[data-clipboard-text]').dataset.clipboardText = curImg.src;
             }
         }
     }
