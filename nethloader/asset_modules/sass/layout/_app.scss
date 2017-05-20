@@ -6,7 +6,7 @@ body {
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
-    color: var(--primary-dark);
+    color: var(--base-text-colour);
     background-color: var(--body-bg);
 
     &:after {
@@ -18,12 +18,14 @@ body {
         background-image: url(../img/bg.png);
         width: 100%;
         height: 100%;
-        opacity: 0.2;
+        opacity: var(--body-pattern-opacity);
         z-index: -1;
     }
 
     &.img-bg {
-        &:after { background-image: none; }
+        &:after {
+            background-image: none;
+        }
 
         background-image: url(../img/login-bg.jpg);
     }

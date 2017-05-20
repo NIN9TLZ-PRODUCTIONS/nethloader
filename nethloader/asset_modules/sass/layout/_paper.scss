@@ -1,17 +1,15 @@
 ﻿.paper-card {
-    background-color: transparentize(#fff, .05);
+    background-color: var(--accent-contrast);
     padding: calc(var(--base-pm) * 2);
     border-radius: 2px;
 }
 
 .paper-card--thin-p {
     padding: var(--base-pm);
-    background-color: var(--accent-contrast);
 }
 
 .paper-card--thin-p2 {
     padding: calc(var(--base-pm) / 2);
-    background-color: var(--accent-contrast);
 }
 
 .paper-card--shadow1 { @include box_shadow(1); }

@@ -203,6 +203,7 @@ const removeDomain = () => {
     if (this.readyState == 4) {
       document.querySelector('[data-itemvalueid=\'domain\']').innerHTML = 'N/D';
       removeDomainTrigger.children[0].innerHTML = '<svg viewBox=\'0 0 24 24\'><use xlink:href=\'/img/icons.svg#reset-domain\'></use></svg>';
+      removeDomainTrigger.style.display = 'none';
       activeDialogElements = document.getElementsByClassName('is-active');
       for (let i = activeDialogElements.length - 1; i >= 0; i--) {
         activeDialogElements[i].classList.toggle('is-active');
