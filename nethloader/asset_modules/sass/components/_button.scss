@@ -4,14 +4,13 @@
     transition: all 400ms var(--easeOutExpo);
     font-family: inherit;
     font-size: inherit;
-    font-weight: 300;
 }
 
 .button--primary {
     background-color: var(--primary-dark);
     padding: calc(var(--base-pm) / 2) calc(var(--base-pm) * 2);
     font-size: .9em;
-    color: var(--accent-contrast);
+    color: #f5f5f5;
 
     &:hover { background-color: var(--secondary-dark-darker); }
 }
@@ -19,6 +18,7 @@
 .button--accent {
     color: var(--accent-contrast);
     background-color: var(--accent);
+    font-weight: 300;
 
     &:hover { background-color: var(--accent-lighter); }
 }
@@ -26,7 +26,7 @@
 .button--transparent {
     background-color: transparent;
 
-    &:hover { background-color: var(--accent-contrast-darker); }
+    &:hover { background-color: var(--transparent-hover); }
 }
 
 .button--fat { 

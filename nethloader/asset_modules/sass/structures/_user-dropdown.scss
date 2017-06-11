@@ -6,7 +6,7 @@
 
 .user-header__user-dropdown-trigger {
     height: 100%;
-    color: var(--accent-contrast);
+    color: #f1f1f1;
     padding: 0 calc(var(--base-pm)*2);
     transition: background-color 300ms var(--easeOutExpo);
 
@@ -29,6 +29,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 500ms var(--easeOutExpo);
+    z-index: -2;
 
     &.drop-open {
         overflow: initial;
@@ -39,13 +40,15 @@
 
     ul,
     li,
-    form { width: 100%; }
+    form {
+        width: 100%;
+    }
 }
 
 .user-header__user-dropdown__items {
-    background-color: var(--accent-contrast);
+    background-color: var(--card-bg-light);
     padding-top: var(--base-pm);
-    border-radius: 2px;
+    border-radius: 0 0 2px 2px;
     overflow: hidden;
     @include box-shadow(1);
 }
@@ -57,7 +60,7 @@
     transition: background-color 300ms var(--easeOutExpo);
 
 
-    &:hover { background-color: var(--accent-contrast-darker); }
+    &:hover { background-color: var(--dropdown-item-hover); }
 }
 
 .user-header__user-menu-icon {

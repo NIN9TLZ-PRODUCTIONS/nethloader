@@ -1,7 +1,7 @@
 /* Text blocks */
 .text--title-fancy {
     text-transform: uppercase;
-    color: currentColor;
+    color: #fff;
     font-size: 1.8em;
     font-family: 'Exo', 'Roboto', sans-serif;
 }
@@ -10,6 +10,7 @@
     text-transform: uppercase;
     color: currentColor;
     font-size: 1.2em;
+    font-weight: 300;
 }
 
 .text--secondary {

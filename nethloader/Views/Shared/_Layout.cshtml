@@ -24,6 +24,8 @@
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="~/css/style.css">
+
+    <!-- Theme manager -->
 </head>
 <body class="@("flex flex-dc" + ((bool)ViewData["img-bg"] ? " img-bg" : ""))">
     <div class="@("content-wrapper flex flex-full-center flex-dc" + ((bool)ViewData["img-bg"] ? "" : " flex-sb"))">
@@ -31,12 +33,24 @@
     </div>
     @if (!(bool)ViewData["img-bg"])
     {
-        <div class="app-footer"><p class="ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a></small></p></div>
+        <div class="app-footer"><p class="ta-c"><small><a href="https://github.com/nethruster/nethloader" target="_blank" rel="noopener">Powered by Nethloader</a>&nbsp;&dash;&nbsp;
+            <span class="c-pointer" id="dark-theme-trigger">
+            <script>
+               
+            </script>
+            </span></small></p></div>
     }
 
     <script>
         var antiforgeryToken = @Json.Serialize(antiforgery.GetAndStoreTokens(Context).RequestToken);
         var supportedExtensions = (@Json.Serialize(string.Join(",", Enum.GetNames(typeof(nethloader.Models.ImageExtensions))))).split(',');
+        var themeTrigg = document.getElementById('dark-theme-trigger');
+
+        if(document.cookie == 'darkMode=true'){
+            themeTrigg.innerHTML = 'Dark mode on';
+        } else {
+            themeTrigg.innerHTML = 'Dark mode off';
+        }
     </script>
     @if((bool)ViewData["loadScript"]) {
         <script src="~/js/scripts.js"></script>

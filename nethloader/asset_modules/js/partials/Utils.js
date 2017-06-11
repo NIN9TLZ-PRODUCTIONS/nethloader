@@ -28,7 +28,7 @@ const testDomain = (input) => {
 }
 
 /*
- * Input state functions 
+ * Input state functions
  */
 const manageEmptyField = (input, state) => {
   var inputVal = document.querySelector(`[data-for='${input.id}']`);

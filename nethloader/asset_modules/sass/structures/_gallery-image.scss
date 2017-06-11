@@ -8,6 +8,7 @@
     margin-bottom: calc(var(--base-pm) * 3);
     max-height: 140px;
     position: relative;
+    border: 1px solid rgba(255,255,255, .2);
     @include box_shadow(2);
 
     .gallery-image__wrapper {

@@ -5,6 +5,8 @@ $base3: #587282; // Dark2
 $base4: #03A9F4; // Accent
 $base5: #F4F4F9; // Light
 
+$base7: #232323; // Dark1
+
 :root {
     /* ------------------
         Colours
@@ -12,6 +14,10 @@ $base5: #F4F4F9; // Light
      --body-bg: lighten($base3, 50%);
      --body-pattern-opacity: 0.2;
      --base-colour: $base2;
+     --card-bg: #fff;
+     --card-bg-light: darken(#fff, 10%);
+     --transparent-hover: transparentize(#1E1E1E, .9);
+     --dropdown-item-hover: darken(#fff, 20%);
 
      --accent-contrast: #fff;
      --accent-contrast-darker: darken(#fff, 10%);
@@ -24,9 +30,25 @@ $base5: #F4F4F9; // Light
      --secondary-dark: $base3;
      --secondary-dark-darker: darken($base3, 10%);
 
-    --text-error: #e53935;
-    --text-warning: #ff8f00;
-    --text-success: #00C853;
+     --base-text-colour: #1c1c1c;
+     --text-error: #e53935;
+     --text-warning: #ff8f00;
+     --text-success: #00C853;
+
+     --dark-body-bg: $base7;
+     --dark-card-bg: lighten($base7, 10%);
+     --dark-card-bg-light: lighten($base7, 10%);
+     --dark-transparent-hover: lighten(#1E1E1E, 18%);
+     --dark-dropdown-item-hover: darken(#fff, 70%);
+
+     --dark-primary-dark:  lighten($base7, 10%);
+     --dark-secondary-dark: $base7;
+     --dark-secondary-dark-darker: lighten($base7, 5%);
+
+     --dark-base-text-colour: #e4e4e4;
+     --dark-text-error: #e53935;
+     --dark-text-warning: #ff8f00;
+     --dark-text-success: #00C853;
 
     /* ------------------
         UI values

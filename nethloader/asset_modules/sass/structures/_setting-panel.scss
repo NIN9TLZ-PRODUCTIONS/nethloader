@@ -6,7 +6,7 @@
         padding: var(--base-pm);
     }
 
-    &:not(:last-child) { border-bottom: 1px solid var(--accent-contrast-darker); }
+    &:not(:last-child) { border-bottom: 1px solid var(--dropdown-item-hover); }
 }
 
 .setting-panel__item-value {
@@ -19,6 +19,7 @@
 
 .setting-panel-title {
     font-size: 1em;
-    color: $base3;
+    color: var(--base-text-colour);
     margin-top: calc(var(--base-pm) * 2);
+    opacity: .8;
 }

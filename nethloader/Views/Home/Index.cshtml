@@ -60,16 +60,6 @@
                 }
             </div>
             <div class="gallery-pagination flex flex-full-center">
-                @if (Model.HasPreviousPage)
-                {
-                    <a asp-route-page="@(Model.PageIndex - 1)" title="Previous page">
-                        <span class="gallery-pagination__navigator c-pointer"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
-                    </a>
-                }
-                else
-                {
-                    <span class="gallery-pagination__navigator text--secondary c-nope" title="No previous page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-left"></use></svg></span>
-                }
                 <ul class="flex flex-full-center">
                     @for (var i = 1; i <= Model.TotalPages; i++)
                     {
@@ -83,16 +73,6 @@
                         }
                     }
                 </ul>
-                @if (Model.HasNextPage)
-                {
-                    <a asp-route-page="@(Model.PageIndex + 1)">
-                        <span class="gallery-pagination__navigator c-pointer" title="Next page"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
-                    </a>
-                }
-                else
-                {
-                    <span class="gallery-pagination__navigator text--secondary c-nope" title="No next page available"><svg viewBox="0 0 24 24"><use xlink:href="/img/icons.svg#arrow-right"></use></svg></span>
-                }
             </div>
         </div>
     }
